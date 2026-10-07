@@ -173,7 +173,7 @@ export const AdminPage: React.FC = () => {
 
       {/* Admin Nav Tabs */}
       <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 bg-white p-1.5 rounded-2xl border border-slate-200 no-scrollbar">
-        {[
+        {([
           { id: 'overview', label: 'Overview', icon: LayoutDashboard },
           { id: 'nodes', label: `Infrastructure (${serverNodes.length})`, icon: Server },
           { id: 'plans', label: `Plans (${plans.length})`, icon: Server },
@@ -185,7 +185,7 @@ export const AdminPage: React.FC = () => {
           { id: 'tickets', label: `Tickets (${tickets.length})`, icon: LifeBuoy },
           { id: 'invoices', label: `Invoices (${invoices.length})`, icon: Receipt },
           { id: 'settings', label: 'Site Settings', icon: Settings },
-        ].map((tab) => {
+        ] as Array<{ id: string; label: string; icon: any; highlight?: boolean }>).map((tab) => {
           const Icon = tab.icon;
           return (
             <button
