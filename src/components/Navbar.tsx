@@ -50,7 +50,11 @@ export const Navbar: React.FC = () => {
   const isHome = currentPage === 'home';
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-transparent px-3 pt-3 text-slate-800 sm:px-5 sm:pt-5">
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      isHome
+        ? 'bg-[#050608]/80 backdrop-blur-xl px-4 sm:px-8 py-3 border-b border-white/[0.08]'
+        : 'bg-transparent px-3 pt-3 text-slate-800 sm:px-5 sm:pt-5'
+    }`}>
       {/* Top Announcement Bar */}
       {isAnnouncementVisible && siteSettings.announcementActive && (
         <div className={`w-full border-b py-1.5 px-4 text-xs flex items-center justify-between ${
@@ -73,10 +77,10 @@ export const Navbar: React.FC = () => {
       )}
 
       {/* Main Navbar matching Reference Top Bar */}
-      <div className={`mx-auto flex h-[66px] max-w-[1200px] items-center justify-between rounded-[22px] px-4 backdrop-blur-xl sm:px-6 transition-colors duration-300 ${
+      <div className={`mx-auto flex items-center justify-between transition-colors duration-300 ${
         isHome
-          ? 'border border-white/15 bg-[#07090e]/80 text-white shadow-[0_15px_45px_rgba(0,0,0,0.8)]'
-          : 'border border-white/90 bg-white/90 text-slate-800 shadow-[0_10px_35px_rgba(35,25,75,0.07)]'
+          ? 'h-[54px] max-w-[1340px] px-2 text-white'
+          : 'h-[66px] max-w-[1200px] rounded-[22px] px-4 backdrop-blur-xl sm:px-6 border border-white/90 bg-white/90 text-slate-800 shadow-[0_10px_35px_rgba(35,25,75,0.07)]'
       }`}>
         
         {/* Brand Zone */}
@@ -90,22 +94,22 @@ export const Navbar: React.FC = () => {
             className="flex items-center gap-2.5 group cursor-pointer text-left"
           >
             {/* Concentric rings logo matching the reference screenshot */}
-            <div className={`h-9 w-9 rounded-2xl flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform ${
+            <div className={`h-8 w-8 sm:h-9 sm:w-9 rounded-2xl flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform ${
               isHome
-                ? 'bg-gradient-to-br from-[#1c2436] to-[#0c101a] border border-white/15 shadow-blue-500/20'
+                ? 'bg-transparent border border-white/20'
                 : 'bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-violet-500/20'
             }`}>
               {isHome ? (
-                <div className="h-5 w-5 rounded-full border-2 border-cyan-400 flex items-center justify-center">
-                  <div className="h-2.5 w-2.5 rounded-full border border-amber-400 flex items-center justify-center">
-                    <div className="h-1 w-1 rounded-full bg-white" />
+                <div className="h-5 w-5 rounded-full border-2 border-white/90 flex items-center justify-center">
+                  <div className="h-2.5 w-2.5 rounded-full border border-cyan-400 flex items-center justify-center">
+                    <div className="h-1 w-1 rounded-full bg-amber-400" />
                   </div>
                 </div>
               ) : (
                 <span className="font-display text-xs text-white">HX</span>
               )}
             </div>
-            <span className={`text-xl font-extrabold tracking-tight font-display ${
+            <span className={`text-lg sm:text-xl font-bold tracking-tight font-display ${
               isHome ? 'text-white' : 'text-slate-950'
             }`}>
               {siteSettings.brandName || 'HelzerX Cloud'}
@@ -113,8 +117,8 @@ export const Navbar: React.FC = () => {
           </button>
 
           {/* Desktop Nav Items */}
-          <nav className={`hidden lg:flex items-center gap-1 text-xs font-semibold ${
-            isHome ? 'text-slate-300' : 'text-slate-500'
+          <nav className={`hidden lg:flex items-center gap-2 text-xs font-medium ${
+            isHome ? 'text-slate-400' : 'text-slate-500 font-semibold'
           }`}>
             {/* Services Dropdown */}
             <div className="relative">
@@ -123,8 +127,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => toggleDropdown('services')}
                 className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
                   activeDropdown === 'services' || currentPage.startsWith('services')
-                    ? isHome ? 'text-white bg-white/15' : 'text-violet-700 bg-violet-50'
-                    : isHome ? 'hover:text-white hover:bg-white/10' : 'hover:text-slate-900 hover:bg-slate-100'
+                    ? isHome ? 'text-white bg-white/10' : 'text-violet-700 bg-violet-50'
+                    : isHome ? 'hover:text-white' : 'hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 <span>Services</span>
