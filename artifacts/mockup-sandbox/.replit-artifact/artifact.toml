@@ -1,0 +1,19 @@
+kind = "design"
+previewPath = "/__mockup/"
+title = "ArveX UI Design Preview"
+description = "Responsive design preview of the existing ArveX Hosting homepage, preserving the hosting product while exploring the user's reference UI."
+version = "1.0.0"
+id = "artifacts/mockup-sandbox"
+router = "path"
+
+[[services]]
+name = "Component Preview Server"
+paths = [ "/__mockup/" ]
+localPort = 23636
+
+[services.development]
+run = "npm run dev"
+
+[services.env]
+PORT = "23636"
+BASE_PATH = "/__mockup/"

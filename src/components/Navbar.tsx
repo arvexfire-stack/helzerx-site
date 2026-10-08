@@ -5,17 +5,13 @@ import {
   Server,
   Gamepad2,
   Cpu,
-  Globe,
   ChevronDown,
   X,
   Shield,
   User as UserIcon,
   LogOut,
-  Layers,
   Menu,
-  CreditCard,
   Zap,
-  Sparkles,
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -27,7 +23,6 @@ export const Navbar: React.FC = () => {
     logout,
     setIsAuthModalOpen,
     setAuthModalTab,
-    openCheckout,
     isAnnouncementVisible,
     dismissAnnouncement,
     currentPage,
@@ -47,7 +42,8 @@ export const Navbar: React.FC = () => {
     setIsCurrencyDropdownOpen(false);
   };
 
-  const isHome = currentPage === 'home';
+  // Keep the shared shell light on every route; the homepage hero supplies the blue focal point.
+  const isHome = false;
 
   return (
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
@@ -97,7 +93,7 @@ export const Navbar: React.FC = () => {
             <div className={`h-8 w-8 sm:h-9 sm:w-9 rounded-2xl flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform ${
               isHome
                 ? 'bg-transparent border border-white/20'
-                : 'bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-violet-500/20'
+                : 'bg-gradient-to-br from-[#4c91e7] to-[#246ed0] text-white shadow-blue-500/20'
             }`}>
               {isHome ? (
                 <div className="h-5 w-5 rounded-full border-2 border-white/90 flex items-center justify-center">
@@ -265,7 +261,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Right Zone: Currency Selector + Gabrun Pill Button [ ☷ Menu ] + [ Deploy ] */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Currency Pill */}
           <div className="relative hidden sm:block">
             <button
@@ -350,7 +346,7 @@ export const Navbar: React.FC = () => {
                 className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition cursor-pointer ${
                   isHome
                     ? 'text-slate-300 hover:text-white hover:bg-white/10'
-                    : 'bg-[#0b0f19] text-white hover:bg-slate-900 shadow-md'
+                    : 'bg-[#edf4fb] text-[#314962] hover:bg-[#e1edf8]'
                 }`}
               >
                 <span>Login</span>
@@ -365,7 +361,7 @@ export const Navbar: React.FC = () => {
                 className={`hidden sm:inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-xs font-bold text-white transition cursor-pointer ${
                   isHome
                     ? 'border border-white/20 bg-[#07090e] hover:bg-white/10 hover:border-white/40 shadow-[0_0_15px_rgba(255,120,50,0.22),0_0_15px_rgba(56,189,248,0.2)]'
-                    : 'bg-gradient-to-r from-[#7934f5] to-[#591bc9] hover:from-[#6a25e6] hover:to-[#4a12b8] shadow-md shadow-purple-500/25'
+                    : 'bg-[#246ed0] hover:bg-[#1c60bc] shadow-md shadow-blue-500/20'
                 }`}
               >
                 <span>Sign up</span>
@@ -375,7 +371,11 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
             className={`lg:hidden p-2 rounded-full ${
               isHome ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'
             }`}
@@ -387,7 +387,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className={`lg:hidden border-t px-4 py-6 space-y-4 rounded-3xl mt-2 mx-auto max-w-[1200px] ${
+        <div id="mobile-navigation" className={`lg:hidden border-t px-4 py-6 space-y-4 rounded-3xl mt-2 mx-auto max-w-[1200px] ${
           isHome ? 'bg-[#090b14] border-white/15 text-white' : 'bg-white border-slate-200 text-slate-800'
         }`}>
           <div className="grid grid-cols-2 gap-2 text-xs font-bold">
@@ -396,7 +396,7 @@ export const Navbar: React.FC = () => {
                 navigateTo('services-minecraft');
                 setIsMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-50 text-left hover:bg-violet-50"
+                  className="min-h-12 p-3 rounded-xl bg-slate-50 text-left hover:bg-blue-50"
             >
               Minecraft Hosting
             </button>
@@ -405,7 +405,7 @@ export const Navbar: React.FC = () => {
                 navigateTo('services-vps');
                 setIsMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-50 text-left hover:bg-violet-50"
+                  className="min-h-12 p-3 rounded-xl bg-slate-50 text-left hover:bg-blue-50"
             >
               Cloud VPS
             </button>
@@ -414,7 +414,7 @@ export const Navbar: React.FC = () => {
                 navigateTo('plans');
                 setIsMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-50 text-left hover:bg-violet-50"
+                  className="min-h-12 p-3 rounded-xl bg-slate-50 text-left hover:bg-blue-50"
             >
               Game Plans
             </button>
@@ -423,7 +423,7 @@ export const Navbar: React.FC = () => {
                 navigateTo('locations');
                 setIsMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-50 text-left hover:bg-violet-50"
+                  className="min-h-12 p-3 rounded-xl bg-slate-50 text-left hover:bg-blue-50"
             >
               Locations
             </button>
@@ -464,7 +464,7 @@ export const Navbar: React.FC = () => {
                     window.location.assign('/login');
                     setIsMobileMenuOpen(false);
                   }}
-                  className="flex-1 rounded-full bg-[#0b0f19] py-3 text-center text-xs font-bold text-white shadow-md cursor-pointer"
+                  className="flex-1 rounded-full bg-[#edf4fb] py-3 text-center text-xs font-bold text-[#314962] cursor-pointer"
                 >
                   Sign In
                 </button>
@@ -474,7 +474,7 @@ export const Navbar: React.FC = () => {
                     window.location.assign('/signup');
                     setIsMobileMenuOpen(false);
                   }}
-                  className="flex-1 rounded-full bg-gradient-to-r from-[#7934f5] to-[#591bc9] py-3 text-center text-xs font-bold text-white shadow-md cursor-pointer"
+                  className="flex-1 rounded-full bg-[#246ed0] py-3 text-center text-xs font-bold text-white shadow-md cursor-pointer"
                 >
                   Sign Up
                 </button>

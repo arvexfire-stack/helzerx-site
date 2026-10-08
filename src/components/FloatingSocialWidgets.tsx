@@ -42,7 +42,7 @@ export const FloatingSocialWidgets: React.FC = () => {
   return (
     <>
       {/* Floating Bottom-Left Action Stack matching Screenshot 4 & 5 */}
-      <div className="fixed bottom-6 left-6 z-50 flex flex-col items-center gap-3">
+      <div className="fixed bottom-6 left-6 z-50 hidden flex-col items-center gap-3 lg:flex">
         {/* Discord Floating Button (Purple) */}
         <a
           href="https://discord.gg/helzerxcloud"
@@ -84,7 +84,7 @@ export const FloatingSocialWidgets: React.FC = () => {
       {/* Floating Bottom-Right Scroll-To-Top Button matching Screenshot 4 & 5 */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-2xl bg-[#121422]/90 hover:bg-[#1a1d30] border border-white/10 text-slate-300 hover:text-white flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all"
+        className="fixed bottom-6 right-6 z-50 hidden h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-[#121422]/90 text-slate-300 shadow-xl transition-all hover:scale-105 hover:bg-[#1a1d30] hover:text-white active:scale-95 lg:flex"
         title="Scroll to Top"
       >
         <ChevronUp className="w-5 h-5" />
