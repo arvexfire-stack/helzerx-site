@@ -10,11 +10,12 @@ export const AnimatedReviewsBar: React.FC = () => {
   const totalReviews = displayReviews.length;
   const avgRating = totalReviews > 0
     ? (displayReviews.reduce((sum, r) => sum + (r.rating || 5), 0) / totalReviews).toFixed(1)
-    : '4.9';
+    : '—';
   const marqueeReviews = displayReviews.length > 1 ? [...displayReviews, ...displayReviews] : displayReviews;
 
   return (
-    <section className="relative overflow-hidden border-y border-slate-200 bg-[#f8fafc] py-20 sm:py-24 text-slate-800">
+    <section className="relative overflow-hidden px-3 py-8 text-slate-800 sm:px-6 sm:py-10">
+      <div className="reference-panel mx-auto max-w-[1210px] overflow-hidden py-8 sm:py-10">
       <div className="relative z-10 mx-auto mb-12 max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         {user?.role === 'admin' && (
           <div className="mb-4 flex justify-center">
@@ -33,18 +34,18 @@ export const AnimatedReviewsBar: React.FC = () => {
           <span>Real Customer Feedback</span>
         </div>
 
-        <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
-          Loved by Thousands of <span className="text-blue-600">Gamers &amp; Devs</span>
+        <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-[#182231]">
+          Players say it <span className="text-blue-600">best.</span>
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-500 font-medium">
-          Real feedback from HelzerX Cloud server owners, clans, and cloud teams worldwide.
+          Reviews shared by ArveX hosting customers.
         </p>
 
         {/* Rating summary pill */}
         <div className="mt-6 inline-flex items-center justify-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-2.5 shadow-sm">
           <div className="flex items-center gap-1">
             {[1, 2, 3, 4, 5].map((s) => (
-              <div key={s} className="grid h-5 w-5 place-items-center rounded bg-[#00b67a]">
+              <div key={s} className={`grid h-5 w-5 place-items-center rounded ${totalReviews ? 'bg-[#3289e2]' : 'bg-[#dce8f3]'}`}>
                 <Star className="h-3.5 w-3.5 fill-white text-white" />
               </div>
             ))}
@@ -54,7 +55,7 @@ export const AnimatedReviewsBar: React.FC = () => {
             <span className="text-slate-400">/ 5</span>
             <span className="text-slate-300">•</span>
             <span className="text-slate-600 font-medium">
-              Based on <strong className="text-slate-900">{totalReviews || 120} verified reviews</strong>
+              Based on <strong className="text-slate-900">{totalReviews} reviews</strong>
             </span>
           </div>
         </div>
@@ -62,8 +63,8 @@ export const AnimatedReviewsBar: React.FC = () => {
 
       {displayReviews.length > 0 ? (
         <div className="relative w-full overflow-hidden py-4">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#f8fafc] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#f8fafc] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent" />
 
           <div className="animate-marquee flex items-stretch gap-6 px-6">
             {marqueeReviews.map((rev, idx) => {
@@ -131,10 +132,11 @@ export const AnimatedReviewsBar: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="mx-auto max-w-2xl px-6 text-center text-sm text-slate-500">
+        <div className="mx-auto max-w-2xl px-6 py-5 text-center text-sm text-slate-500">
           Customer reviews will appear here once published from the admin panel.
         </div>
       )}
+      </div>
     </section>
   );
 };

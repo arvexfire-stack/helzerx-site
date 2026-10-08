@@ -35,16 +35,16 @@ export const GameHostingPlansSection: React.FC<GameHostingPlansSectionProps> = (
       : plan.monthlyPrice;
 
   return (
-    <section id="plans" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-left">
+    <section id="plans" className="reference-panel my-4 max-w-[1210px] mx-auto px-5 py-8 sm:my-8 sm:px-9 sm:py-11 lg:px-12 relative text-left">
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold text-blue-700 mb-3 shadow-sm">
+        <div className="eyebrow mb-3">
           <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
           <span>Configured for Performance</span>
         </div>
-        <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-3">
+        <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-[#182231] mb-3">
           {siteSettings.pricingSectionTitle || 'Choose Your Game Server Plan'}
         </h2>
-        <p className="text-slate-500 text-sm sm:text-base leading-relaxed mb-8">
+        <p className="text-[#788697] text-sm sm:text-base leading-relaxed mb-8">
           {siteSettings.pricingSectionSubtitle || 'All plans include DDoS protection, instant setup, NVMe SSDs and 24/7 support.'}
         </p>
 
@@ -95,6 +95,7 @@ export const GameHostingPlansSection: React.FC<GameHostingPlansSectionProps> = (
       </div>
 
       {/* Plan Cards Grid */}
+      {displayPlans.length > 0 ? (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-12 stage-3d">
         {displayPlans.map((plan) => {
           const price = getPlanPrice(plan);
@@ -191,6 +192,13 @@ export const GameHostingPlansSection: React.FC<GameHostingPlansSectionProps> = (
           );
         })}
       </div>
+      ) : (
+        <div className="mb-10 rounded-2xl border border-dashed border-[#c9dced] bg-[#f7fbff] px-5 py-10 text-center">
+          <Package className="mx-auto h-7 w-7 text-[#5b96d4]" />
+          <h3 className="mt-3 font-display text-base font-bold text-[#26384d]">Plans are being updated</h3>
+          <p className="mt-1 text-xs text-[#788697]">Choose another game or check back soon for available hosting plans.</p>
+        </div>
+      )}
 
       {/* Feature Micro-Badges */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

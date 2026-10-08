@@ -2,41 +2,31 @@ import React from 'react';
 import { useApp } from '../context/AppContext';
 import { Partner } from '../types';
 
-const defaultLogos = [
-  { name: 'PayPal', badge: 'Payments', iconText: 'PayPal' },
-  { name: 'Notion', badge: 'Workspace', iconText: 'N' },
-  { name: 'Slack', badge: 'Comms', iconText: '# slack' },
-  { name: 'Loom', badge: 'Video', iconText: 'loom' },
-  { name: 'Monday.com', badge: 'Work OS', iconText: 'monday.com' },
-  { name: 'Afterpay', badge: 'Fintech', iconText: 'afterpay' },
-  { name: 'Cloudflare', badge: 'Security', iconText: 'Cloudflare' },
-  { name: 'AMD Ryzen', badge: 'Hardware', iconText: 'AMD RYZEN' },
-  { name: 'Pterodactyl', badge: 'Control Panel', iconText: 'Pterodactyl' },
-  { name: 'Ubuntu', badge: 'OS', iconText: 'ubuntu' },
-];
-
 export const OfficialPartnersTicker: React.FC = () => {
   const { partners, navigateTo } = useApp();
   const activePartners: Partner[] = (partners || []).filter((p) => p.active !== false);
 
-  const displayList = activePartners.length > 0 ? activePartners : defaultLogos;
+  const displayList = activePartners;
   const marqueeItems = [...displayList, ...displayList];
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-12 border-b border-slate-100">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center mb-8">
-        <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-          Trusted By More Than <span className="text-blue-600">+10,000 Users</span>
-        </h2>
-        <p className="text-xs sm:text-sm text-slate-500 mt-2 font-medium">
-          Leading gaming communities, SaaS founders, and engineers run on HelzerX Cloud Infrastructure.
-        </p>
-      </div>
-
-      <div className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden px-3 py-6 sm:px-6 sm:py-8">
+      <div className="reference-panel mx-auto max-w-[1210px] overflow-hidden py-6 sm:py-8">
+        <div className="mx-auto mb-5 max-w-7xl px-4 text-center sm:px-6">
+          <span className="eyebrow">In good company</span>
+          <h2 className="mt-2 font-display text-xl font-extrabold tracking-tight text-[#253448] sm:text-2xl">
+            Built around the tools you trust
+          </h2>
+          <p className="mt-1.5 text-xs text-[#8491a1]">
+            {activePartners.length
+              ? `${activePartners.length} listed ${activePartners.length === 1 ? 'partner' : 'partners'} in the ArveX ecosystem`
+              : 'Our hosting tools and services, in one place.'}
+          </p>
+        </div>
+        {marqueeItems.length > 0 ? <div className="relative w-full overflow-hidden">
         {/* Soft edge blur masks */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent" />
 
         <div className="animate-marquee flex w-max items-center gap-6 py-2 will-change-transform">
           {marqueeItems.map((item: any, index: number) => (
@@ -59,6 +49,7 @@ export const OfficialPartnersTicker: React.FC = () => {
             </div>
           ))}
         </div>
+        </div> : <div className="mx-auto max-w-lg px-6 text-center text-xs text-[#8795a5]">Partner updates will appear here when available.</div>}
       </div>
     </section>
   );

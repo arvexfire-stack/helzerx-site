@@ -1,140 +1,87 @@
-import React, { useState } from 'react';
-import { Activity, CheckCircle2, Globe2, Radio, Zap } from 'lucide-react';
-
-interface NodeLocation {
-  id: string;
-  country: string;
-  flag: string;
-  city: string;
-  hardware: string;
-  ping: number;
-  status: 'online' | 'coming_soon';
-  x: number;
-  y: number;
-}
-
-const locations: NodeLocation[] = [
-  { id: 'lk', country: 'Sri Lanka', flag: '🇱🇰', city: 'Colombo Edge', hardware: 'AMD Ryzen 9 7950X', ping: 14, status: 'online', x: 72, y: 55 },
-  { id: 'sg', country: 'Singapore', flag: '🇸🇬', city: 'Singapore Central', hardware: 'AMD Ryzen 9 9950X', ping: 18, status: 'online', x: 78, y: 60 },
-  { id: 'in', country: 'India', flag: '🇮🇳', city: 'Mumbai', hardware: 'AMD EPYC 7R13', ping: 35, status: 'coming_soon', x: 68, y: 49 },
-  { id: 'us', country: 'United States', flag: '🇺🇸', city: 'Dallas / US Central', hardware: 'AMD EPYC 9R14', ping: 156, status: 'online', x: 23, y: 42 },
-  { id: 'de', country: 'Germany', flag: '🇩🇪', city: 'Frankfurt DC', hardware: 'AMD Ryzen 9 7950X3D', ping: 130, status: 'online', x: 49, y: 34 },
-];
-
-const routes = [
-  'M23 42 C34 35 40 34 49 34',
-  'M49 34 C57 35 62 42 68 49',
-  'M68 49 C72 52 75 56 78 60',
-  'M23 42 C40 51 58 56 78 60',
-  'M49 34 C57 42 65 48 72 55',
-];
+import React, { useMemo, useState } from 'react';
+import { Activity, CheckCircle2, Globe2, MapPin, Radio, Zap } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 
 export const OurLocationsMapSection: React.FC = () => {
-  const [activeNode, setActiveNode] = useState<string>('sg');
+  const { locations, navigateTo } = useApp();
+  const onlineLocations = useMemo(() => locations.filter((location) => location.status !== 'maintenance'), [locations]);
+  const [activeNode, setActiveNode] = useState<string | null>(onlineLocations[0]?.id || null);
+  const current = onlineLocations.find((location) => location.id === activeNode) || onlineLocations[0];
 
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 text-center">
-      <div className="mb-12">
-        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold text-blue-700 mb-3 shadow-sm">
-          <Globe2 className="h-3.5 w-3.5" />
-          <span>Global Infrastructure</span>
-        </div>
-        <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
-          Our Server <span className="text-blue-600">Locations</span>
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-slate-500">
-          Strategically deployed cloud nodes with low-latency routes, live automated failover, and AMD Ryzen processors.
-        </p>
-      </div>
-
-      <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white p-4 shadow-[0_20px_50px_rgba(15,23,42,0.06)] sm:p-6 text-left">
-        <div className="relative h-[360px] overflow-hidden rounded-[24px] border border-slate-800 bg-[#090e21] sm:h-[480px]">
-          {/* Tech world map: dark continents + latitude/longitude grid + animated network routes. */}
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 70" preserveAspectRatio="none" aria-label="HelzerX Cloud global network map">
-            <defs>
-              <pattern id="latlon" width="8" height="7" patternUnits="userSpaceOnUse">
-                <path d="M 8 0 L 0 0 0 7" fill="none" stroke="rgba(148,163,184,.12)" strokeWidth=".12" />
-              </pattern>
-              <linearGradient id="routeGlow" x1="0" x2="1">
-                <stop offset="0" stopColor="#3b82f6" stopOpacity=".2" />
-                <stop offset=".5" stopColor="#60a5fa" stopOpacity="1" />
-                <stop offset="1" stopColor="#38bdf8" stopOpacity=".3" />
-              </linearGradient>
-            </defs>
-
-            <rect width="100" height="70" fill="url(#latlon)" />
-
-            {/* Approximate continent masses */}
-            <path d="M12 18 Q16 12 28 15 Q34 22 28 32 Q20 38 15 30 Z" fill="#131d3d" opacity=".8" />
-            <path d="M22 36 Q28 34 32 44 Q28 62 23 58 Q18 48 22 36 Z" fill="#131d3d" opacity=".8" />
-            <path d="M44 14 Q56 12 58 24 Q52 30 46 28 Q43 22 44 14 Z" fill="#131d3d" opacity=".8" />
-            <path d="M45 32 Q58 30 58 48 Q54 62 46 54 Q42 42 45 32 Z" fill="#131d3d" opacity=".8" />
-            <path d="M60 12 Q82 10 86 28 Q78 44 68 40 Q62 26 60 12 Z" fill="#131d3d" opacity=".8" />
-            <path d="M72 48 Q84 46 86 58 Q80 64 74 60 Z" fill="#131d3d" opacity=".8" />
-
-            {/* Routed connectivity arcs */}
-            {routes.map((d, i) => (
-              <path key={i} d={d} fill="none" stroke="url(#routeGlow)" strokeWidth=".4" strokeDasharray="1.2 1.2" />
-            ))}
-
-            {/* Nodes on map */}
-            {locations.map((loc) => {
-              const active = activeNode === loc.id;
-              return (
-                <g key={loc.id} className="cursor-pointer" onClick={() => setActiveNode(loc.id)}>
-                  <circle cx={loc.x} cy={loc.y} r={active ? 3.5 : 2} fill={active ? 'rgba(59,130,246,0.35)' : 'rgba(56,189,248,0.2)'} />
-                  <circle cx={loc.x} cy={loc.y} r={active ? 1.6 : 1} fill={active ? '#60a5fa' : '#38bdf8'} />
-                </g>
-              );
-            })}
-          </svg>
-
-          {/* Active node floating tag */}
-          <div className="absolute bottom-5 left-5 right-5 sm:left-auto sm:right-5 sm:w-80 rounded-2xl bg-white/95 p-4 backdrop-blur-xl border border-slate-200 shadow-2xl text-slate-900">
-            {(() => {
-              const current = locations.find((l) => l.id === activeNode) || locations[0];
-              return (
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="flex items-center gap-2 font-display text-sm font-extrabold">
-                      <span>{current.flag}</span>
-                      <span>{current.city}</span>
-                    </span>
-                    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
-                      {current.ping}ms Ping
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-500 font-medium mb-1">{current.hardware}</p>
-                  <p className="text-[11px] text-blue-600 font-bold flex items-center gap-1">
-                    <CheckCircle2 className="h-3 w-3" /> Dedicated Corero 3.2Tbps DDoS Protection
-                  </p>
-                </div>
-              );
-            })()}
+    <section id="locations" className="mx-auto max-w-[1210px] px-3 py-10 sm:px-6 sm:py-14 lg:px-8">
+      <div className="reference-panel overflow-hidden px-5 py-8 sm:px-9 sm:py-10">
+        <div className="mb-7 flex flex-col justify-between gap-4 sm:mb-8 sm:flex-row sm:items-end">
+          <div>
+            <span className="eyebrow">Closer to your players</span>
+            <h2 className="mt-3 font-display text-3xl font-extrabold tracking-[-.055em] text-[#182231] sm:text-[2.6rem]">
+              Our server <span className="text-[#287bd9]">locations.</span>
+            </h2>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-[#788697]">Pick a region close to your community for a smoother connection.</p>
           </div>
+          <button type="button" onClick={() => navigateTo('locations')} className="inline-flex min-h-10 items-center gap-2 self-start rounded-full border border-[#dce8f4] px-4 text-[11px] font-bold text-[#486581] transition hover:border-blue-300 hover:text-[#287bd9] sm:self-auto">
+            View all locations <Globe2 className="h-3.5 w-3.5" />
+          </button>
         </div>
 
-        {/* Bottom Location Tabs */}
-        <div className="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-3">
-          {locations.map((loc) => (
-            <button
-              key={loc.id}
-              type="button"
-              onClick={() => setActiveNode(loc.id)}
-              className={`rounded-2xl p-3 text-left border transition-all ${
-                activeNode === loc.id
-                  ? 'border-blue-600 bg-blue-50 text-slate-900 shadow-sm'
-                  : 'border-slate-200 bg-slate-50/60 hover:bg-slate-50 text-slate-700'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-lg">{loc.flag}</span>
-                <span className="text-[10px] font-bold text-slate-400 font-mono">{loc.ping}ms</span>
+        <div className="relative overflow-hidden rounded-[22px] border border-[#e5edf6] bg-[#edf6ff] p-3 sm:p-5">
+          <div className="relative h-[280px] overflow-hidden rounded-[16px] bg-[#e4f1fe] sm:h-[370px]">
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 70" preserveAspectRatio="none" aria-label="Server locations map">
+              <defs>
+                <pattern id="arvex-map-grid" width="8" height="7" patternUnits="userSpaceOnUse">
+                  <path d="M8 0H0V7" fill="none" stroke="#a9c9e9" strokeWidth=".16" />
+                </pattern>
+                <linearGradient id="arvex-route" x1="0" x2="1">
+                  <stop offset="0" stopColor="#8cc4fa" stopOpacity=".5" />
+                  <stop offset=".5" stopColor="#3685dc" stopOpacity=".9" />
+                  <stop offset="1" stopColor="#8cc4fa" stopOpacity=".5" />
+                </linearGradient>
+              </defs>
+              <rect width="100" height="70" fill="url(#arvex-map-grid)" />
+              <path d="M11 16Q19 10 31 15L34 26 27 34 21 32 18 40 13 32 10 23ZM23 38L31 40 33 51 29 63 24 56 21 46ZM43 14L56 12 60 22 56 29 48 27 44 22ZM45 33L54 31 59 43 56 55 51 60 46 53 43 43ZM61 14L75 11 87 18 90 29 83 36 73 39 67 33 64 23ZM76 47L86 49 90 57 84 62 77 58Z" fill="#c5dcf2" />
+              {onlineLocations.length > 1 && onlineLocations.slice(1).map((location) => {
+                const first = onlineLocations[0];
+                return <path key={`route-${location.id}`} d={`M${first.xPercent} ${first.yPercent} Q${(first.xPercent + location.xPercent) / 2} ${Math.min(first.yPercent, location.yPercent) - 10} ${location.xPercent} ${location.yPercent}`} fill="none" stroke="url(#arvex-route)" strokeWidth=".32" strokeDasharray="1 1.5" />;
+              })}
+              {onlineLocations.map((location) => {
+                const selected = current?.id === location.id;
+                return <g key={location.id} className="cursor-pointer" onClick={() => setActiveNode(location.id)} role="button" aria-label={`Select ${location.name}`}>
+                  <circle cx={location.xPercent} cy={location.yPercent} r={selected ? 4 : 2.4} fill={selected ? 'rgba(41,126,219,.18)' : 'rgba(74,148,222,.14)'} />
+                  <circle cx={location.xPercent} cy={location.yPercent} r={selected ? 1.35 : .9} fill={selected ? '#287bd9' : '#5d9fe0'} />
+                </g>;
+              })}
+            </svg>
+            {current ? (
+              <div className="absolute bottom-3 left-3 right-3 rounded-2xl border border-white bg-white/95 p-3.5 shadow-[0_10px_30px_rgba(55,98,144,.12)] sm:bottom-5 sm:left-auto sm:right-5 sm:w-[275px] sm:p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="flex min-w-0 items-center gap-2 font-display text-sm font-bold text-[#26394e]"><MapPin className="h-4 w-4 shrink-0 text-[#3683d8]" /> <span className="truncate">{current.name}</span></span>
+                  <span className={`shrink-0 rounded-full px-2 py-1 text-[9px] font-bold ${current.status === 'online' ? 'bg-[#eaf8f2] text-[#26835f]' : 'bg-[#fff5e8] text-[#a9752a]'}`}>{current.status === 'online' ? 'Available' : 'High traffic'}</span>
+                </div>
+                <p className="mt-2 flex items-center gap-1.5 text-[10px] text-[#7c8a99]"><Activity className="h-3 w-3 text-[#6096cf]" /> {current.country} <span className="text-[#c4ccd4]">/</span> {current.pingMs} ms ping</p>
+                <p className="mt-2 flex items-center gap-1.5 text-[10px] font-semibold text-[#4988ce]"><CheckCircle2 className="h-3 w-3" /> DDoS protected infrastructure</p>
               </div>
-              <p className="text-xs font-bold truncate">{loc.city}</p>
-              <p className="text-[10px] text-slate-400 truncate">{loc.country}</p>
-            </button>
-          ))}
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="max-w-xs rounded-2xl border border-white bg-white/90 p-6 text-center shadow-sm">
+                  <Radio className="mx-auto h-6 w-6 text-[#4a8bd2]" />
+                  <p className="mt-3 text-sm font-bold text-[#30465e]">Locations are being updated</p>
+                  <p className="mt-1 text-xs leading-5 text-[#8290a0]">Please check back shortly for available regions.</p>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
+            {locations.map((location) => (
+              <button key={location.id} type="button" onClick={() => location.status !== 'maintenance' && setActiveNode(location.id)} disabled={location.status === 'maintenance'}
+                className={`rounded-xl border px-3 py-2.5 text-left transition ${current?.id === location.id ? 'border-[#87b8eb] bg-white shadow-sm' : 'border-[#e3edf7] bg-white/65 hover:bg-white'} ${location.status === 'maintenance' ? 'cursor-not-allowed opacity-55' : ''}`}>
+                <div className="flex items-center justify-between gap-1">
+                  <span className="truncate text-[10px] font-bold text-[#40566d]">{location.city}</span>
+                  {location.status === 'online' ? <Zap className="h-3 w-3 shrink-0 text-[#4c92d9]" /> : <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e2a749]" />}
+                </div>
+                <span className="mt-1 block text-[9px] text-[#8492a1]">{location.pingMs} ms · {location.country}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
