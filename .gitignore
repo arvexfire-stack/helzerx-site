@@ -17,3 +17,4 @@ data/payment-orders.json
 data/payments.json
 data/security-logs.json
 data/pterodactyl-client-tokens.json
+.env
