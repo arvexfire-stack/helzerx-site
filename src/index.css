@@ -482,3 +482,34 @@ body:has(.helzerx-auth-stage) {
 .hx-float-card b { color:#26384d; }
 .hx-float-card small { color:#8291a1; }
 @media(prefers-reduced-motion:reduce){.hx-hero-kicker,.hx-hero-title,.hx-primary-cta,.hx-device-frame,.hx-float-card{animation:none!important}}
+
+/* Reference layout: pale blue page canvas, rounded white panel, and three floating cards. */
+body { background:#c7e4fb; }
+#root { min-height:100vh; }
+.hx-hero { background:rgba(255,255,255,.96); border:1px solid rgba(255,255,255,.9); box-shadow:0 16px 55px rgba(65,122,173,.08); }
+.hx-hero-orb-one { width:300px;height:300px;left:-170px;top:2%;background:radial-gradient(circle,rgba(124,190,250,.16),transparent 70%); }
+.hx-hero-orb-two { width:380px;height:380px;right:-200px;top:18%;background:radial-gradient(circle,rgba(84,166,241,.15),transparent 70%); }
+.hx-hero-kicker { animation:hxFadeUp .65s cubic-bezier(.2,.75,.25,1) both; }
+.hx-hero-title { animation:hxFadeUp .8s .08s cubic-bezier(.2,.75,.25,1) both; }
+.hx-primary-cta { background:linear-gradient(110deg,#2676d4,#54a3f1);box-shadow:0 6px 16px rgba(48,126,213,.22);animation:hxFadeUp .7s .18s cubic-bezier(.2,.75,.25,1) both; }
+.hx-primary-cta:hover { background:#1d68c4; }
+.hx-showcase-stage { perspective:1000px; }
+.hx-exchange-card { position:relative; min-height:190px;overflow:hidden;border:1px solid #eef2f6;border-radius:24px;background:rgba(255,255,255,.96);padding:17px;box-shadow:0 9px 28px rgba(33,65,102,.055);transition:transform .35s cubic-bezier(.2,.75,.25,1),box-shadow .35s,border-color .35s;animation:hxCardRise .8s cubic-bezier(.16,1,.3,1) both; }
+.hx-exchange-card:hover { transform:translateY(-5px);border-color:#d8eaff;box-shadow:0 16px 36px rgba(33,95,157,.12); }
+.hx-side-card:first-child { animation-delay:.18s; }
+.hx-side-card:last-child { animation-delay:.34s; }
+.hx-center-card { position:relative;min-height:190px;overflow:hidden;border:1px solid rgba(255,255,255,.5);border-radius:24px;padding:20px;background:linear-gradient(120deg,#65b8fa 0%,#3898ef 55%,#3d83e5 100%);box-shadow:0 20px 45px rgba(47,135,218,.18);animation:hxCenterRise .95s .12s cubic-bezier(.16,1,.3,1) both; }
+.hx-center-glow { position:absolute;width:230px;height:230px;right:-65px;bottom:-140px;border-radius:50%;background:rgba(255,255,255,.2);filter:blur(5px); }
+.hx-card-orbit { position:absolute;width:18px;height:18px;right:35%;top:47%;border-radius:50%;background:linear-gradient(145deg,#c2e8ff,#3c91e9);box-shadow:0 0 0 6px rgba(91,163,239,.12),0 6px 16px rgba(30,106,196,.18);animation:hxBob 5s ease-in-out infinite; }
+.hx-card-orbit span { position:absolute;inset:4px;border:1px solid rgba(255,255,255,.7);border-radius:50%; }
+.hx-chart { height:45px;overflow:hidden; }
+.hx-chart svg { width:100%;height:100%;overflow:visible; }
+.home-section-reveal { opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.25,1),transform .8s cubic-bezier(.2,.7,.25,1); }
+.home-section-reveal.is-visible { opacity:1;transform:translateY(0); }
+.hx-exchange-card.is-visible,.hx-center-card.is-visible,.reference-panel.is-visible,.soft-feature.is-visible { opacity:1;transform:translateY(0); }
+.hx-exchange-card,.hx-center-card,.reference-panel,.soft-feature { transition:opacity .75s cubic-bezier(.2,.7,.25,1),transform .75s cubic-bezier(.2,.7,.25,1),box-shadow .3s,border-color .3s; }
+.hx-exchange-card:not(.is-visible),.hx-center-card:not(.is-visible),.reference-panel:not(.is-visible),.soft-feature:not(.is-visible) { opacity:0;transform:translateY(20px); }
+@keyframes hxCardRise { from{opacity:0;transform:translateY(22px) scale(.98)} to{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes hxCenterRise { from{opacity:0;transform:translateY(28px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+@media(max-width:639px){body{background:#c7e4fb}.hx-hero{margin:8px;border-radius:24px;padding:30px 15px 20px}.hx-showcase-stage{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hx-center-card{grid-column:1/-1;grid-row:1;min-height:170px;padding:17px}.hx-side-card{min-height:165px;padding:12px;border-radius:18px}.hx-card-orbit{right:24%;top:55%}.hx-hero-title{letter-spacing:-.065em}.hx-exchange-card{font-size:inherit}}
+@media(prefers-reduced-motion:reduce){.hx-hero-kicker,.hx-hero-title,.hx-primary-cta,.hx-exchange-card,.hx-center-card{animation:none!important}.home-section-reveal,.hx-exchange-card,.hx-center-card,.reference-panel,.soft-feature{opacity:1!important;transform:none!important;transition:none!important}}
