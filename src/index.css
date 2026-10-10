@@ -466,3 +466,19 @@ body:has(.helzerx-auth-stage) {
 @keyframes hxBob { 0%,100%{margin-top:0}50%{margin-top:-8px} }
 @media(max-width:640px) { .hx-hero {padding-top:38px}.hx-showcase-stage{min-height:335px;margin-top:38px}.hx-device-frame{top:6%;width:94%;padding:7px;border-radius:19px}.hx-dashboard{padding:10px;min-height:250px}.hx-stat-card{padding:7px}.hx-stat-card small{font-size:7px}.hx-float-card{gap:7px;padding:8px 9px;border-radius:12px}.hx-float-card b{font-size:8px}.hx-float-card small{font-size:7px}.hx-float-icon{width:27px;height:27px;border-radius:9px}.hx-float-card-left{left:-2px;top:0}.hx-float-card-right{right:-2px;top:53%}.hx-float-card-bottom{left:0;bottom:0}.hx-hero-orb-one{width:260px;height:260px;left:-160px}.hx-hero-orb-two{width:300px;height:300px;right:-190px} }
 @media(prefers-reduced-motion:reduce) { .hx-hero-kicker,.hx-hero-title,.hx-primary-cta,.hx-device-frame,.hx-float-card{animation:none!important}.home-reveal,.home-reveal-group>*{opacity:1;transform:none;transition:none} }
+
+/* Align the motion treatment with the reference's sky-blue canvas and clean white UI. */
+.hx-hero { background:linear-gradient(180deg,#fff 0%,#fff 62%,#f5faff 100%); }
+.hx-hero-orb-one { background:radial-gradient(circle,rgba(96,165,250,.22),transparent 68%); }
+.hx-hero-orb-two { background:radial-gradient(circle,rgba(56,189,248,.18),transparent 68%); }
+.hx-title-pill { border-color:#dceeff; background:linear-gradient(115deg,#edf7ff,#fff 70%); color:#2479df; box-shadow:0 8px 30px rgba(36,121,223,.08); }
+.hx-primary-cta { background:linear-gradient(110deg,#2479df,#62aaf2); box-shadow:0 10px 28px rgba(36,121,223,.22); }
+.hx-primary-cta:hover { background:#1769cc; }
+.hx-phone-glow { background:radial-gradient(ellipse,rgba(111,184,247,.25),rgba(183,219,255,.12) 40%,transparent 72%); }
+.hx-device-frame { box-shadow:0 35px 90px rgba(56,103,151,.12),0 8px 25px rgba(96,140,180,.07); }
+.hx-stat-card { border-color:#e8f0f8; }
+.hx-mini-bar i { background:linear-gradient(90deg,#3285e8,#83c5fb); }
+.hx-float-card { box-shadow:0 14px 36px rgba(56,103,151,.11); }
+.hx-float-card b { color:#26384d; }
+.hx-float-card small { color:#8291a1; }
+@media(prefers-reduced-motion:reduce){.hx-hero-kicker,.hx-hero-title,.hx-primary-cta,.hx-device-frame,.hx-float-card{animation:none!important}}
