@@ -6,7 +6,9 @@ import { FloatingSocialWidgets } from '../FloatingSocialWidgets';
 
 export const HomePage: React.FC = () => {
   useEffect(() => {
-    const targets = document.querySelectorAll<HTMLElement>('.home-reveal, .home-reveal-group > *');
+    const targets = document.querySelectorAll<HTMLElement>(
+      '.hx-hero-kicker, .hx-hero-title, .hx-primary-cta, .hx-exchange-card, .hx-center-card, .reference-panel, .soft-feature, .home-section-reveal'
+    );
     if (!('IntersectionObserver' in window)) {
       targets.forEach((target) => target.classList.add('is-visible'));
       return;
@@ -18,9 +20,9 @@ export const HomePage: React.FC = () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -45px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
     targets.forEach((target, index) => {
-      target.style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 75}ms`);
+      target.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 90}ms`);
       observer.observe(target);
     });
     return () => observer.disconnect();
@@ -28,9 +30,9 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="relative overflow-x-clip bg-white text-slate-800 font-sans">
-      <div className="home-reveal"><HeroSection /></div>
-      <div className="home-reveal-group"><GabrunShowcaseSections /></div>
-      <div className="home-reveal"><FaqSection /></div>
+      <HeroSection />
+      <div className="home-section-reveal"><GabrunShowcaseSections /></div>
+      <div className="home-section-reveal"><FaqSection /></div>
       <FloatingSocialWidgets />
     </div>
   );
