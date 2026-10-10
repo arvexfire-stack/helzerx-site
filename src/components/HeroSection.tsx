@@ -1,77 +1,88 @@
 import React from 'react';
-import { ArrowRight, Gamepad2, Globe2, Layers3, MapPin, Server, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Check, Cpu, Gamepad2, Globe2, ShieldCheck, Sparkles, Zap } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export const HeroSection: React.FC = () => {
-  const { navigateTo, games, locations, siteSettings } = useApp();
+  const { navigateTo, games, locations, siteSettings, plans, deployedServers } = useApp();
   const availableLocations = locations.filter((location) => location.status !== 'maintenance');
-  const featuredGames = games.slice(0, 3);
-  const firstLocation = availableLocations[0];
+  const featuredGame = games[0];
+  const featuredPlan = plans.find((plan) => plan.status !== 'inactive');
+  const runningServers = deployedServers.filter((server) => server.status === 'running').length;
 
   return (
-    <section className="px-5 pb-9 pt-9 sm:px-8 sm:pb-12 sm:pt-12 lg:px-12 lg:pt-[58px]">
-      <div className="mx-auto max-w-[900px] text-center">
-        <span className="eyebrow">Hosting for what you play</span>
-        <h1 className="mt-4 font-display text-[clamp(2.45rem,5.3vw,4.7rem)] font-extrabold leading-[.98] tracking-[-.075em] text-[#141b26]">
-          Your world.<br className="sm:hidden" /> <span className="text-[#2579dc]">Always online.</span>
+    <section className="hx-hero relative px-4 pb-14 pt-10 sm:px-8 sm:pb-20 sm:pt-14 lg:px-12 lg:pt-[76px]">
+      <div className="hx-hero-orb hx-hero-orb-one" />
+      <div className="hx-hero-orb hx-hero-orb-two" />
+      <div className="relative z-10 mx-auto max-w-[1050px] text-center">
+        <div className="hx-hero-kicker mx-auto inline-flex items-center gap-2 rounded-full border border-violet-100 bg-white/80 px-4 py-2 text-[10px] font-bold tracking-[.12em] text-violet-700 shadow-[0_5px_22px_rgba(108,84,190,.07)] sm:text-[11px]">
+          <Sparkles className="h-3.5 w-3.5" /> HOSTING, REIMAGINED
+          <span className="h-1 w-1 rounded-full bg-violet-300" />
+          BUILT FOR YOUR WORLD
+        </div>
+        <h1 className="hx-hero-title mx-auto mt-6 max-w-[900px] font-display text-[clamp(2.8rem,7vw,6.3rem)] font-extrabold leading-[.98] tracking-[-.075em] text-[#171522]">
+          Your world, elevated<br className="hidden sm:block" /> <span className="hx-title-pill">with HelzerX</span>
         </h1>
-        <p className="mx-auto mt-4 max-w-[425px] text-sm leading-6 text-[#7d8895] sm:text-[15px]">
-          {siteSettings.heroSubtitle || 'Game and cloud hosting for worlds worth coming back to.'}
+        <p className="mx-auto mt-5 max-w-[470px] text-sm leading-7 text-[#858296] sm:text-base">
+          {siteSettings.heroSubtitle || 'A better home for your game servers, cloud projects, and the communities you build.'}
         </p>
-        <button
-          type="button"
-          onClick={() => navigateTo('plans')}
-          className="mt-5 inline-flex min-h-9 items-center gap-2 rounded-full bg-gradient-to-r from-[#287fdf] to-[#61a6ed] px-5 text-[11px] font-bold text-white shadow-[0_5px_14px_rgba(48,126,208,.2)] transition hover:-translate-y-0.5 hover:brightness-[1.03]"
-        >
-          {siteSettings.heroCtaText || 'Explore hosting plans'} <ArrowRight className="h-3.5 w-3.5" />
-        </button>
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <button type="button" onClick={() => navigateTo('plans')} className="hx-primary-cta inline-flex min-h-12 items-center gap-2 rounded-full bg-[#7654e8] px-6 text-xs font-bold text-white shadow-[0_10px_28px_rgba(118,84,232,.25)] transition hover:-translate-y-1 hover:bg-[#6845dc]">
+            {siteSettings.heroCtaText || 'Explore hosting'} <ArrowRight className="h-4 w-4" />
+          </button>
+          <button type="button" onClick={() => navigateTo('locations')} className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[#e8e4f4] bg-white/85 px-6 text-xs font-bold text-[#514b68] transition hover:-translate-y-1 hover:border-violet-200 hover:bg-white">
+            <Globe2 className="h-4 w-4 text-violet-500" /> Explore locations
+          </button>
+        </div>
       </div>
 
-      <div className="mx-auto mt-9 grid max-w-[830px] items-stretch gap-3 sm:mt-11 sm:grid-cols-[.92fr_1.48fr_.92fr] sm:gap-4">
-        <div className="order-2 rounded-[19px] bg-[#f6f9fc] px-4 py-4 text-left sm:order-1 sm:px-4 sm:py-5">
-          <div className="flex items-center gap-2 text-[10px] font-semibold text-[#8793a1]">
-            <Gamepad2 className="h-3.5 w-3.5 text-[#548fce]" /> Choose your game
-          </div>
-          <div className="mt-3 space-y-2">
-            {featuredGames.length ? featuredGames.map((game) => (
-              <div key={game.id} className="flex items-center gap-2.5 rounded-xl bg-white px-2.5 py-2">
-                <span className="grid h-6 w-6 place-items-center rounded-lg bg-[#edf5fd] text-[#5b92cb]"><Server className="h-3 w-3" /></span>
-                <span className="truncate text-[10px] font-semibold text-[#526275]">{game.name}</span>
+      <div className="hx-showcase-stage relative mx-auto mt-14 min-h-[350px] max-w-[900px] sm:mt-16 sm:min-h-[490px]">
+        <div className="hx-phone-glow" />
+        <div className="hx-float-card hx-float-card-left">
+          <span className="hx-float-icon bg-violet-50 text-violet-600"><Gamepad2 className="h-4 w-4" /></span>
+          <span><b>Game hosting</b><small>{featuredGame?.name || 'Your favourite games'}</small></span>
+          <span className="hx-status-dot" />
+        </div>
+        <div className="hx-float-card hx-float-card-right">
+          <span className="hx-float-icon bg-emerald-50 text-emerald-600"><ShieldCheck className="h-4 w-4" /></span>
+          <span><b>Protected & ready</b><small>Built for your community</small></span>
+        </div>
+        <div className="hx-float-card hx-float-card-bottom">
+          <span className="hx-float-icon bg-blue-50 text-blue-600"><Globe2 className="h-4 w-4" /></span>
+          <span><b>{availableLocations.length} locations</b><small>Connect players worldwide</small></span>
+        </div>
+
+        <div className="hx-device-frame">
+          <div className="hx-device-top"><span /><span /><span /></div>
+          <div className="hx-dashboard">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500 text-white shadow-lg shadow-violet-200"><Sparkles className="h-4 w-4" /></span>
+                <span className="text-left"><b className="block text-[11px] font-extrabold text-[#242039] sm:text-sm">HelzerX Cloud</b><small className="text-[9px] text-[#9692a8]">Your control center</small></span>
               </div>
-            )) : <p className="rounded-xl bg-white px-3 py-2.5 text-[10px] leading-4 text-[#8793a1]">Browse the available hosting services.</p>}
+              <span className="rounded-full bg-emerald-50 px-2.5 py-1.5 text-[9px] font-bold text-emerald-600"><span className="mr-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />All systems ready</span>
+            </div>
+            <div className="mt-5 grid grid-cols-3 gap-2.5 sm:mt-7 sm:gap-3">
+              <div className="hx-stat-card"><span className="text-violet-500"><Cpu className="h-4 w-4" /></span><small>CPU usage</small><b>24%</b><div className="hx-mini-bar"><i style={{width:'24%'}} /></div></div>
+              <div className="hx-stat-card"><span className="text-blue-500"><Zap className="h-4 w-4" /></span><small>Memory</small><b>3.2 GB</b><div className="hx-mini-bar"><i style={{width:'42%'}} /></div></div>
+              <div className="hx-stat-card"><span className="text-emerald-500"><Globe2 className="h-4 w-4" /></span><small>Running</small><b>{runningServers}</b><div className="mt-2 flex items-center gap-1 text-[8px] font-semibold text-emerald-600"><Check className="h-3 w-3" /> Online</div></div>
+            </div>
+            <div className="mt-4 rounded-2xl border border-[#eeeaf8] bg-white p-3.5 text-left sm:mt-5 sm:p-4">
+              <div className="flex items-center justify-between"><span className="text-[10px] font-bold text-[#49435f] sm:text-xs">Your server overview</span><span className="text-[9px] text-[#aaa5ba]">Live dashboard preview</span></div>
+              <div className="mt-3 flex items-center gap-3 rounded-xl bg-[#faf9fe] p-2.5 sm:p-3">
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-violet-100 text-violet-600"><Gamepad2 className="h-4 w-4" /></span>
+                <span className="min-w-0 flex-1"><b className="block truncate text-[10px] text-[#3a3451] sm:text-xs">{featuredPlan?.name || 'Your next server'}</b><small className="text-[9px] text-[#a09bb1]">Game & cloud infrastructure</small></span>
+                <span className="rounded-full bg-emerald-50 px-2 py-1 text-[8px] font-bold text-emerald-600">READY</span>
+              </div>
+              <div className="mt-3 flex gap-1.5"><span className="h-1.5 flex-1 rounded-full bg-violet-400" /><span className="h-1.5 flex-1 rounded-full bg-violet-300" /><span className="h-1.5 flex-1 rounded-full bg-indigo-200" /><span className="h-1.5 flex-1 rounded-full bg-[#eeeaf8]" /><span className="h-1.5 flex-1 rounded-full bg-[#eeeaf8]" /></div>
+            </div>
           </div>
         </div>
-
-        <div className="relative order-1 flex min-h-[170px] flex-col justify-center overflow-hidden rounded-[21px] bg-gradient-to-br from-[#70b7f6] via-[#4c9bed] to-[#4389e4] px-6 py-6 text-left text-white shadow-[0_12px_32px_rgba(69,143,219,.17)] sm:order-2 sm:min-h-[190px] sm:px-7">
-          <div className="pointer-events-none absolute -right-7 -top-12 h-40 w-40 rounded-full border border-white/20" />
-          <div className="pointer-events-none absolute -right-1 -top-6 h-28 w-28 rounded-full border border-white/15" />
-          <div className="relative">
-            <span className="inline-flex items-center gap-1.5 text-[9px] font-semibold tracking-[.12em] text-white/85"><Sparkles className="h-3 w-3" /> GAME &amp; CLOUD HOSTING</span>
-            <h2 className="mt-3 font-display text-[1.45rem] font-bold leading-tight tracking-[-.04em] sm:text-[1.7rem]">Make room for<br />one more session.</h2>
-            <p className="mt-2 max-w-[265px] text-[10px] leading-4 text-white/85">Reliable hosting and simple server controls, ready for your next adventure.</p>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => navigateTo('locations')}
-          className="group order-3 flex flex-col justify-between rounded-[19px] bg-[#f6f9fc] px-4 py-4 text-left transition hover:bg-[#f1f7fd] sm:px-4 sm:py-5"
-        >
-          <div className="flex items-center gap-2 text-[10px] font-semibold text-[#8793a1]"><Globe2 className="h-3.5 w-3.5 text-[#548fce]" /> Server locations</div>
-          <div className="mt-4">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-white text-[#548fce]"><MapPin className="h-4 w-4" /></div>
-            <p className="mt-2 text-xs font-bold text-[#394b5e]">{firstLocation?.name || 'Explore locations'}</p>
-            <p className="mt-1 text-[9px] leading-4 text-[#8995a2]">{firstLocation?.country || 'Choose a region for your players'}</p>
-          </div>
-          <span className="mt-3 inline-flex items-center gap-1 text-[9px] font-bold text-[#4d88c9]">See all regions <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" /></span>
-        </button>
       </div>
 
-      <div className="mx-auto mt-5 flex max-w-[830px] items-center justify-center gap-2 text-[9px] font-medium text-[#98a2af]">
-        <ShieldCheck className="h-3.5 w-3.5 text-[#6d9fd2]" />
-        Hosting features vary by service and plan
-        <Layers3 className="ml-2 h-3.5 w-3.5 text-[#6d9fd2]" />
-        Built around your community
+      <div className="relative z-10 mx-auto mt-3 flex max-w-[680px] flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-semibold text-[#9994ad] sm:mt-0 sm:text-[11px]">
+        <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-violet-400" /> Built-in protection</span>
+        <span className="inline-flex items-center gap-1.5"><Zap className="h-3.5 w-3.5 text-violet-400" /> Fast deployment</span>
+        <span className="inline-flex items-center gap-1.5"><Globe2 className="h-3.5 w-3.5 text-violet-400" /> Global infrastructure</span>
       </div>
     </section>
   );
