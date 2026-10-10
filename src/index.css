@@ -513,3 +513,159 @@ body:has(.helzerx-home-page) { background:#c7e4fb; }
 @keyframes hxCenterRise { from{opacity:0;transform:translateY(28px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
 @media(max-width:639px){body:has(.helzerx-home-page){background:#c7e4fb}.hx-hero{margin:8px;border-radius:24px;padding:30px 15px 20px}.hx-showcase-stage{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hx-center-card{grid-column:1/-1;grid-row:1;min-height:170px;padding:17px}.hx-side-card{min-height:165px;padding:12px;border-radius:18px}.hx-card-orbit{right:24%;top:55%}.hx-hero-title{letter-spacing:-.065em}.hx-exchange-card{font-size:inherit}}
 @media(prefers-reduced-motion:reduce){.hx-hero-kicker,.hx-hero-title,.hx-primary-cta,.hx-exchange-card,.hx-center-card{animation:none!important}.home-section-reveal,.hx-exchange-card,.hx-center-card,.reference-panel,.soft-feature{opacity:1!important;transform:none!important;transition:none!important}}
+
+
+/* Full-bleed homepage pass: remove the inset mockup frame and use the full viewport. */
+.home-app-canvas:has(.helzerx-home-page) {
+  width: 100%;
+  min-height: 100svh;
+  padding: 0 !important;
+  background: #c7e4fb;
+}
+.home-site-frame:has(.helzerx-home-page) {
+  width: 100%;
+  max-width: none;
+  min-height: 100svh;
+  margin: 0;
+  overflow: clip;
+  border-radius: 0;
+  box-shadow: none;
+}
+.home-site-frame:has(.helzerx-home-page) header {
+  padding: 10px clamp(18px, 4vw, 64px) 0 !important;
+}
+.home-site-frame:has(.helzerx-home-page) header > div.mx-auto {
+  width: 100%;
+}
+.home-site-frame:has(.helzerx-home-page) > main {
+  width: 100%;
+  min-width: 0;
+}
+.home-site-frame:has(.helzerx-home-page) > footer {
+  margin-top: 0;
+  border-radius: 0;
+}
+body:has(.helzerx-home-page) {
+  background: #c7e4fb;
+}
+.helzerx-home-page {
+  width: 100%;
+  max-width: none;
+  overflow: clip;
+}
+.hx-hero {
+  width: 100%;
+  max-width: none !important;
+  min-height: max(680px, calc(100svh - 70px));
+  margin: 0 !important;
+  padding: clamp(36px, 6vh, 76px) clamp(18px, 5vw, 80px) clamp(32px, 5vh, 60px);
+  border: 0;
+  border-radius: 0 !important;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.98), transparent 58%),
+    linear-gradient(135deg, #ffffff 0%, #f8fcff 54%, #eef7ff 100%);
+}
+.hx-hero > .relative.z-10.mx-auto.max-w-\[950px\] {
+  width: 100%;
+  max-width: 1200px;
+}
+.hx-hero-title {
+  max-width: 1200px;
+  font-size: clamp(3rem, 7.6vw, 7.8rem) !important;
+  line-height: .98;
+  letter-spacing: -.078em;
+}
+.hx-hero > .hx-showcase-stage {
+  width: 100%;
+  max-width: 1440px;
+  gap: clamp(14px, 2vw, 28px);
+  margin-top: clamp(34px, 5vh, 58px);
+}
+.hx-exchange-card,
+.hx-center-card {
+  min-height: clamp(220px, 29vh, 310px);
+  border-radius: clamp(20px, 2vw, 30px);
+  padding: clamp(20px, 2.2vw, 34px);
+}
+.hx-exchange-card {
+  box-shadow: 0 16px 42px rgba(33, 95, 157, .08);
+}
+.hx-center-card {
+  box-shadow: 0 24px 60px rgba(47, 135, 218, .22);
+}
+.hx-exchange-card:hover,
+.hx-center-card:hover {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow: 0 28px 64px rgba(33, 95, 157, .16);
+}
+.hx-hero-orb-one {
+  width: min(45vw, 650px);
+  height: min(45vw, 650px);
+  left: -15vw;
+  top: -8%;
+  opacity: .7;
+  animation: hxAmbientDrift 13s ease-in-out infinite alternate;
+}
+.hx-hero-orb-two {
+  width: min(48vw, 720px);
+  height: min(48vw, 720px);
+  right: -17vw;
+  top: 16%;
+  opacity: .8;
+  animation: hxAmbientDrift 15s ease-in-out infinite alternate-reverse;
+}
+.hx-hero > .relative.z-10.mx-auto.mt-5 {
+  width: 100%;
+  max-width: 1440px;
+}
+.home-section-reveal {
+  width: 100%;
+}
+@keyframes hxAmbientDrift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(3%, -4%, 0) scale(1.12); }
+}
+@media (min-width: 768px) {
+  .hx-hero > .hx-showcase-stage {
+    grid-template-columns: minmax(250px, .82fr) minmax(420px, 1.45fr) minmax(250px, .82fr);
+  }
+}
+@media (max-width: 767px) {
+  .home-site-frame:has(.helzerx-home-page) header {
+    padding: 8px 14px 0 !important;
+  }
+  .hx-hero {
+    min-height: auto;
+    padding: 42px 14px 30px;
+  }
+  .hx-hero-title {
+    font-size: clamp(2.8rem, 12vw, 4.6rem) !important;
+    letter-spacing: -.075em;
+  }
+  .hx-hero > .hx-showcase-stage {
+    margin-top: 34px;
+    gap: 10px;
+  }
+  .hx-exchange-card,
+  .hx-center-card {
+    min-height: 185px;
+    padding: 15px;
+    border-radius: 19px;
+  }
+  .hx-center-card {
+    min-height: 205px;
+  }
+  .hx-hero-orb-one { width: 300px; height: 300px; left: -180px; }
+  .hx-hero-orb-two { width: 320px; height: 320px; right: -190px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hx-hero-orb-one,
+  .hx-hero-orb-two {
+    animation: none !important;
+  }
+}
