@@ -484,7 +484,7 @@ body:has(.helzerx-auth-stage) {
 @media(prefers-reduced-motion:reduce){.hx-hero-kicker,.hx-hero-title,.hx-primary-cta,.hx-device-frame,.hx-float-card{animation:none!important}}
 
 /* Reference layout: pale blue page canvas, rounded white panel, and three floating cards. */
-body { background:#c7e4fb; }
+body:has(.helzerx-home-page) { background:#c7e4fb; }
 #root { min-height:100vh; }
 .hx-hero { background:rgba(255,255,255,.96); border:1px solid rgba(255,255,255,.9); box-shadow:0 16px 55px rgba(65,122,173,.08); }
 .hx-hero-orb-one { width:300px;height:300px;left:-170px;top:2%;background:radial-gradient(circle,rgba(124,190,250,.16),transparent 70%); }
@@ -511,5 +511,5 @@ body { background:#c7e4fb; }
 .hx-exchange-card:not(.is-visible),.hx-center-card:not(.is-visible),.reference-panel:not(.is-visible),.soft-feature:not(.is-visible) { opacity:0;transform:translateY(20px); }
 @keyframes hxCardRise { from{opacity:0;transform:translateY(22px) scale(.98)} to{opacity:1;transform:translateY(0) scale(1)} }
 @keyframes hxCenterRise { from{opacity:0;transform:translateY(28px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
-@media(max-width:639px){body{background:#c7e4fb}.hx-hero{margin:8px;border-radius:24px;padding:30px 15px 20px}.hx-showcase-stage{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hx-center-card{grid-column:1/-1;grid-row:1;min-height:170px;padding:17px}.hx-side-card{min-height:165px;padding:12px;border-radius:18px}.hx-card-orbit{right:24%;top:55%}.hx-hero-title{letter-spacing:-.065em}.hx-exchange-card{font-size:inherit}}
+@media(max-width:639px){body:has(.helzerx-home-page){background:#c7e4fb}.hx-hero{margin:8px;border-radius:24px;padding:30px 15px 20px}.hx-showcase-stage{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hx-center-card{grid-column:1/-1;grid-row:1;min-height:170px;padding:17px}.hx-side-card{min-height:165px;padding:12px;border-radius:18px}.hx-card-orbit{right:24%;top:55%}.hx-hero-title{letter-spacing:-.065em}.hx-exchange-card{font-size:inherit}}
 @media(prefers-reduced-motion:reduce){.hx-hero-kicker,.hx-hero-title,.hx-primary-cta,.hx-exchange-card,.hx-center-card{animation:none!important}.home-section-reveal,.hx-exchange-card,.hx-center-card,.reference-panel,.soft-feature{opacity:1!important;transform:none!important;transition:none!important}}
