@@ -29,7 +29,7 @@ export const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative overflow-x-clip bg-white text-slate-800 font-sans">
+    <div className="helzerx-home-page relative overflow-x-clip bg-white text-slate-800 font-sans">
       <HeroSection />
       <div className="home-section-reveal"><GabrunShowcaseSections /></div>
       <div className="home-section-reveal"><FaqSection /></div>
