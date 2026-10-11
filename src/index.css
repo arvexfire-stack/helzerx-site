@@ -287,91 +287,130 @@
   .home-site-frame > footer { padding: 25px 20px 10px; border-radius: 0 0 22px 22px; }
 }
 
-/* Premium glass + 3D motion for the three HelzerX destination cards */
-.brand-glass-card {
-  -webkit-backdrop-filter: blur(24px) saturate(165%);
-  backdrop-filter: blur(24px) saturate(165%);
-  background-color: rgba(255,255,255,.48) !important;
-  border-color: rgba(255,255,255,.82) !important;
-  box-shadow:
-    0 22px 48px rgba(37,82,137,.14),
-    0 7px 16px rgba(37,82,137,.06),
-    inset 0 1.5px 0 rgba(255,255,255,.96),
-    inset 0 -1px 0 rgba(255,255,255,.32);
+/* High-visibility glassmorphism + perspective motion for the 3 destination cards */
+.brand-card-stage {
+  perspective: 1500px;
   transform-style: preserve-3d;
-  will-change: transform, box-shadow;
-  animation: brand-card-arrive .85s cubic-bezier(.2,.75,.25,1) both;
+  perspective-origin: 50% 42%;
 }
-.brand-glass-card:nth-child(2) { animation-delay: .12s; }
-.brand-glass-card:nth-child(3) { animation-delay: .24s; }
-.brand-glass-card::after {
+.brand-glass-card {
+  position: relative;
+  isolation: isolate;
+  -webkit-backdrop-filter: blur(28px) saturate(175%);
+  backdrop-filter: blur(28px) saturate(175%);
+  background-color: rgba(255,255,255,.32) !important;
+  background-image: linear-gradient(135deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.30) 35%, rgba(255,255,255,.13) 68%, rgba(255,255,255,.48) 100%) !important;
+  border: 1px solid rgba(255,255,255,.94) !important;
+  box-shadow: 0 24px 55px rgba(36,78,133,.18), 0 7px 18px rgba(36,78,133,.08), inset 0 2px 0 rgba(255,255,255,.98), inset 0 -1px 0 rgba(255,255,255,.42) !important;
+  transform: translateZ(0) rotateX(0deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
+  animation: hx-card-enter .9s cubic-bezier(.16,1,.3,1) both, hx-card-float 6s ease-in-out 1s infinite;
+}
+.brand-glass-card:nth-child(2) { animation-delay: .12s, 1.12s; }
+.brand-glass-card:nth-child(3) { animation-delay: .24s, 1.24s; }
+.brand-glass-card::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(112deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.20) 20%, transparent 42%, transparent 63%, rgba(255,255,255,.30) 100%);
+  opacity: .8;
+  transform: translateX(-115%);
+  animation: hx-glass-sheen 1.5s ease-out .45s both;
+}
+.brand-glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
   z-index: -1;
   pointer-events: none;
   border-radius: inherit;
-  background: linear-gradient(125deg, rgba(255,255,255,.58), transparent 35%, transparent 68%, rgba(255,255,255,.28));
-  opacity: .85;
+  background: radial-gradient(ellipse at 10% 0%, rgba(255,255,255,.7), transparent 48%);
+  opacity: .9;
 }
 .brand-glass-card:hover {
-  transform: perspective(1100px) translateY(-12px) rotateX(2deg) rotateY(-1.5deg) scale(1.018);
-  box-shadow:
-    0 38px 82px rgba(37,82,137,.24),
-    0 12px 28px rgba(37,82,137,.12),
-    inset 0 1.5px 0 rgba(255,255,255,1),
-    inset 0 -1px 0 rgba(255,255,255,.42);
+  animation-play-state: paused;
+  transform: perspective(1200px) translateY(-14px) rotateX(4deg) rotateY(-2deg) scale(1.025) !important;
+  box-shadow: 0 42px 95px rgba(36,78,133,.30), 0 16px 32px rgba(36,78,133,.15), inset 0 2px 0 #fff, inset 0 -1px 0 rgba(255,255,255,.6) !important;
 }
-.brand-card-glow { animation: brand-glow-float 6s ease-in-out infinite alternate; }
+.brand-glass-card .brand-card-glow {
+  filter: blur(32px);
+  opacity: .85;
+  animation: hx-glow-drift 5s ease-in-out infinite alternate;
+}
 .brand-card-icon {
-  box-shadow: 0 8px 20px rgba(43,87,146,.12), inset 0 1px 0 rgba(255,255,255,.9);
+  position: relative;
+  z-index: 3;
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 10px 24px rgba(43,87,146,.16), inset 0 2px 0 rgba(255,255,255,.98);
+  transform: translateZ(28px);
 }
+.brand-glass-card h3,
+.brand-glass-card p,
+.brand-glass-card .brand-card-promise,
+.brand-glass-card > div:last-child {
+  transform: translateZ(12px);
+}
+.brand-card-tags { position: relative; z-index: 3; }
 .brand-card-tags > span {
-  background-color: rgba(255,255,255,.48);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 3px 10px rgba(44,78,126,.055), inset 0 1px 0 rgba(255,255,255,.85);
-  transition: transform .35s cubic-bezier(.2,.75,.25,1), box-shadow .35s ease, background-color .35s ease;
-  animation: brand-detail-in .65s both;
+  background: rgba(255,255,255,.58) !important;
+  border-color: rgba(255,255,255,.92) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(155%);
+  backdrop-filter: blur(18px) saturate(155%);
+  box-shadow: 0 5px 14px rgba(44,78,126,.09), inset 0 1px 0 rgba(255,255,255,.98);
+  transition: transform .35s cubic-bezier(.2,.75,.25,1), box-shadow .35s ease, background .35s ease;
+  animation: hx-tag-enter .6s both;
 }
-.brand-card-tags > span:nth-child(2) { animation-delay: .1s; }
-.brand-card-tags > span:nth-child(3) { animation-delay: .2s; }
+.brand-card-tags > span:nth-child(2) { animation-delay: .12s; }
+.brand-card-tags > span:nth-child(3) { animation-delay: .24s; }
 .brand-glass-card:hover .brand-card-tags > span {
-  transform: translateY(-3px);
-  background-color: rgba(255,255,255,.76);
-  box-shadow: 0 8px 18px rgba(44,78,126,.10), inset 0 1px 0 #fff;
+  transform: translateY(-4px) translateZ(16px);
+  background: rgba(255,255,255,.9) !important;
+  box-shadow: 0 10px 22px rgba(44,78,126,.15), inset 0 1px 0 #fff;
 }
 .brand-card-promise > span:first-child {
-  box-shadow: 0 0 12px currentColor;
-  animation: brand-line-pulse 2.6s ease-in-out infinite;
+  box-shadow: 0 0 15px currentColor;
+  animation: hx-line-glow 2s ease-in-out infinite;
 }
-.brand-glass-card .border-t {
-  border-color: rgba(255,255,255,.72);
+.brand-glass-card .border-t { border-color: rgba(255,255,255,.86) !important; }
+@keyframes hx-card-enter {
+  from { opacity: 0; transform: translateY(30px) rotateX(8deg) scale(.95); }
+  to { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
 }
-@keyframes brand-card-arrive {
-  from { opacity: 0; transform: translateY(20px) rotateX(5deg) scale(.975); }
-  to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); }
+@keyframes hx-card-float {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -4px; }
 }
-@keyframes brand-detail-in {
-  from { opacity: .35; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes hx-glass-sheen {
+  0% { transform: translateX(-115%); opacity: 0; }
+  20% { opacity: .8; }
+  100% { transform: translateX(115%); opacity: 0; }
 }
-@keyframes brand-glow-float {
-  from { transform: translate3d(0,0,0) scale(.96); }
-  to { transform: translate3d(-9px,8px,0) scale(1.08); }
+@keyframes hx-glow-drift {
+  from { transform: translate3d(0,0,0) scale(.92); }
+  to { transform: translate3d(-12px,10px,0) scale(1.14); }
 }
-@keyframes brand-line-pulse {
-  0%,100% { opacity: .72; }
-  50% { opacity: 1; }
+@keyframes hx-tag-enter {
+  from { opacity: .2; translate: 0 8px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes hx-line-glow {
+  0%,100% { opacity: .7; filter: brightness(.95); }
+  50% { opacity: 1; filter: brightness(1.25); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .brand-glass-card, .brand-card-glow, .brand-card-tags > span, .brand-card-promise > span:first-child {
+  .brand-glass-card, .brand-glass-card::before, .brand-card-glow, .brand-card-tags > span, .brand-card-promise > span:first-child {
     animation: none !important;
     transition: none !important;
   }
 }
 @media (max-width: 767px) {
-  .brand-glass-card:hover { transform: translateY(-5px) scale(1.008); }
+  .brand-glass-card { animation: hx-card-enter .8s cubic-bezier(.16,1,.3,1) both; }
+  .brand-glass-card:hover { transform: translateY(-5px) scale(1.008) !important; }
 }
 
 /* 3D Perspective Stage & Card Depth */
