@@ -379,6 +379,9 @@ export const Navbar: React.FC = () => {
             </>
           )}
 
+          {isCompanyHome ? (
+            <a href="#helzerx-products" className="lg:hidden rounded-full bg-[#246ed0] px-4 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 transition hover:bg-[#1c60bc]">Explore brands</a>
+          ) : (
           {/* Mobile Menu Button */}
           <button
             type="button"
@@ -392,6 +395,7 @@ export const Navbar: React.FC = () => {
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
+          )}
         </div>
       </div>
 
