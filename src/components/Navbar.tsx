@@ -88,7 +88,7 @@ export const Navbar: React.FC = () => {
               navigateTo('home');
               closeDropdowns();
             }}
-            className="flex items-center gap-2.5 group cursor-pointer text-left"
+            className="company-brand flex items-center gap-2.5 group cursor-pointer text-left"
           >
             {/* Concentric rings logo matching the reference screenshot */}
             <div className={`h-8 w-8 sm:h-9 sm:w-9 rounded-2xl flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform ${
@@ -106,7 +106,7 @@ export const Navbar: React.FC = () => {
                 <span className="font-display text-xs text-white">HX</span>
               )}
             </div>
-            <span className={`text-lg sm:text-xl font-bold tracking-tight font-display ${
+            <span className={`company-brand-name text-lg sm:text-xl font-bold tracking-tight font-display ${
               isHome ? 'text-white' : 'text-slate-950'
             }`}>
               {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'HelzerX Cloud')}
@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Nav Items */}
           {isCompanyHome ? (
-            <nav aria-label="Company navigation" className="flex items-center gap-0.5 sm:gap-1 text-[10px] sm:text-xs font-semibold text-slate-600">
+            <nav aria-label="Company navigation" className="company-nav flex items-center gap-0.5 sm:gap-1 text-[10px] sm:text-xs font-semibold text-slate-600">
               <a href="#helzerx-products" className="shrink-0 rounded-full px-2 py-2 sm:px-3 transition hover:bg-slate-100 hover:text-slate-900">Brands</a>
               <a href="https://studio.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full px-2 py-2 sm:px-3 transition hover:bg-slate-100 hover:text-slate-900">Studio</a>
               <a href="https://cloud.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full px-2 py-2 sm:px-3 transition hover:bg-slate-100 hover:text-slate-900">Cloud</a>
@@ -271,7 +271,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Right Zone: Currency Selector + Gabrun Pill Button [ ☷ Menu ] + [ Deploy ] */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="company-nav-actions flex items-center gap-2 sm:gap-3">
           {/* Currency Pill */}
           <div className="relative hidden sm:block">
             <button
