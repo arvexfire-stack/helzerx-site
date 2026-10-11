@@ -393,6 +393,86 @@
  .brand-glass-card:hover {transform:translateY(-5px) scale(1.008)!important}
 }
 
+/* Visible animated artwork in the previously empty upper area of each brand card */
+.brand-card-art {
+  position: relative;
+  z-index: 3;
+  display: block;
+  height: 128px;
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: -4px;
+  overflow: hidden;
+  border-radius: 20px;
+  transform: translateZ(36px);
+  transform-style: preserve-3d;
+  background: linear-gradient(145deg,rgba(255,255,255,.40),rgba(255,255,255,.08));
+  border: 1px solid rgba(255,255,255,.62);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8),0 8px 22px rgba(41,80,133,.035);
+}
+.brand-card-art::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  left: calc(50% - 80px);
+  top: -48px;
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(255,255,255,.78),transparent 68%);
+  animation: hx-art-breathe 4s ease-in-out infinite;
+}
+.art-window {
+  position:absolute; left:calc(50% - 65px); top:24px; width:130px; height:82px;
+  border:1px solid rgba(255,255,255,.98); border-radius:13px;
+  background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(237,244,255,.60));
+  box-shadow:0 14px 26px rgba(102,75,180,.15),inset 0 1px 0 #fff;
+  transform:perspective(400px) rotateY(-12deg) rotateX(5deg);
+  animation:hx-window-float 4s ease-in-out infinite;
+}
+.art-window i { display:inline-block; width:5px;height:5px;border-radius:50%;margin:8px 0 0 8px;background:#a78bfa; }
+.art-window b { display:block; margin:8px auto 0; width:max-content; font-size:24px; font-weight:800; letter-spacing:-3px; color:#8b5cf6; text-shadow:0 4px 12px rgba(139,92,246,.24); }
+.art-orbit { position:absolute; left:calc(50% - 45px); top:15px; width:90px;height:90px;border:1px solid rgba(167,139,250,.42);border-radius:50%; }
+.art-orbit-one { animation:hx-orbit-spin 8s linear infinite; }
+.art-orbit-two { width:110px;height:62px;left:calc(50% - 55px);top:29px;border-color:rgba(196,181,253,.68);transform:rotate(-28deg);animation:hx-orbit-spin 10s linear infinite reverse; }
+.art-cursor { position:absolute;left:calc(50% + 39px);top:73px;width:0;height:0;border-top:0;border-left:0;border-right:13px solid transparent;border-bottom:18px solid #8b5cf6;filter:drop-shadow(0 3px 3px rgba(80,50,150,.2));animation:hx-cursor-tap 2.8s ease-in-out infinite; }
+.art-cloud { position:absolute;left:calc(50% - 34px);top:16px;display:grid;place-items:center;width:68px;height:60px;border-radius:20px;color:#2687e8;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(220,239,255,.78));border:1px solid white;box-shadow:0 13px 24px rgba(36,132,219,.17);animation:hx-cloud-hover 3.4s ease-in-out infinite; }
+.art-cloud svg { width:37px;height:37px;filter:drop-shadow(0 3px 4px rgba(38,135,232,.16)); }
+.art-cloud-dot { position:absolute;width:7px;height:7px;border-radius:50%;background:#5ab6f5;box-shadow:0 0 12px rgba(50,158,242,.5); }
+.dot-one { left:22%;top:38px;animation:hx-dot-pulse 1.8s infinite; }
+.dot-two { right:22%;top:31px;animation:hx-dot-pulse 1.8s .5s infinite; }
+.dot-three { right:29%;top:83px;animation:hx-dot-pulse 1.8s 1s infinite; }
+.art-data-bar { position:absolute;bottom:17px;width:8px;border-radius:8px;background:linear-gradient(180deg,#38bdf8,#2563eb);box-shadow:0 0 12px rgba(56,153,235,.24);transform-origin:bottom;animation:hx-bar-rise 1.2s ease-in-out infinite alternate; }
+.bar-one { left:calc(50% - 43px);height:22px; }
+.bar-two { left:calc(50% - 27px);height:36px;animation-delay:.18s; }
+.bar-three { left:calc(50% - 11px);height:48px;animation-delay:.36s; }
+.bar-four { left:calc(50% + 5px);height:30px;animation-delay:.54s; }
+.bar-five { left:calc(50% + 21px);height:41px;animation-delay:.72s; }
+.art-shop-bag { position:absolute;left:calc(50% - 29px);top:20px;display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:linear-gradient(145deg,#fff,#ffedcf);color:#ea7b32;border:1px solid rgba(255,255,255,.98);box-shadow:0 12px 24px rgba(210,125,50,.18);animation:hx-shop-float 3.5s ease-in-out infinite; }
+.art-shop-bag svg { width:30px;height:30px; }
+.art-product { position:absolute;bottom:17px;width:25px;height:25px;border-radius:8px;background:linear-gradient(145deg,#fff,#ffe9c9);border:1px solid rgba(255,255,255,.98);box-shadow:0 7px 14px rgba(193,120,49,.12);animation:hx-product-bob 2.4s ease-in-out infinite; }
+.product-one { left:calc(50% - 47px); }
+.product-two { left:calc(50% - 12px);background:linear-gradient(145deg,#ffedce,#ffc77f);animation-delay:.25s; }
+.product-three { left:calc(50% + 23px);background:linear-gradient(145deg,#fff9e9,#fbbf24);animation-delay:.5s; }
+.art-spark { position:absolute;color:#f59e0b;font-size:22px;text-shadow:0 0 12px rgba(245,158,11,.38);animation:hx-spark-twinkle 2s ease-in-out infinite; }
+.spark-one { top:14px;right:22%; }
+.spark-two { bottom:16px;right:18%;font-size:17px;animation-delay:.7s; }
+.brand-card-art-violet { background:linear-gradient(145deg,rgba(245,240,255,.55),rgba(221,214,254,.20)); }
+.brand-card-art-blue { background:linear-gradient(145deg,rgba(224,242,254,.62),rgba(186,230,253,.25)); }
+.brand-card-art-orange { background:linear-gradient(145deg,rgba(255,247,237,.62),rgba(254,215,170,.24)); }
+@keyframes hx-art-breathe { 0%,100%{transform:scale(.85);opacity:.5}50%{transform:scale(1.15);opacity:1} }
+@keyframes hx-window-float { 0%,100%{transform:perspective(400px) rotateY(-12deg) rotateX(5deg) translateY(0)}50%{transform:perspective(400px) rotateY(-7deg) rotateX(2deg) translateY(-6px)} }
+@keyframes hx-orbit-spin { from{rotate:0deg}to{rotate:360deg} }
+@keyframes hx-cursor-tap { 0%,100%{transform:translate(0,0) scale(1)}45%{transform:translate(-7px,-5px) scale(.9)}60%{transform:translate(-7px,-5px) scale(1)} }
+@keyframes hx-cloud-hover { 0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)} }
+@keyframes hx-dot-pulse { 0%,100%{transform:scale(.65);opacity:.4}50%{transform:scale(1.35);opacity:1} }
+@keyframes hx-bar-rise { from{transform:scaleY(.62);opacity:.65}to{transform:scaleY(1);opacity:1} }
+@keyframes hx-shop-float { 0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(4deg)} }
+@keyframes hx-product-bob { 0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)} }
+@keyframes hx-spark-twinkle { 0%,100%{transform:scale(.65) rotate(0);opacity:.45}50%{transform:scale(1.2) rotate(20deg);opacity:1} }
+@media (prefers-reduced-motion:reduce) {
+ .brand-card-art *, .brand-card-art::before { animation:none!important; }
+}
+
 /* 3D Perspective Stage & Card Depth */
 .stage-3d {
   perspective: 1200px;
