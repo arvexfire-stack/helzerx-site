@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               className="group flex min-h-11 items-center gap-3 text-left"
             >
               <img
-                src="https://www.image2url.com/r2/default/images/1791729492304-3a8657f0-a83d-4bf4-9e58-2b6edde007b5.png"
+                src="https://www.image2url.com/r2/default/images/1791729894971-43a18b87-a5f7-427e-ac62-b6fee2ccd8f1.png"
                 alt="HelzerX logo"
                 className="h-10 w-10 rounded-xl object-contain transition-transform group-hover:scale-105"
                 decoding="async"
