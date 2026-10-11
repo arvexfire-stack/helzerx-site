@@ -90,48 +90,15 @@
   margin: 0;
   overflow: hidden;
   border-radius: 0;
-  background-color: #b9e4fb;
-  background-image:
-    radial-gradient(ellipse 34% 17% at 7% 9%, rgba(255,255,255,.96) 0%, rgba(255,255,255,.72) 38%, transparent 100%),
-    radial-gradient(ellipse 30% 19% at 95% 16%, rgba(255,255,255,.92) 0%, rgba(255,255,255,.58) 42%, transparent 100%),
-    radial-gradient(ellipse 23% 12% at 43% 5%, rgba(255,255,255,.76) 0%, transparent 100%),
-    radial-gradient(ellipse 44% 20% at 2% 34%, rgba(255,255,255,.76) 0%, rgba(255,255,255,.22) 52%, transparent 100%),
-    radial-gradient(ellipse 39% 20% at 100% 39%, rgba(255,255,255,.58) 0%, rgba(255,255,255,.14) 54%, transparent 100%),
-    radial-gradient(ellipse 65% 28% at 49% 55%, rgba(255,255,255,.74) 0%, rgba(255,255,255,.30) 47%, transparent 100%),
-    linear-gradient(180deg, #d8f5fb 0%, #b7e5f7 24%, #91c8f2 57%, #b9def9 74%, #ffffff 100%);
+  background-color: #dff7fb;
+  background-image: url("https://www.image2url.com/r2/default/images/1791721316546-65aacaee-8ffb-4281-a901-ac990f8e431c.jpeg");
+  background-position: center top;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% auto;
   box-shadow: none;
 }
-/* Shared cloud-sky canvas: spans from behind the sticky header through the full hero. */
-.home-site-frame {
-  background: transparent !important;
-}
 .home-site-frame::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1180px;
-  background-color: #a8d7f4;
-  background-image:
-    radial-gradient(ellipse 31% 17% at 8% 8%, rgba(255,255,255,.98) 0%, rgba(255,255,255,.78) 40%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 28% 18% at 95% 13%, rgba(255,255,255,.94) 0%, rgba(255,255,255,.62) 44%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 17% 10% at 42% 4%, rgba(255,255,255,.82) 0%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 39% 17% at -2% 37%, rgba(255,255,255,.83) 0%, rgba(255,255,255,.36) 48%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 36% 18% at 102% 34%, rgba(255,255,255,.67) 0%, rgba(255,255,255,.25) 52%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 60% 22% at 50% 61%, rgba(255,255,255,.48) 0%, rgba(255,255,255,.16) 48%, rgba(255,255,255,0) 100%),
-    linear-gradient(180deg, #dff7fb 0%, #c5ecfa 25%, #8fc7f1 60%, #a8d8f6 78%, #ffffff 100%);
-  background-repeat: no-repeat;
-}
-.home-site-frame > header,
-.home-site-frame > main,
-.home-site-frame > footer {
-  position: relative;
-  z-index: 1;
+  content: none !important;
 }
 .home-site-frame .reference-panel {
   border: 0;
