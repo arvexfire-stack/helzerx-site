@@ -203,12 +203,48 @@
   .home-site-frame header > div.mx-auto > div:first-child > button {
     gap: 8px;
   }
+  .home-site-frame header > div.mx-auto > div:first-child {
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .home-site-frame header > div.mx-auto > div:first-child > button {
+    flex: 0 1 auto;
+    min-width: 0;
+    gap: 6px;
+  }
   .home-site-frame header > div.mx-auto > div:first-child > button > span {
-    font-size: 14px;
+    font-size: 12px;
+    white-space: nowrap;
+    letter-spacing: -.035em;
+  }
+  .home-site-frame header > div.mx-auto > div:first-child > button > div {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+  }
+  .home-site-frame header > div.mx-auto > div:first-child > nav {
+    flex: 0 0 auto;
+    gap: 0;
+  }
+  .home-site-frame header > div.mx-auto > div:first-child > nav a {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 9px;
+  }
+  .home-site-frame header > div.mx-auto > div:last-child {
+    flex: 0 0 auto;
+    gap: 5px;
+  }
+  .home-site-frame header > div.mx-auto > div:last-child > div.relative > button {
+    min-height: 32px;
+    padding: 6px 8px;
+    font-size: 10px;
   }
   .home-site-frame header > div.mx-auto a[href="#helzerx-products"] {
-    padding: 9px 12px;
-    font-size: 11px;
+    padding: 8px 10px;
+    font-size: 10px;
     white-space: nowrap;
   }
   .home-site-frame > footer { padding: 25px 20px 10px; border-radius: 0 0 22px 22px; }
