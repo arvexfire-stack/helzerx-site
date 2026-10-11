@@ -116,7 +116,7 @@
 .home-site-frame header > div.mx-auto {
   position: relative;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .home-site-frame header > div.mx-auto > div:first-child {
     flex: 1 1 auto;
     min-width: 0;
@@ -135,6 +135,11 @@
   .home-site-frame header > div.mx-auto > div:last-child {
     flex-shrink: 0;
     margin-left: auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .home-site-frame header > div.mx-auto > div:first-child > nav {
+    display: none !important;
   }
 }
 .home-site-frame header > div.mx-auto a[href="#helzerx-products"] {
