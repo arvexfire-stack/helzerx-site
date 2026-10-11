@@ -82,25 +82,25 @@
   padding: 0;
 }
 .home-site-frame {
+  position: relative;
+  isolation: isolate;
   width: 100%;
   max-width: none;
   min-height: 100dvh;
   margin: 0;
   overflow: hidden;
   border-radius: 0;
-  background-color: #dff2ff;
+  background-color: #b9e4fb;
   background-image:
-    radial-gradient(ellipse 36% 18% at 3% 2%, rgba(255,255,255,.98) 0%, rgba(255,255,255,.72) 35%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 30% 17% at 98% 4%, rgba(255,255,255,.96) 0%, rgba(255,255,255,.62) 38%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 42% 23% at 0% 17%, rgba(155,213,255,.68) 0%, rgba(155,213,255,.32) 45%, rgba(155,213,255,0) 100%),
-    radial-gradient(ellipse 35% 22% at 100% 22%, rgba(129,193,250,.62) 0%, rgba(129,193,250,.24) 48%, rgba(129,193,250,0) 100%),
-    radial-gradient(ellipse 30% 15% at 15% 35%, rgba(255,255,255,.86) 0%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 35% 19% at 92% 42%, rgba(255,255,255,.8) 0%, rgba(255,255,255,0) 100%),
-    radial-gradient(ellipse 48% 25% at 50% 12%, rgba(255,255,255,.94) 0%, rgba(255,255,255,.44) 48%, rgba(255,255,255,0) 100%),
-    linear-gradient(180deg, #e5f6ff 0%, #cdeaff 30%, #e9f7ff 66%, #ffffff 100%);
+    radial-gradient(ellipse 34% 17% at 7% 9%, rgba(255,255,255,.96) 0%, rgba(255,255,255,.72) 38%, transparent 100%),
+    radial-gradient(ellipse 30% 19% at 95% 16%, rgba(255,255,255,.92) 0%, rgba(255,255,255,.58) 42%, transparent 100%),
+    radial-gradient(ellipse 23% 12% at 43% 5%, rgba(255,255,255,.76) 0%, transparent 100%),
+    radial-gradient(ellipse 44% 20% at 2% 34%, rgba(255,255,255,.76) 0%, rgba(255,255,255,.22) 52%, transparent 100%),
+    radial-gradient(ellipse 39% 20% at 100% 39%, rgba(255,255,255,.58) 0%, rgba(255,255,255,.14) 54%, transparent 100%),
+    radial-gradient(ellipse 65% 28% at 49% 55%, rgba(255,255,255,.74) 0%, rgba(255,255,255,.30) 47%, transparent 100%),
+    linear-gradient(180deg, #d8f5fb 0%, #b7e5f7 24%, #91c8f2 57%, #b9def9 74%, #ffffff 100%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-
   box-shadow: none;
 }
 .home-site-frame .reference-panel {
