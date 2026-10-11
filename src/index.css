@@ -113,6 +113,30 @@
   backdrop-filter: blur(22px) saturate(155%);
   box-shadow: 0 10px 32px rgba(42, 103, 163, .10), inset 0 1px 0 rgba(255, 255, 255, .75);
 }
+.home-site-frame header > div.mx-auto {
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .home-site-frame header > div.mx-auto > div:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .home-site-frame header > div.mx-auto > div:first-child > nav {
+    display: flex !important;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    gap: 4px;
+  }
+  .home-site-frame header > div.mx-auto > div:last-child {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+}
 .home-site-frame header > div.mx-auto a[href="#helzerx-products"] {
   transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
