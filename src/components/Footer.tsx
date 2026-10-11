@@ -17,9 +17,12 @@ export const Footer: React.FC = () => {
               onClick={() => navigateTo('home')}
               className="group flex min-h-11 items-center gap-3 text-left"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/25 bg-white/15 font-display text-xs font-bold tracking-tight text-white transition group-hover:bg-white/20">
-                HX
-              </span>
+              <img
+                src="https://www.image2url.com/r2/default/images/1791729492304-3a8657f0-a83d-4bf4-9e58-2b6edde007b5.png"
+                alt="HelzerX logo"
+                className="h-10 w-10 rounded-xl object-contain transition-transform group-hover:scale-105"
+                decoding="async"
+              />
               <span className="font-display text-xl font-bold tracking-tight text-white">
                 {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'HelzerX')}
               </span>
