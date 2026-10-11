@@ -39,9 +39,9 @@ export const Footer: React.FC = () => {
               {isCompanyHome ? (
                 <>
                   <li><a href="#helzerx-products" className="py-1 transition hover:text-white">Our brands</a></li>
-                  <li><a href="https://helzerx.studio" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Studio</a></li>
-                  <li><a href="https://helzerx.cloud" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Cloud</a></li>
-                  <li><a href="https://helzerx.shop" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Shop</a></li>
+                  <li><a href="https://studio.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Studio</a></li>
+                  <li><a href="https://cloud.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Cloud</a></li>
+                  <li><a href="https://shop.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Shop</a></li>
                 </>
               ) : (
                 <>
@@ -79,9 +79,9 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-2.5">
               {isCompanyHome ? (
                 <>
-                  <a href="https://helzerx.studio" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Studio" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">S</a>
-                  <a href="https://helzerx.cloud" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Cloud" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">C</a>
-                  <a href="https://helzerx.shop" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Shop" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">Sh</a>
+                  <a href="https://studio.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Studio" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">S</a>
+                  <a href="https://cloud.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Cloud" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">C</a>
+                  <a href="https://shop.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Shop" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">Sh</a>
                 </>
               ) : (
               <>
