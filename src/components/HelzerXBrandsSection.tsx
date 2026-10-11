@@ -59,6 +59,36 @@ export const HelzerXBrandsSection: React.FC = () => (
         </div>
       </div>
     </section>
+    <section className="hx-feedback-section relative mx-auto max-w-[1210px] overflow-hidden rounded-[32px] px-5 py-10 sm:px-9 sm:py-14 lg:px-12">
+      <div className="hx-feedback-orb hx-feedback-orb-one" aria-hidden="true" />
+      <div className="hx-feedback-orb hx-feedback-orb-two" aria-hidden="true" />
+      <div className="relative z-10 mx-auto max-w-[700px] text-center">
+        <span className="eyebrow">Your voice matters</span>
+        <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-.06em] text-[#111827] sm:text-5xl">Good experiences start with <span className="hx-feedback-gradient-text">real feedback.</span></h2>
+        <p className="mx-auto mt-4 max-w-[570px] text-sm leading-7 text-slate-600 sm:text-base">We’re growing the HelzerX ecosystem and making room for honest customer stories. As experiences are shared, this space will highlight real feedback — not made-up ratings.</p>
+      </div>
+      <div className="hx-review-stage relative z-10 mt-9 grid gap-4 md:grid-cols-3 sm:mt-12">
+        <article className="hx-review-card hx-review-card-one">
+          <div className="hx-review-card-top"><span className="hx-review-icon hx-review-icon-blue"><ShieldCheck className="h-5 w-5" /></span><span className="hx-review-status">COMMUNITY FIRST</span></div>
+          <div className="hx-review-stars" aria-label="Ratings will appear when reviews are collected">★★★★★</div>
+          <h3>Honest experiences</h3><p>Real words from real people, added with permission as the community grows.</p>
+          <div className="hx-review-card-foot"><span className="hx-review-avatar">HX</span><span><b>Customer stories</b><small>Coming as feedback arrives</small></span><Sparkles className="ml-auto h-4 w-4 text-blue-500" /></div>
+        </article>
+        <article className="hx-review-card hx-review-card-featured">
+          <div className="hx-review-card-top"><span className="hx-review-icon hx-review-icon-violet"><Sparkles className="h-5 w-5" /></span><span className="hx-review-status">YOUR STORY NEXT</span></div>
+          <div className="hx-review-quote-mark">“</div>
+          <h3>Help shape what comes next.</h3><p>Have you tried a HelzerX service? Your feedback can help us improve what we build.</p>
+          <div className="hx-review-card-foot"><span className="hx-review-avatar hx-review-avatar-violet">YOU</span><span><b>Your feedback</b><small>Valued at every stage</small></span><ArrowUpRight className="ml-auto h-4 w-4 text-violet-600" /></div>
+        </article>
+        <article className="hx-review-card hx-review-card-three">
+          <div className="hx-review-card-top"><span className="hx-review-icon hx-review-icon-amber"><Zap className="h-5 w-5" /></span><span className="hx-review-status">ALWAYS IMPROVING</span></div>
+          <div className="hx-review-pulse"><span /><span /><span /><span /><span /></div>
+          <h3>Built to get better</h3><p>Feedback helps guide future updates across our creative, cloud, and digital experiences.</p>
+          <div className="hx-review-card-foot"><span className="hx-review-avatar hx-review-avatar-amber"><Zap className="h-4 w-4" /></span><span><b>Next chapter</b><small>Growing together</small></span><Sparkles className="ml-auto h-4 w-4 text-amber-500" /></div>
+        </article>
+      </div>
+      <p className="relative z-10 mt-6 text-center text-[11px] text-slate-500">We’ll only publish customer reviews that are genuine and shared with permission.</p>
+    </section>
     <section className="mx-auto max-w-[1210px] px-2 py-5 text-center sm:py-8"><Sparkles className="mx-auto h-6 w-6 text-blue-500" /><p className="mt-3 font-display text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">Welcome to HelzerX Technologies.</p><p className="mt-2 text-sm text-slate-500">Three focused experiences. One bigger vision.</p></section>
   </div>
 );
