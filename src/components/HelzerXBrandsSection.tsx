@@ -25,7 +25,7 @@ export const HelzerXBrandsSection: React.FC = () => (
           const style = palette[accent as keyof typeof palette];
           return (
             <a key={name} href={url} target="_blank" rel="noopener noreferrer" aria-label={`Explore ${name} (opens in a new tab)`}
-              className={`brand-glass-card group relative isolate flex min-h-[280px] flex-col overflow-hidden rounded-[28px] border bg-gradient-to-br p-6 shadow-[0_18px_44px_rgba(38,82,139,.13)] transition duration-500 ease-out hover:-translate-y-3 hover:shadow-[0_34px_76px_rgba(35,77,139,.24)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 sm:p-7 lg:min-h-[310px] ${style.shell}`} style={{ "--brand-art-height": "88px" } as React.CSSProperties}>
+              className={`brand-glass-card group relative isolate flex min-h-[430px] flex-col overflow-hidden rounded-[28px] border bg-gradient-to-br p-6 shadow-[0_18px_44px_rgba(38,82,139,.13)] transition duration-500 ease-out hover:-translate-y-3 hover:shadow-[0_34px_76px_rgba(35,77,139,.24)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 sm:p-7 lg:min-h-[450px] ${style.shell}`} style={{ "--brand-art-height": "88px" } as React.CSSProperties}>
               <div className={`brand-card-glow pointer-events-none absolute -right-14 -top-12 -z-10 h-48 w-48 rounded-full blur-2xl transition duration-500 group-hover:scale-125 ${style.glow}`} />
               <div className={`pointer-events-none absolute -right-8 top-24 -z-10 h-36 w-36 rounded-full border opacity-70 transition duration-500 group-hover:rotate-12 group-hover:scale-110 ${style.orb}`} />
               <div className="flex items-start justify-between">
@@ -37,7 +37,7 @@ export const HelzerXBrandsSection: React.FC = () => (
                 {accent === 'blue' && <><span className="art-cloud"><Cloud strokeWidth={1.5} /></span><span className="art-cloud-dot dot-one" /><span className="art-cloud-dot dot-two" /><span className="art-cloud-dot dot-three" /><span className="art-data-bar bar-one" /><span className="art-data-bar bar-two" /><span className="art-data-bar bar-three" /><span className="art-data-bar bar-four" /><span className="art-data-bar bar-five" /></>}
                 {accent === 'orange' && <><span className="art-shop-bag"><ShoppingBag strokeWidth={1.5} /></span><span className="art-product product-one" /><span className="art-product product-two" /><span className="art-product product-three" /><span className="art-spark spark-one">✦</span><span className="art-spark spark-two">✧</span></>}
               </div>
-              <div className="mt-8">
+              <div className="mt-[150px]">
                 <p className="text-[9px] font-extrabold tracking-[.16em] text-slate-400">{kicker}</p>
                 <h3 className="mt-3 font-display text-[1.65rem] font-extrabold tracking-[-.055em] text-[#111827] sm:text-[1.8rem]">{name}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
