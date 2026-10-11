@@ -98,18 +98,50 @@
   box-shadow: none;
 }
 .home-site-frame header {
-  padding: 7px 28px 0 !important;
+  padding: 18px 28px 0 !important;
   background: transparent !important;
 }
 .home-site-frame header > div.mx-auto {
-  height: 52px;
+  height: 68px;
   max-width: none;
-  padding-left: 0;
-  padding-right: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  padding-left: 22px;
+  padding-right: 22px;
+  border: 1px solid rgba(255, 255, 255, .72);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .48);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  backdrop-filter: blur(22px) saturate(155%);
+  box-shadow: 0 10px 32px rgba(42, 103, 163, .10), inset 0 1px 0 rgba(255, 255, 255, .75);
+}
+.home-site-frame header > div.mx-auto a[href="#helzerx-products"] {
+  transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.home-site-frame header > div.mx-auto a[href="#helzerx-products"]:hover {
+  box-shadow: 0 4px 14px rgba(36, 110, 208, .10);
+}
+.home-site-frame header > div.mx-auto button,
+.home-site-frame header > div.mx-auto a {
+  -webkit-tap-highlight-color: transparent;
+}
+.home-site-frame header > div.mx-auto > div:last-child > div.relative > button {
+  min-height: 40px;
+  padding: 9px 16px;
+  border-color: rgba(255, 255, 255, .82);
+  background: rgba(255, 255, 255, .72);
+  box-shadow: 0 2px 8px rgba(50, 90, 130, .035);
+}
+.home-site-frame header > div.mx-auto a[href="#helzerx-products"] {
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  padding: 11px 20px;
+  background: linear-gradient(135deg, #2679e5, #155de0);
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(30, 100, 220, .22);
+  font-weight: 700;
+}
+.home-site-frame header > div.mx-auto a[href="#helzerx-products"]:hover {
+  background: linear-gradient(135deg, #1d6ed8, #104fca);
+  transform: translateY(-1px);
 }
 .home-site-frame > footer {
   margin-top: 18px;
@@ -132,7 +164,24 @@
 @media (max-width: 767px) {
   .home-app-canvas { padding: 0; }
   .home-site-frame { min-height: 100dvh; border-radius: 0; }
-  .home-site-frame header { padding: 7px 13px 0 !important; }
+  .home-site-frame header { padding: 12px 12px 0 !important; }
+  .home-site-frame header > div.mx-auto {
+    height: 58px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 22px;
+  }
+  .home-site-frame header > div.mx-auto > div:first-child > button {
+    gap: 8px;
+  }
+  .home-site-frame header > div.mx-auto > div:first-child > button > span {
+    font-size: 14px;
+  }
+  .home-site-frame header > div.mx-auto a[href="#helzerx-products"] {
+    padding: 9px 12px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
   .home-site-frame > footer { padding: 25px 20px 10px; border-radius: 0 0 22px 22px; }
 }
 
