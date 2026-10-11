@@ -18,7 +18,19 @@ import { ArrowRight, Boxes, Cloud, Code2, ShoppingBag, Sparkles } from 'lucide-r
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative isolate overflow-hidden px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:px-12 lg:pt-[72px]">
+    <section
+      className="relative isolate overflow-hidden px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:px-12 lg:pt-[72px]"
+      style={{
+        background: [
+          'radial-gradient(ellipse at 8% 20%, rgba(255,255,255,.92) 0%, rgba(255,255,255,0) 30%)',
+          'radial-gradient(ellipse at 93% 18%, rgba(255,255,255,.82) 0%, rgba(255,255,255,0) 27%)',
+          'radial-gradient(ellipse at 15% 62%, rgba(160,214,255,.52) 0%, rgba(160,214,255,0) 34%)',
+          'radial-gradient(ellipse at 88% 68%, rgba(117,183,247,.48) 0%, rgba(117,183,247,0) 35%)',
+          'radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.98) 0%, rgba(255,255,255,.78) 32%, rgba(255,255,255,0) 68%)',
+          'linear-gradient(180deg, #eaf8ff 0%, #d9efff 46%, #c5e4ff 100%)'
+        ].join(', ')
+      }}
+    >
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-sky-200/60 blur-3xl" />
         <div className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-blue-200/65 blur-3xl" />
