@@ -90,11 +90,17 @@
   margin: 0;
   overflow: hidden;
   border-radius: 0;
-  background-color: #dff7fb;
-  background-image: url("https://www.image2url.com/r2/default/images/1791721316546-65aacaee-8ffb-4281-a901-ac990f8e431c.jpeg");
-  background-position: center top;
+  background-color: #f8fcff;
+  background-image:
+    radial-gradient(ellipse at 12% 12%, rgba(255, 255, 255, .98) 0%, transparent 48%),
+    radial-gradient(ellipse at 88% 24%, rgba(137, 198, 255, .52) 0%, transparent 52%),
+    radial-gradient(ellipse at 30% 68%, rgba(255, 255, 255, .92) 0%, transparent 50%),
+    radial-gradient(ellipse at 78% 82%, rgba(164, 211, 255, .56) 0%, transparent 48%),
+    linear-gradient(135deg, #ffffff 0%, #eaf6ff 36%, #c9e5ff 68%, #f8fcff 100%);
+  background-position: 0% 0%;
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: 150% 150%;
+  animation: hx-white-blue-ambient 22s ease-in-out infinite alternate;
   box-shadow: none;
 }
 .home-site-frame::before {
@@ -1069,4 +1075,15 @@ body:has(.helzerx-auth-stage) {
 }
 @media (prefers-reduced-motion:reduce) {
   .hx-trust-light,.hx-trust-card,.hx-trust-card::after,.hx-trust-icon,.hx-journey-card {animation:none!important;transition:none!important}
+}
+
+
+/* Slow white and medium-light-blue ambient background only. */
+@keyframes hx-white-blue-ambient {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 55% 35%; }
+  100% { background-position: 100% 75%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-site-frame { animation: none; }
 }
