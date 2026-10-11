@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 /*
- * ArveX Security V2
+ * HelzerX Security V2
  *
  * Loaded before server.js. It replaces the legacy in-memory OTP/session
  * overrides with a persistent, server-authoritative authentication layer.
@@ -217,7 +217,7 @@ async function sendMail(to, subject, text) {
   try {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json', 'User-Agent': 'ArveX-Hosting/1.0' },
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json', 'User-Agent': 'HelzerX-Hosting/1.0' },
       body: JSON.stringify({ from: RESEND_FROM, to: [to], subject, text }),
     });
     return response.ok;
@@ -277,7 +277,7 @@ postOverrides.set('/api/auth/register', async (req, res) => {
   const challengeId = crypto.randomBytes(24).toString('base64url');
   const code = otpCode();
   otpChallenges.set(challengeId, { type: 'register', user, codeHash: otpHash(code), expiresAt: Date.now() + OTP_TTL_MS, attempts: 0 });
-  const sent = await sendMail(email, 'ArveX Hosting email verification', `Hi ${name},\n\nYour ArveX Hosting verification code is ${code}.\n\nThis code expires in 10 minutes.`);
+  const sent = await sendMail(email, 'HelzerX email verification', `Hi ${name},\n\nYour HelzerX verification code is ${code}.\n\nThis code expires in 10 minutes.`);
   if (!sent) { otpChallenges.delete(challengeId); return jsonError(res, 502, 'Unable to send the verification code.'); }
   res.status(201).json({ ok: true, verificationRequired: true, challengeId, expiresAt: Date.now() + OTP_TTL_MS, message: 'A 6-digit verification code was sent to your email.' });
 });
@@ -315,7 +315,7 @@ postOverrides.set('/api/auth/login', async (req, res) => {
   const challengeId = crypto.randomBytes(24).toString('base64url');
   const code = otpCode();
   otpChallenges.set(challengeId, { type: 'login', user, codeHash: otpHash(code), expiresAt: Date.now() + OTP_TTL_MS, attempts: 0 });
-  const sent = await sendMail(email, 'ArveX Hosting sign-in code', `Your ArveX Hosting sign-in code is ${code}. It expires in 10 minutes.`);
+  const sent = await sendMail(email, 'HelzerX sign-in code', `Your HelzerX sign-in code is ${code}. It expires in 10 minutes.`);
   if (!sent) { otpChallenges.delete(challengeId); return jsonError(res, 502, 'Unable to send the sign-in code.'); }
   res.json({ ok: true, requiresTwoFactor: true, challengeId, expiresAt: Date.now() + OTP_TTL_MS, message: 'A 6-digit sign-in code was sent to your email.' });
 });
@@ -345,7 +345,7 @@ postOverrides.set('/api/auth/forgot-password', async (req, res) => {
   const challengeId = crypto.randomBytes(24).toString('base64url');
   const code = otpCode();
   otpChallenges.set(challengeId, { type: 'reset', userId: user.id, codeHash: otpHash(code), expiresAt: Date.now() + OTP_TTL_MS, attempts: 0 });
-  const sent = await sendMail(email, 'ArveX Hosting password reset code', `Your ArveX Hosting password reset code is ${code}. It expires in 10 minutes.`);
+  const sent = await sendMail(email, 'HelzerX password reset code', `Your HelzerX password reset code is ${code}. It expires in 10 minutes.`);
   if (!sent) { otpChallenges.delete(challengeId); return jsonError(res, 502, 'Unable to send the reset code.'); }
   res.json({ ok: true, challengeId, expiresAt: Date.now() + OTP_TTL_MS, message: 'A password reset code was sent to your email.' });
 });
@@ -382,7 +382,7 @@ postOverrides.set('/api/admin/login', async (req, res) => {
   const challengeId = crypto.randomBytes(24).toString('base64url');
   const code = otpCode();
   adminChallenges.set(challengeId, { codeHash: otpHash(code), expiresAt: Date.now() + OTP_TTL_MS, attempts: 0 });
-  const sent = await sendMail(ADMIN_EMAIL, 'ArveX administrator verification code', `Your ArveX administrator verification code is ${code}. It expires in 10 minutes. If you did not request this, secure your account immediately.`);
+  const sent = await sendMail(ADMIN_EMAIL, 'HelzerX administrator verification code', `Your HelzerX administrator verification code is ${code}. It expires in 10 minutes. If you did not request this, secure your account immediately.`);
   if (!sent) { adminChallenges.delete(challengeId); return jsonError(res, 502, 'Unable to send the administrator verification code.'); }
   res.json({ ok: true, requiresTwoFactor: true, challengeId, expiresAt: Date.now() + OTP_TTL_MS });
 });
@@ -402,13 +402,13 @@ postOverrides.set('/api/admin/verify-otp', async (req, res) => {
   const expiresAt = Date.now() + 8 * 60 * 60 * 1000;
   const token = signAdminToken({ role: 'admin', email: ADMIN_EMAIL, exp: expiresAt });
   setSessionCookie(res, sessionId);
-  res.json({ ok: true, token, expiresAt, user: { id: 'admin-primary', name: 'ArveX Administrator', email: ADMIN_EMAIL, role: 'admin', provider: 'email', emailVerified: true, createdAt: new Date().toISOString() } });
+  res.json({ ok: true, token, expiresAt, user: { id: 'admin-primary', name: 'HelzerX Administrator', email: ADMIN_EMAIL, role: 'admin', provider: 'email', emailVerified: true, createdAt: new Date().toISOString() } });
 });
 
 getOverrides.set('/api/auth/me', async (req, res) => {
   const auth = await authenticate(req);
   if (!auth) return res.status(401).json({ authenticated: false });
-  if (auth.role === 'admin') return res.json({ authenticated: true, user: { id: 'admin-primary', name: 'ArveX Administrator', email: ADMIN_EMAIL, role: 'admin', provider: 'email', emailVerified: true } });
+  if (auth.role === 'admin') return res.json({ authenticated: true, user: { id: 'admin-primary', name: 'HelzerX Administrator', email: ADMIN_EMAIL, role: 'admin', provider: 'email', emailVerified: true } });
   const users = await readUsers();
   const user = users.find(candidate => candidate.id === auth.userId);
   if (!user || user.banned) {
@@ -438,4 +438,4 @@ getOverrides.set('/api/auth/session', async (req, res) => {
 });
 
 installOverrides();
-console.log('[ArveX Security V2] persistent authentication layer loaded');
+console.log('[HelzerX Security V2] persistent authentication layer loaded');

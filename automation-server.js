@@ -29,7 +29,7 @@ const PTERO_IMAGE = String(process.env.PTERODACTYL_DOCKER_IMAGE || 'ghcr.io/pter
 const PTERO_STARTUP = String(process.env.PTERODACTYL_STARTUP || 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar server.jar nogui').trim();
 const PUBLIC_ORIGIN = String(process.env.PUBLIC_ORIGIN || 'https://arvex.host').replace(/\/$/, '');
 const RESEND_API_KEY = String(process.env.RESEND_API_KEY || '').trim();
-const RESEND_FROM = String(process.env.RESEND_FROM || 'ArveX Hosting <noreply@arvex.host>').trim();
+const RESEND_FROM = String(process.env.RESEND_FROM || 'HelzerX <noreply@arvex.host>').trim();
 const AUTOMATION_SECRET = String(process.env.ORDER_AUTOMATION_SECRET || '').trim();
 
 app.use(express.json({ limit: '256kb' }));
@@ -37,7 +37,7 @@ app.use(express.json({ limit: '256kb' }));
 async function readJson(file, fallback) { try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch (e) { if (e.code !== 'ENOENT') console.error(e); return fallback; } }
 async function writeJson(file, value) { await fs.mkdir(DATA_DIR, { recursive: true, mode: 0o700 }); const tmp = `${file}.${process.pid}.${Date.now()}.tmp`; await fs.writeFile(tmp, JSON.stringify(value, null, 2), { mode: 0o600 }); await fs.rename(tmp, file); }
 function auth(req, res, next) { const key = String(req.headers['x-order-automation-secret'] || ''); if (!AUTOMATION_SECRET || key !== AUTOMATION_SECRET) return res.status(401).json({ error: 'Unauthorized automation request.' }); next(); }
-function discordHeaders() { return { Authorization: `Bot ${DISCORD_TOKEN}`, 'Content-Type': 'application/json', 'User-Agent': 'ArveXHosting/1.0' }; }
+function discordHeaders() { return { Authorization: `Bot ${DISCORD_TOKEN}`, 'Content-Type': 'application/json', 'User-Agent': 'HelzerXHosting/1.0' }; }
 async function discord(pathname, options = {}) { if (!DISCORD_TOKEN) throw new Error('DISCORD_BOT_TOKEN is not configured.'); const r = await fetch(`https://discord.com/api/v10${pathname}`, { ...options, headers: { ...discordHeaders(), ...(options.headers || {}) } }); const text = await r.text(); let data; try { data = JSON.parse(text); } catch { data = text; } if (!r.ok) throw new Error(`Discord API ${r.status}: ${typeof data === 'string' ? data : JSON.stringify(data)}`); return data; }
 function snowflakeName(orderId) { return `order-${orderId.toLowerCase().replace(/[^a-z0-9-]/g, '-').slice(-85)}`; }
 function orderId() { return `ARX-${new Date().toISOString().slice(0,10).replaceAll('-','')}-${crypto.randomInt(100000, 1000000)}`; }
@@ -56,8 +56,8 @@ async function createTicket(order) {
     { id: order.discordUserId, type: 1, allow: '68608', deny: '0' }
   ];
   if (DISCORD_STAFF_ROLE_ID) overwrites.push({ id: DISCORD_STAFF_ROLE_ID, type: 0, allow: '68608', deny: '0' });
-  const channel = await discord(`/guilds/${DISCORD_GUILD_ID}/channels`, { method:'POST', body:JSON.stringify({ name:snowflakeName(order.id), type:0, parent_id:DISCORD_CATEGORY_ID || null, topic:`ArveX Order ${order.id}`, permission_overwrites:overwrites }) });
-  const embed = { title:`🛒 ArveX Hosting • ${order.id}`, description:'**New hosting order**\nA staff member must verify the payment before provisioning.', color:0x8b5cf6, fields:[
+  const channel = await discord(`/guilds/${DISCORD_GUILD_ID}/channels`, { method:'POST', body:JSON.stringify({ name:snowflakeName(order.id), type:0, parent_id:DISCORD_CATEGORY_ID || null, topic:`HelzerX Order ${order.id}`, permission_overwrites:overwrites }) });
+  const embed = { title:`🛒 HelzerX • ${order.id}`, description:'**New hosting order**\nA staff member must verify the payment before provisioning.', color:0x8b5cf6, fields:[
     {name:'Customer',value:`${order.customerName}\n${order.email}`,inline:true},
     {name:'Plan',value:order.planName,inline:true},
     {name:'Amount',value:`${order.currency} ${order.amount}`,inline:true},
@@ -65,7 +65,7 @@ async function createTicket(order) {
     {name:'Location',value:order.location || 'Not specified',inline:true},
     {name:'Order ID',value:order.id,inline:true},
     {name:'Status',value:'🟡 Awaiting payment verification',inline:false}
-  ], footer:{text:'ArveX Hosting • Secure Order Desk'} };
+  ], footer:{text:'HelzerX • Secure Order Desk'} };
   const components = [{ type:1, components:[
     {type:2, style:1, label:'Claim', custom_id:`arx:claim:${order.id}`, emoji:{name:'🔒'}},
     {type:2, style:3, label:'Payment Done', custom_id:`arx:paid:${order.id}`, emoji:{name:'✅'}},
@@ -94,7 +94,7 @@ async function provision(order) {
   const memory = Math.max(128, Number(order.ramMb || order.ram || 2048));
   const disk = Math.max(512, Number(order.storageMb || order.storage || 10240));
   const cpu = Math.max(1, Number(order.cpu || order.cores || 1) * 100);
-  const server = await ptero('/servers', {method:'POST', body:JSON.stringify({name:`ArveX-${order.planName}`.slice(0,100),user:user.id,egg:PTERO_EGG_ID,nest:PTERO_NEST_ID,docker_image:PTERO_IMAGE,startup:PTERO_STARTUP,environment:order.environment || {},limits:{memory,disk,cpu},feature_limits:{databases:1,allocations:1,backups:1},deploy:{locations:[PTERO_NODE_ID],port_range:[],dedicated_ip:false}})});
+  const server = await ptero('/servers', {method:'POST', body:JSON.stringify({name:`HelzerX-${order.planName}`.slice(0,100),user:user.id,egg:PTERO_EGG_ID,nest:PTERO_NEST_ID,docker_image:PTERO_IMAGE,startup:PTERO_STARTUP,environment:order.environment || {},limits:{memory,disk,cpu},feature_limits:{databases:1,allocations:1,backups:1},deploy:{locations:[PTERO_NODE_ID],port_range:[],dedicated_ip:false}})});
   return {userId:user.id,serverId:server.attributes?.id || server.attributes?.identifier,identifier:server.attributes?.identifier,panelUrl:`${PTERO_URL}/server/${server.attributes?.identifier}`,username:user.username,password:generatedPassword};
 }
 
@@ -139,8 +139,8 @@ app.post('/api/automation/provision/:id', auth, async(req,res)=>{
   order.provisioningLock=true;order.status='provisioning';await writeJson(ORDERS_FILE,orders);
   try { order.server=await provision(order);order.status='provisioned';order.provisionedAt=new Date().toISOString();order.provisioningLock=false;await writeJson(ORDERS_FILE,orders);
     await updateTicket(order,`<@${order.discordUserId}>\n## ✅ Payment verified & server provisioned\n**Order:** ${order.id}\n**Plan:** ${order.planName}\n**Panel:** ${order.server.panelUrl}\n**Server:** ${order.server.identifier || order.server.serverId}\n\nCredentials have been sent privately to your Discord DM.`);
-    try { await dmUser(order.discordUserId,`🔐 **ArveX Hosting — Server Ready**\n\nOrder: **${order.id}**\nPlan: **${order.planName}**\nPanel: ${order.server.panelUrl}\nUsername: **${order.server.username}**\nPassword: **${order.server.password}**\n\n⚠️ Change your password after first login and never share these credentials.`); } catch(e){console.error('DM failed:',e.message);}
-    await sendEmail(order.email,`ArveX Hosting — ${order.id} is ready`,`Your ArveX server is ready. Panel: ${order.server.panelUrl}`,`<h2>Your ArveX server is ready</h2><p>Order: <b>${order.id}</b></p><p>Panel: <a href="${order.server.panelUrl}">${order.server.panelUrl}</a></p><p>Your credentials were sent to your Discord DM.</p>`);
+    try { await dmUser(order.discordUserId,`🔐 **HelzerX — Server Ready**\n\nOrder: **${order.id}**\nPlan: **${order.planName}**\nPanel: ${order.server.panelUrl}\nUsername: **${order.server.username}**\nPassword: **${order.server.password}**\n\n⚠️ Change your password after first login and never share these credentials.`); } catch(e){console.error('DM failed:',e.message);}
+    await sendEmail(order.email,`HelzerX — ${order.id} is ready`,`Your HelzerX server is ready. Panel: ${order.server.panelUrl}`,`<h2>Your HelzerX server is ready</h2><p>Order: <b>${order.id}</b></p><p>Panel: <a href="${order.server.panelUrl}">${order.server.panelUrl}</a></p><p>Your credentials were sent to your Discord DM.</p>`);
     return res.json({ok:true,order});
   } catch(e){order.status='provisioning_failed';order.provisioningLock=false;order.provisioningError=e.message;await writeJson(ORDERS_FILE,orders);await updateTicket(order,`⚠️ **Provisioning failed for ${order.id}.**\n\`${String(e.message).slice(0,1500)}\`\nStaff should review and retry.`,[]);return res.status(502).json({error:e.message,order});}
 });
@@ -170,4 +170,4 @@ const rawApp=express();rawApp.disable('x-powered-by');rawApp.post('/api/automati
 
 app.use((req,res,next)=>{ if(req.path==='/api/automation/discord/interactions') return next(); res.setHeader('X-Content-Type-Options','nosniff'); next(); });
 app.use((req,res,next)=>{ if(req.path.startsWith('/api/automation/discord/interactions')) return rawApp(req,res,next); next(); });
-app.listen(PORT,'127.0.0.1',()=>console.log(`ArveX order automation listening on 127.0.0.1:${PORT}`));
+app.listen(PORT,'127.0.0.1',()=>console.log(`HelzerX order automation listening on 127.0.0.1:${PORT}`));

@@ -31,7 +31,7 @@ function hashPassword(password,salt=crypto.randomBytes(16).toString('hex')){retu
 async function verifyPassword(password,stored){const [salt,hash]=String(stored||'').split(':');if(!salt||!hash)return false;const derived=await hashPassword(password,salt);const a=Buffer.from(derived),b=Buffer.from(`${salt}:${hash}`);return a.length===b.length&&crypto.timingSafeEqual(a,b)}
 function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
 function validPassword(v){return typeof v==='string'&&v.length>=10&&v.length<=128&&/[A-Za-z]/.test(v)&&/\d/.test(v)}
-async function sendMail(to,subject,text){if(!RESEND_API_KEY||!RESEND_FROM)return false;try{const r=await fetch('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${RESEND_API_KEY}`,'Content-Type':'application/json','User-Agent':'ArveX-Hosting/1.0'},body:JSON.stringify({from:RESEND_FROM,to:[to],subject,text})});if(!r.ok)console.error('Resend email failed:',r.status,await r.text().catch(()=>''));return r.ok}catch(error){console.error('Resend request failed:',error);return false}}
+async function sendMail(to,subject,text){if(!RESEND_API_KEY||!RESEND_FROM)return false;try{const r=await fetch('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${RESEND_API_KEY}`,'Content-Type':'application/json','User-Agent':'HelzerX-Hosting/1.0'},body:JSON.stringify({from:RESEND_FROM,to:[to],subject,text})});if(!r.ok)console.error('Resend email failed:',r.status,await r.text().catch(()=>''));return r.ok}catch(error){console.error('Resend request failed:',error);return false}}
 function code(){return String(crypto.randomInt(100000,1000000))}
 function normalizeOtp(v){return String(v ?? '').normalize('NFKC').replace(/\s+/g,'').replace(/[^0-9]/g,'').slice(0,6)}
 function codeHash(v){return crypto.createHash('sha256').update(normalizeOtp(v),'utf8').digest('hex')}
@@ -59,7 +59,7 @@ postOverrides.set('/api/auth/register', async(req,res)=>{
   const users=await readUsers();if(users.some(u=>u.email===email))return jsonError(res,409,'An account with that email already exists.');
   const user={id:`usr-${crypto.randomUUID()}`,name,email,passwordDigest:await hashPassword(password),role:'customer',provider:'email',emailVerified:false,createdAt:new Date().toISOString()};
   const challengeId=crypto.randomBytes(24).toString('base64url'),otp=code();challenges.set(challengeId,{type:'register',user,code:otp,codeHash:codeHash(otp),expiresAt:Date.now()+OTP_TTL,attempts:0});
-  const sent=await sendMail(email,'ArveX Hosting email verification',`Hi ${name},\n\nYour ArveX Hosting verification code is ${otp}.\n\nThis code expires in 10 minutes. If you did not create this account, ignore this email.`);
+  const sent=await sendMail(email,'HelzerX email verification',`Hi ${name},\n\nYour HelzerX verification code is ${otp}.\n\nThis code expires in 10 minutes. If you did not create this account, ignore this email.`);
   if(!sent){challenges.delete(challengeId);return jsonError(res,502,'Unable to send the verification code.');}
   res.status(201).json({ok:true,verificationRequired:true,challengeId,expiresAt:Date.now()+OTP_TTL,message:'Account created. A 6-digit verification code was sent to your email.'});
 });
@@ -84,7 +84,7 @@ postOverrides.set('/api/auth/login',async(req,res)=>{
   if(user.banned)return jsonError(res,403,'This account has been disabled.');
   if(!RESEND_API_KEY||!RESEND_FROM)return jsonError(res,503,'Email verification is not configured. Set RESEND_API_KEY and RESEND_FROM.');
   const challengeId=crypto.randomBytes(24).toString('base64url'),otp=code();challenges.set(challengeId,{type:'login',user,code:otp,codeHash:codeHash(otp),expiresAt:Date.now()+OTP_TTL,attempts:0});
-  const sent=await sendMail(email,'ArveX Hosting sign-in code',`Your ArveX Hosting sign-in code is ${otp}. It expires in 10 minutes.`);if(!sent){challenges.delete(challengeId);return jsonError(res,502,'Unable to send the sign-in code.');}
+  const sent=await sendMail(email,'HelzerX sign-in code',`Your HelzerX sign-in code is ${otp}. It expires in 10 minutes.`);if(!sent){challenges.delete(challengeId);return jsonError(res,502,'Unable to send the sign-in code.');}
   res.json({ok:true,requiresTwoFactor:true,challengeId,expiresAt:Date.now()+OTP_TTL,message:'A 6-digit sign-in code was sent to your email.'});
 });
 
@@ -105,7 +105,7 @@ postOverrides.set('/api/auth/forgot-password',async(req,res)=>{
   if(!user)return res.json({ok:true,message:'If an account exists, a reset code has been sent.'});
   if(!RESEND_API_KEY||!RESEND_FROM)return jsonError(res,503,'Password reset email is not configured.');
   const challengeId=crypto.randomBytes(24).toString('base64url'),otp=code();challenges.set(challengeId,{type:'reset',userId:user.id,code:otp,codeHash:codeHash(otp),expiresAt:Date.now()+OTP_TTL,attempts:0});
-  const sent=await sendMail(email,'ArveX Hosting password reset code',`Your ArveX Hosting password reset code is ${otp}. It expires in 10 minutes. If you did not request this, ignore this email.`);if(!sent){challenges.delete(challengeId);return jsonError(res,502,'Unable to send the reset code.');}
+  const sent=await sendMail(email,'HelzerX password reset code',`Your HelzerX password reset code is ${otp}. It expires in 10 minutes. If you did not request this, ignore this email.`);if(!sent){challenges.delete(challengeId);return jsonError(res,502,'Unable to send the reset code.');}
   res.json({ok:true,challengeId,expiresAt:Date.now()+OTP_TTL,message:'A password reset code was sent to your email.'});
 });
 
@@ -127,7 +127,7 @@ postOverrides.set('/api/admin/login',async(req,res)=>{
   const email=String(req.body?.email||'').trim().toLowerCase(),password=String(req.body?.password||'');
   if(email!==ADMIN_EMAIL||password!==ADMIN_PASSWORD)return jsonError(res,401,'Invalid administrator credentials.');
   const challengeId=crypto.randomBytes(24).toString('base64url'),otp=code();adminChallenges.set(challengeId,{email,code:otp,codeHash:codeHash(otp),expiresAt:Date.now()+OTP_TTL,attempts:0});
-  const sent=await sendMail(ADMIN_EMAIL,'ArveX administrator verification code',`Your ArveX administrator verification code is ${otp}. It expires in 10 minutes. If you did not request this, secure your account immediately.`);
+  const sent=await sendMail(ADMIN_EMAIL,'HelzerX administrator verification code',`Your HelzerX administrator verification code is ${otp}. It expires in 10 minutes. If you did not request this, secure your account immediately.`);
   if(!sent){adminChallenges.delete(challengeId);return jsonError(res,502,'Unable to send the administrator verification code.');}
   res.json({ok:true,requiresTwoFactor:true,challengeId,expiresAt:Date.now()+OTP_TTL});
 });
@@ -139,7 +139,7 @@ postOverrides.set('/api/admin/verify-otp',async(req,res)=>{
   if(otp.length!==6)return jsonError(res,401,'Invalid administrator verification code.');
   c.attempts+=1;if(c.attempts>MAX_OTP_ATTEMPTS){adminChallenges.delete(id);return jsonError(res,401,'Too many verification attempts. Start administrator sign-in again.')}
   if(!validCode(otp,c))return jsonError(res,401,'Invalid administrator verification code.');
-  adminChallenges.delete(id);const expiresAt=Date.now()+8*60*60*1000;const token=signAdminToken({role:'admin',email:ADMIN_EMAIL,exp:expiresAt});res.json({ok:true,token,expiresAt,user:{id:'admin-primary',name:'ArveX Administrator',email:ADMIN_EMAIL,role:'admin',provider:'email',emailVerified:true,createdAt:new Date().toISOString()}});
+  adminChallenges.delete(id);const expiresAt=Date.now()+8*60*60*1000;const token=signAdminToken({role:'admin',email:ADMIN_EMAIL,exp:expiresAt});res.json({ok:true,token,expiresAt,user:{id:'admin-primary',name:'HelzerX Administrator',email:ADMIN_EMAIL,role:'admin',provider:'email',emailVerified:true,createdAt:new Date().toISOString()}});
 });
 
 getOverrides.set('/api/auth/me',async(req,res)=>{const sid=getCookie(req,'arvex_otp_session'),session=sid?sessions.get(sid):null;if(!session||session.expiresAt<Date.now())return res.status(401).json({authenticated:false});const user=(await readUsers()).find(u=>u.id===session.userId);if(!user)return res.status(401).json({authenticated:false});res.json({authenticated:true,user:publicUser(user)});});
