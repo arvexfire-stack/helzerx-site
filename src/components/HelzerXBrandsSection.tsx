@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Code2, Cloud, ShoppingBag, Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Code2, Cloud, ShoppingBag, Sparkles, ShieldCheck, Zap, LockKeyhole, CircleHelp, Gauge, MessageCircle, Server, CheckCircle2 } from 'lucide-react';
 
 const brands = [
   { name: 'HelzerX Studio', kicker: 'DESIGN · DEVELOPMENT · CREATIVITY', description: 'A home for digital experiences — from bold ideas and thoughtful design to modern websites and creative projects.', promise: 'Turn ideas into experiences', url: 'https://studio.helzerx.cyou', icon: Code2, accent: 'violet', number: '01', tags: ['Creative tools', 'Web experiences', 'Digital projects'] },
@@ -56,6 +56,70 @@ export const HelzerXBrandsSection: React.FC = () => (
           {[{ icon: Sparkles, title: 'Made for ideas', copy: 'Space to create and experiment.', color: 'text-violet-600 bg-violet-100' }, { icon: ShieldCheck, title: 'Built with care', copy: 'Thoughtful experiences at every step.', color: 'text-blue-600 bg-blue-100' }, { icon: Zap, title: 'Ready for what’s next', copy: 'A connected ecosystem that can grow.', color: 'text-amber-600 bg-amber-100' }].map(({ icon: Icon, title, copy, color }) => (
             <div key={title} className="flex items-center gap-3 rounded-2xl border border-white/90 bg-white/75 p-4 shadow-sm backdrop-blur-sm"><span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${color}`}><Icon className="h-4 w-4" /></span><span><b className="block text-xs font-bold text-slate-800">{title}</b><small className="mt-1 block text-[10px] leading-4 text-slate-500">{copy}</small></span></div>
           ))}
+        </div>
+      </div>
+    </section>
+    <section className="hx-trust-section relative mx-auto max-w-[1210px] overflow-hidden rounded-[32px] px-5 py-10 sm:px-9 sm:py-14 lg:px-12">
+      <div className="hx-trust-light hx-trust-light-one" aria-hidden="true" />
+      <div className="hx-trust-light hx-trust-light-two" aria-hidden="true" />
+      <div className="relative z-10 mx-auto max-w-[720px] text-center">
+        <span className="eyebrow">Trust is built, not claimed</span>
+        <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-.06em] text-[#111827] sm:text-5xl">Confidence in every <span className="hx-trust-gradient">connection.</span></h2>
+        <p className="mx-auto mt-4 max-w-[590px] text-sm leading-7 text-slate-600 sm:text-base">We want every HelzerX experience to feel clear, thoughtful, and dependable. Here’s the standard we’re working toward — without invented certifications, fake customer counts, or unverified uptime promises.</p>
+      </div>
+      <div className="hx-trust-grid relative z-10 mt-9 grid gap-4 md:grid-cols-3 sm:mt-12">
+        <article className="hx-trust-card hx-trust-card-blue">
+          <span className="hx-trust-icon"><LockKeyhole className="h-5 w-5" /></span>
+          <span className="hx-trust-kicker">01 / SECURITY</span>
+          <h3>Privacy deserves care.</h3>
+          <p>Use official HelzerX destinations, keep account details private, and review the service terms before sharing sensitive information.</p>
+          <div className="hx-trust-bottom"><ShieldCheck className="h-4 w-4" /><span>Security-minded choices</span></div>
+        </article>
+        <article className="hx-trust-card hx-trust-card-violet">
+          <span className="hx-trust-icon"><MessageCircle className="h-5 w-5" /></span>
+          <span className="hx-trust-kicker">02 / TRANSPARENCY</span>
+          <h3>Clear over complicated.</h3>
+          <p>We aim to explain what each service does, what to expect, and where a feature is still being developed.</p>
+          <div className="hx-trust-bottom"><CheckCircle2 className="h-4 w-4" /><span>Honest service information</span></div>
+        </article>
+        <article className="hx-trust-card hx-trust-card-cyan">
+          <span className="hx-trust-icon"><Gauge className="h-5 w-5" /></span>
+          <span className="hx-trust-kicker">03 / RELIABILITY</span>
+          <h3>Improve with purpose.</h3>
+          <p>Our goal is to make every update more useful and dependable. Published status information should be the source for service incidents.</p>
+          <div className="hx-trust-bottom"><Server className="h-4 w-4" /><span>Reliability is ongoing work</span></div>
+        </article>
+      </div>
+      <div className="hx-trust-note relative z-10 mt-6 flex items-start gap-3 rounded-2xl px-4 py-4 sm:items-center sm:px-5">
+        <span className="hx-trust-note-icon"><ShieldCheck className="h-5 w-5" /></span>
+        <p className="text-xs leading-6 text-slate-600"><b className="text-slate-800">A promise about promises:</b> we’ll only publish measurable claims — like uptime, customer totals, certifications, or testimonials — when they can be verified.</p>
+      </div>
+    </section>
+    <section className="hx-journey-section mx-auto max-w-[1210px] px-1 py-7 sm:py-10">
+      <div className="grid items-end gap-5 md:grid-cols-[1fr_.8fr]">
+        <div><span className="eyebrow">The HelzerX approach</span><h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-.06em] text-[#111827] sm:text-4xl">Thoughtful today.<br />Better with every step.</h2></div>
+        <p className="max-w-[490px] text-sm leading-7 text-slate-600">A good digital company isn’t built from effects alone. It’s built through useful services, careful improvements, and listening when something can be better.</p>
+      </div>
+      <div className="hx-journey-track mt-7 grid gap-4 sm:grid-cols-3">
+        <article className="hx-journey-card"><span className="hx-journey-number">01</span><div><h3>Start with clarity</h3><p>Know which HelzerX destination fits your goal before you begin.</p></div><ArrowRight className="hx-journey-arrow h-4 w-4" /></article>
+        <article className="hx-journey-card"><span className="hx-journey-number">02</span><div><h3>Build with care</h3><p>Focus on useful details, understandable experiences, and responsible updates.</p></div><ArrowRight className="hx-journey-arrow h-4 w-4" /></article>
+        <article className="hx-journey-card"><span className="hx-journey-number">03</span><div><h3>Listen and improve</h3><p>Use genuine feedback to guide what should be clearer or work better next.</p></div><Sparkles className="hx-journey-arrow h-4 w-4" /></article>
+      </div>
+    </section>
+    <section className="hx-faq-section relative mx-auto max-w-[1210px] overflow-hidden rounded-[30px] px-5 py-9 sm:px-9 sm:py-12 lg:px-12">
+      <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr] lg:gap-12">
+        <div>
+          <span className="eyebrow">Questions, answered</span>
+          <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-.06em] text-[#111827] sm:text-4xl">A little more clarity goes a long way.</h2>
+          <p className="mt-4 max-w-[420px] text-sm leading-7 text-slate-600">Quick answers to help you explore HelzerX with confidence.</p>
+          <div className="hx-faq-side-note mt-6 flex items-center gap-3"><span><CircleHelp className="h-5 w-5" /></span><p>Still unsure? Check the relevant service page for its latest details before making a decision.</p></div>
+        </div>
+        <div className="hx-faq-list">
+          <details className="hx-faq-item" open><summary><span>What is HelzerX Technologies?</span><span className="hx-faq-toggle">+</span></summary><p>HelzerX brings together focused digital experiences for creative development, cloud services, and digital products under one brand direction.</p></details>
+          <details className="hx-faq-item"><summary><span>Which service should I choose?</span><span className="hx-faq-toggle">+</span></summary><p>Choose Studio for creative and development work, Cloud for hosting and infrastructure, or Shop to explore digital products. Visit each destination to confirm what is currently available.</p></details>
+          <details className="hx-faq-item"><summary><span>How can I tell if an update or link is official?</span><span className="hx-faq-toggle">+</span></summary><p>Start from helzerx.cyou or the listed subdomains: studio.helzerx.cyou, cloud.helzerx.cyou, and shop.helzerx.cyou. Be cautious with look-alike domains and never share passwords in direct messages.</p></details>
+          <details className="hx-faq-item"><summary><span>Can I rely on a published uptime or customer rating?</span><span className="hx-faq-toggle">+</span></summary><p>Only treat a metric as a promise when its measurement method and source are clearly published. This page does not claim a specific uptime percentage, certification, or customer rating.</p></details>
+          <details className="hx-faq-item"><summary><span>How can I help HelzerX improve?</span><span className="hx-faq-toggle">+</span></summary><p>Share honest feedback through the official support route available on the relevant service. Customer stories should only be published with permission.</p></details>
         </div>
       </div>
     </section>
