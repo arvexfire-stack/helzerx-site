@@ -314,6 +314,7 @@ export const Navbar: React.FC = () => {
             )}
           </div>
 
+          {!isCompanyHome && (
           {/* User Logged In state */}
           {user ? (
             <div className="flex items-center gap-2">
@@ -377,6 +378,8 @@ export const Navbar: React.FC = () => {
                 <span>Sign up</span>
               </button>
             </>
+          )}
+
           )}
 
           {isCompanyHome ? (
