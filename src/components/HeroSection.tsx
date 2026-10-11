@@ -21,12 +21,6 @@ export const HeroSection: React.FC = () => {
     <section
       className="relative isolate overflow-hidden px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:px-12 lg:pt-[72px]"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-sky-200/60 blur-3xl" />
-        <div className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-blue-200/65 blur-3xl" />
-        <div className="absolute left-1/2 top-40 h-72 w-[min(80vw,800px)] -translate-x-1/2 rounded-full bg-white/70 blur-3xl" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
-      </div>
       <div className="mx-auto max-w-[1000px] text-center">
         <style>{`
           @keyframes hero-letter-jump-in {
