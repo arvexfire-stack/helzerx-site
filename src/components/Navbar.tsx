@@ -314,9 +314,7 @@ export const Navbar: React.FC = () => {
             )}
           </div>
 
-          {!isCompanyHome && (
-          {/* User Logged In state */}
-          {user ? (
+          {!isCompanyHome && (user ? (
             <div className="flex items-center gap-2">
               {user.role === 'admin' && (
                 <button
@@ -378,9 +376,7 @@ export const Navbar: React.FC = () => {
                 <span>Sign up</span>
               </button>
             </>
-          )}
-
-          )}
+          ))}
 
           {isCompanyHome ? (
             <a href="#helzerx-products" className="lg:hidden rounded-full bg-[#246ed0] px-4 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 transition hover:bg-[#1c60bc]">Explore brands</a>
