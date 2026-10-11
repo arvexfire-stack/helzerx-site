@@ -20,7 +20,7 @@ export const HelzerXBrandsSection: React.FC = () => (
         <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-.06em] text-[#111827] sm:text-5xl">Three brands.<br className="sm:hidden" /> Endless possibilities.</h2>
         <p className="mx-auto mt-4 max-w-[560px] text-sm leading-7 text-[#788697] sm:text-base">Choose the experience that fits what you want to do. Each brand has its own purpose, brought together by HelzerX Technologies.</p>
       </div>
-      <div className="grid gap-5 md:grid-cols-3 md:gap-4 xl:gap-6">
+      <div className="brand-card-stage grid gap-5 md:grid-cols-3 md:gap-4 xl:gap-6">
         {brands.map(({ name, kicker, description, promise, url, icon: Icon, accent, number, tags }) => {
           const style = palette[accent as keyof typeof palette];
           return (
