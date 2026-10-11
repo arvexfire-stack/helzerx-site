@@ -98,7 +98,7 @@ export const Footer: React.FC = () => {
 
         <div className="mx-6 flex flex-col items-center justify-between gap-4 border-t border-white/20 py-5 text-xs font-medium text-blue-100 sm:mx-10 sm:flex-row lg:mx-14">
           <button type="button" onClick={() => navigateTo('home')} className="font-semibold text-white/95 transition hover:text-white">
-            {siteSettings.brandName || 'ArveX Hosting'}
+            {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'ArveX Hosting')}
           </button>
           <div className="flex items-center gap-4">
             <span>© All rights reserved</span>
