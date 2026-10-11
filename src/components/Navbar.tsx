@@ -90,22 +90,13 @@ export const Navbar: React.FC = () => {
             }}
             className="company-brand flex items-center gap-2.5 group cursor-pointer text-left"
           >
-            {/* Concentric rings logo matching the reference screenshot */}
-            <div className={`h-8 w-8 sm:h-9 sm:w-9 rounded-2xl flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform ${
-              isHome
-                ? 'bg-transparent border border-white/20'
-                : 'bg-gradient-to-br from-[#4c91e7] to-[#246ed0] text-white shadow-blue-500/20'
-            }`}>
-              {isHome ? (
-                <div className="h-5 w-5 rounded-full border-2 border-white/90 flex items-center justify-center">
-                  <div className="h-2.5 w-2.5 rounded-full border border-cyan-400 flex items-center justify-center">
-                    <div className="h-1 w-1 rounded-full bg-amber-400" />
-                  </div>
-                </div>
-              ) : (
-                <span className="font-display text-xs text-white">HX</span>
-              )}
-            </div>
+            {/* Official HelzerX logo */}
+            <img
+              src="https://www.image2url.com/r2/default/images/1791729492304-3a8657f0-a83d-4bf4-9e58-2b6edde007b5.png"
+              alt="HelzerX logo"
+              className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl object-contain transition-transform group-hover:scale-105"
+              decoding="async"
+            />
             <span className={`company-brand-name text-lg sm:text-xl font-bold tracking-tight font-display ${
               isHome ? 'text-white' : 'text-slate-950'
             }`}>
