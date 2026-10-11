@@ -1,77 +1,41 @@
 import React from 'react';
-import { ArrowRight, Gamepad2, Globe2, Layers3, MapPin, Server, ShieldCheck, Sparkles } from 'lucide-react';
-import { useApp } from '../context/AppContext';
+import { ArrowRight, Boxes, Cloud, Code2, ShoppingBag, Sparkles } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
-  const { navigateTo, games, locations, siteSettings } = useApp();
-  const availableLocations = locations.filter((location) => location.status !== 'maintenance');
-  const featuredGames = games.slice(0, 3);
-  const firstLocation = availableLocations[0];
-
   return (
-    <section className="px-5 pb-9 pt-9 sm:px-8 sm:pb-12 sm:pt-12 lg:px-12 lg:pt-[58px]">
-      <div className="mx-auto max-w-[900px] text-center">
-        <span className="eyebrow">Hosting for what you play</span>
-        <h1 className="mt-4 font-display text-[clamp(2.45rem,5.3vw,4.7rem)] font-extrabold leading-[.98] tracking-[-.075em] text-[#141b26]">
-          Your world.<br className="sm:hidden" /> <span className="text-[#2579dc]">Always online.</span>
+    <section className="relative isolate overflow-hidden px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:px-12 lg:pt-[72px]">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-sky-200/60 blur-3xl" />
+        <div className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-blue-200/65 blur-3xl" />
+        <div className="absolute left-1/2 top-40 h-72 w-[min(80vw,800px)] -translate-x-1/2 rounded-full bg-white/70 blur-3xl" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
+      </div>
+      <div className="mx-auto max-w-[1000px] text-center">
+        <span className="eyebrow">Introducing the HelzerX ecosystem</span>
+        <h1 className="mt-5 font-display text-[clamp(2.65rem,6.2vw,5.7rem)] font-extrabold leading-[.98] tracking-[-.075em] text-[#101827]">
+          One vision.<br /><span className="bg-gradient-to-r from-[#1768e8] via-[#438ff4] to-[#6c7cf7] bg-clip-text text-transparent">Three powerful experiences.</span>
         </h1>
-        <p className="mx-auto mt-4 max-w-[425px] text-sm leading-6 text-[#7d8895] sm:text-[15px]">
-          {siteSettings.heroSubtitle || 'Game and cloud hosting for worlds worth coming back to.'}
+        <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-[#738092] sm:text-base">
+          Discover a connected world of digital creativity, cloud technology, and online shopping — built under one name: HelzerX Technologies.
         </p>
-        <button
-          type="button"
-          onClick={() => navigateTo('plans')}
-          className="mt-5 inline-flex min-h-9 items-center gap-2 rounded-full bg-gradient-to-r from-[#287fdf] to-[#61a6ed] px-5 text-[11px] font-bold text-white shadow-[0_5px_14px_rgba(48,126,208,.2)] transition hover:-translate-y-0.5 hover:brightness-[1.03]"
-        >
-          {siteSettings.heroCtaText || 'Explore hosting plans'} <ArrowRight className="h-3.5 w-3.5" />
-        </button>
+        <a href="#helzerx-products" className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#155eef] px-6 text-xs font-bold text-white shadow-[0_10px_26px_rgba(37,99,235,.26)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#0d4fd4] hover:shadow-[0_15px_34px_rgba(37,99,235,.32)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200">
+          Explore our brands <ArrowRight className="h-4 w-4" />
+        </a>
       </div>
-
-      <div className="mx-auto mt-9 grid max-w-[830px] items-stretch gap-3 sm:mt-11 sm:grid-cols-[.92fr_1.48fr_.92fr] sm:gap-4">
-        <div className="order-2 rounded-[19px] bg-[#f6f9fc] px-4 py-4 text-left sm:order-1 sm:px-4 sm:py-5">
-          <div className="flex items-center gap-2 text-[10px] font-semibold text-[#8793a1]">
-            <Gamepad2 className="h-3.5 w-3.5 text-[#548fce]" /> Choose your game
+      <div className="relative mx-auto mt-12 max-w-[1000px] sm:mt-16">
+        <div className="absolute -inset-x-8 -inset-y-8 -z-10 rounded-[40px] bg-gradient-to-r from-sky-100/70 via-white to-blue-100/70 blur-2xl" />
+        <div className="overflow-hidden rounded-[26px] border border-white/90 bg-white/85 p-3 shadow-[0_30px_90px_rgba(40,91,150,.15)] backdrop-blur-xl sm:rounded-[32px] sm:p-5">
+          <div className="flex items-center justify-between border-b border-slate-100 px-2 pb-3 sm:px-4 sm:pb-4">
+            <div className="flex items-center gap-2.5"><span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-500 text-white shadow-md shadow-blue-500/20"><Boxes className="h-4 w-4" /></span><div><p className="text-xs font-extrabold tracking-tight text-slate-900">HelzerX Technologies</p><p className="mt-0.5 text-[9px] text-slate-400">Your digital world, connected</p></div></div>
+            <span className="hidden items-center gap-1.5 rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1.5 text-[9px] font-bold text-emerald-700 sm:inline-flex"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" /> Three brands. One ecosystem.</span>
           </div>
-          <div className="mt-3 space-y-2">
-            {featuredGames.length ? featuredGames.map((game) => (
-              <div key={game.id} className="flex items-center gap-2.5 rounded-xl bg-white px-2.5 py-2">
-                <span className="grid h-6 w-6 place-items-center rounded-lg bg-[#edf5fd] text-[#5b92cb]"><Server className="h-3 w-3" /></span>
-                <span className="truncate text-[10px] font-semibold text-[#526275]">{game.name}</span>
-              </div>
-            )) : <p className="rounded-xl bg-white px-3 py-2.5 text-[10px] leading-4 text-[#8793a1]">Browse the available hosting services.</p>}
+          <div className="grid gap-3 p-2 sm:grid-cols-3 sm:gap-4 sm:p-3">
+            <div className="relative min-h-[155px] overflow-hidden rounded-[20px] border border-violet-100 bg-gradient-to-br from-white via-violet-50 to-indigo-100 p-4 sm:min-h-[190px] sm:p-5"><div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-violet-300/25 blur-xl" /><span className="relative grid h-10 w-10 place-items-center rounded-2xl bg-white text-violet-600 shadow-[0_8px_22px_rgba(109,40,217,.12)]"><Code2 className="h-5 w-5" /></span><p className="relative mt-5 font-display text-base font-extrabold tracking-tight text-slate-900">HelzerX Studio</p><p className="relative mt-1 text-[10px] leading-5 text-slate-500">Create. Design. Build.</p><div className="relative mt-4 flex gap-1.5"><span className="h-1.5 w-10 rounded-full bg-violet-400" /><span className="h-1.5 w-5 rounded-full bg-violet-200" /><span className="h-1.5 w-7 rounded-full bg-indigo-200" /></div></div>
+            <div className="relative min-h-[155px] overflow-hidden rounded-[20px] border border-sky-100 bg-gradient-to-br from-white via-sky-50 to-blue-100 p-4 sm:min-h-[190px] sm:p-5"><div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-sky-300/30 blur-xl" /><span className="relative grid h-10 w-10 place-items-center rounded-2xl bg-white text-blue-600 shadow-[0_8px_22px_rgba(37,99,235,.12)]"><Cloud className="h-5 w-5" /></span><p className="relative mt-5 font-display text-base font-extrabold tracking-tight text-slate-900">HelzerX Cloud</p><p className="relative mt-1 text-[10px] leading-5 text-slate-500">Power your next idea.</p><div className="relative mt-4 flex items-end gap-1.5"><span className="h-3 w-2 rounded-sm bg-blue-200" /><span className="h-5 w-2 rounded-sm bg-blue-300" /><span className="h-7 w-2 rounded-sm bg-blue-500" /><span className="h-4 w-2 rounded-sm bg-sky-300" /><span className="h-6 w-2 rounded-sm bg-blue-400" /></div></div>
+            <div className="relative min-h-[155px] overflow-hidden rounded-[20px] border border-orange-100 bg-gradient-to-br from-white via-amber-50 to-orange-100 p-4 sm:min-h-[190px] sm:p-5"><div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-orange-300/25 blur-xl" /><span className="relative grid h-10 w-10 place-items-center rounded-2xl bg-white text-orange-600 shadow-[0_8px_22px_rgba(234,88,12,.12)]"><ShoppingBag className="h-5 w-5" /></span><p className="relative mt-5 font-display text-base font-extrabold tracking-tight text-slate-900">HelzerX Shop</p><p className="relative mt-1 text-[10px] leading-5 text-slate-500">Find your next favourite.</p><div className="relative mt-4 flex gap-1.5"><span className="h-6 w-6 rounded-lg bg-white shadow-sm" /><span className="h-6 w-6 rounded-lg bg-orange-200/80" /><span className="h-6 w-6 rounded-lg bg-white shadow-sm" /><span className="h-6 w-6 rounded-lg bg-amber-300/70" /></div></div>
           </div>
         </div>
-
-        <div className="relative order-1 flex min-h-[170px] flex-col justify-center overflow-hidden rounded-[21px] bg-gradient-to-br from-[#70b7f6] via-[#4c9bed] to-[#4389e4] px-6 py-6 text-left text-white shadow-[0_12px_32px_rgba(69,143,219,.17)] sm:order-2 sm:min-h-[190px] sm:px-7">
-          <div className="pointer-events-none absolute -right-7 -top-12 h-40 w-40 rounded-full border border-white/20" />
-          <div className="pointer-events-none absolute -right-1 -top-6 h-28 w-28 rounded-full border border-white/15" />
-          <div className="relative">
-            <span className="inline-flex items-center gap-1.5 text-[9px] font-semibold tracking-[.12em] text-white/85"><Sparkles className="h-3 w-3" /> GAME &amp; CLOUD HOSTING</span>
-            <h2 className="mt-3 font-display text-[1.45rem] font-bold leading-tight tracking-[-.04em] sm:text-[1.7rem]">Make room for<br />one more session.</h2>
-            <p className="mt-2 max-w-[265px] text-[10px] leading-4 text-white/85">Reliable hosting and simple server controls, ready for your next adventure.</p>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => navigateTo('locations')}
-          className="group order-3 flex flex-col justify-between rounded-[19px] bg-[#f6f9fc] px-4 py-4 text-left transition hover:bg-[#f1f7fd] sm:px-4 sm:py-5"
-        >
-          <div className="flex items-center gap-2 text-[10px] font-semibold text-[#8793a1]"><Globe2 className="h-3.5 w-3.5 text-[#548fce]" /> Server locations</div>
-          <div className="mt-4">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-white text-[#548fce]"><MapPin className="h-4 w-4" /></div>
-            <p className="mt-2 text-xs font-bold text-[#394b5e]">{firstLocation?.name || 'Explore locations'}</p>
-            <p className="mt-1 text-[9px] leading-4 text-[#8995a2]">{firstLocation?.country || 'Choose a region for your players'}</p>
-          </div>
-          <span className="mt-3 inline-flex items-center gap-1 text-[9px] font-bold text-[#4d88c9]">See all regions <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" /></span>
-        </button>
-      </div>
-
-      <div className="mx-auto mt-5 flex max-w-[830px] items-center justify-center gap-2 text-[9px] font-medium text-[#98a2af]">
-        <ShieldCheck className="h-3.5 w-3.5 text-[#6d9fd2]" />
-        Hosting features vary by service and plan
-        <Layers3 className="ml-2 h-3.5 w-3.5 text-[#6d9fd2]" />
-        Built around your community
+        <div className="mx-auto mt-5 flex max-w-[620px] items-center justify-center gap-2 text-center text-[10px] font-medium text-slate-400"><Sparkles className="h-3.5 w-3.5 text-blue-400" /> Independent experiences. One connected HelzerX vision.</div>
       </div>
     </section>
   );

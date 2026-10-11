@@ -3,7 +3,8 @@ import { useApp } from '../context/AppContext';
 import { MessageSquare, Twitter, Github, Mail, Shield, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { siteSettings, navigateTo } = useApp();
+  const { siteSettings, navigateTo, currentPage } = useApp();
+  const isCompanyHome = currentPage === 'home';
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
@@ -17,61 +18,87 @@ export const Footer: React.FC = () => {
               className="group flex min-h-11 items-center gap-3 text-left"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/25 bg-white/15 font-display text-xs font-bold tracking-tight text-white transition group-hover:bg-white/20">
-                AX
+                HX
               </span>
               <span className="font-display text-xl font-bold tracking-tight text-white">
-                {siteSettings.brandName || 'ArveX Hosting'}
+                {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'ArveX Hosting')}
               </span>
             </button>
             <p className="mt-5 text-sm leading-6 text-blue-100">
-              High-performance game and cloud hosting, made simple. Keep your servers fast, protected, and ready for the next player.
+              {isCompanyHome ? 'A connected ecosystem for digital creativity, cloud technology, and online shopping — built around one HelzerX vision.' : 'High-performance game and cloud hosting, made simple. Keep your servers fast, protected, and ready for the next player.'}
             </p>
-            <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-xs font-semibold text-blue-50">
+            {!isCompanyHome && <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-xs font-semibold text-blue-50">
               <span className="h-2 w-2 rounded-full bg-[#85e0bc]" />
               Support available around the clock
-            </div>
+            </div>}
           </div>
 
           <div>
             <h4 className="mb-4 font-display text-sm font-bold text-white">Explore</h4>
             <ul className="space-y-2.5 text-sm font-medium text-blue-100">
-              <li><button onClick={() => navigateTo('about')} className="py-1 transition hover:text-white">About</button></li>
-              <li><button onClick={() => navigateTo('plans')} className="py-1 transition hover:text-white">Game plans</button></li>
-              <li><button onClick={() => navigateTo('services')} className="py-1 transition hover:text-white">Cloud VPS</button></li>
-              <li><button onClick={() => navigateTo('locations')} className="py-1 transition hover:text-white">Locations</button></li>
+              {isCompanyHome ? (
+                <>
+                  <li><a href="#helzerx-products" className="py-1 transition hover:text-white">Our brands</a></li>
+                  <li><a href="https://helzerx.studio" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Studio</a></li>
+                  <li><a href="https://helzerx.cloud" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Cloud</a></li>
+                  <li><a href="https://helzerx.shop" target="_blank" rel="noopener noreferrer" className="py-1 transition hover:text-white">HelzerX Shop</a></li>
+                </>
+              ) : (
+                <>
+                  <li><button onClick={() => navigateTo('about')} className="py-1 transition hover:text-white">About</button></li>
+                  <li><button onClick={() => navigateTo('plans')} className="py-1 transition hover:text-white">Game plans</button></li>
+                  <li><button onClick={() => navigateTo('services')} className="py-1 transition hover:text-white">Cloud VPS</button></li>
+                  <li><button onClick={() => navigateTo('locations')} className="py-1 transition hover:text-white">Locations</button></li>
+                </>
+              )}
             </ul>
           </div>
 
           <div>
             <h4 className="mb-4 font-display text-sm font-bold text-white">Company</h4>
             <ul className="space-y-2.5 text-sm font-medium text-blue-100">
-              <li><button onClick={() => navigateTo('hardware')} className="py-1 transition hover:text-white">Hardware &amp; SLA</button></li>
-              <li><button onClick={() => navigateTo('blog')} className="py-1 transition hover:text-white">Blog &amp; news</button></li>
-              <li><button onClick={() => navigateTo('support')} className="py-1 transition hover:text-white">Support center</button></li>
-              <li>
-                <button onClick={() => navigateTo('admin')} className="inline-flex min-h-8 items-center gap-1.5 py-1 font-semibold text-white/90 transition hover:text-white">
-                  <Shield className="h-3.5 w-3.5" />
-                  Admin portal
-                </button>
-              </li>
+              {isCompanyHome ? (
+                <>
+                  <li><span className="py-1">Creative experiences</span></li>
+                  <li><span className="py-1">Cloud infrastructure</span></li>
+                  <li><span className="py-1">Digital commerce</span></li>
+                </>
+              ) : (
+                <>
+                  <li><button onClick={() => navigateTo('hardware')} className="py-1 transition hover:text-white">Hardware &amp; SLA</button></li>
+                  <li><button onClick={() => navigateTo('blog')} className="py-1 transition hover:text-white">Blog &amp; news</button></li>
+                  <li><button onClick={() => navigateTo('support')} className="py-1 transition hover:text-white">Support center</button></li>
+                  <li><button onClick={() => navigateTo('admin')} className="inline-flex min-h-8 items-center gap-1.5 py-1 font-semibold text-white/90 transition hover:text-white"><Shield className="h-3.5 w-3.5" />Admin portal</button></li>
+                </>
+              )}
             </ul>
           </div>
 
           <div>
             <h4 className="mb-4 font-display text-sm font-bold text-white">Stay connected</h4>
             <div className="flex items-center gap-2.5">
+              {isCompanyHome ? (
+                <>
+                  <a href="https://helzerx.studio" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Studio" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">S</a>
+                  <a href="https://helzerx.cloud" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Cloud" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">C</a>
+                  <a href="https://helzerx.shop" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Shop" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]">Sh</a>
+                </>
+              ) : (
+              <>
               <a href={siteSettings.discordUrl || 'https://discord.gg'} target="_blank" rel="noreferrer" aria-label="Discord" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]"><MessageSquare className="h-4 w-4" /></a>
               <a href={siteSettings.twitterUrl || 'https://twitter.com'} target="_blank" rel="noreferrer" aria-label="Twitter" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]"><Twitter className="h-4 w-4" /></a>
               <a href={siteSettings.githubUrl || 'https://github.com'} target="_blank" rel="noreferrer" aria-label="GitHub" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]"><Github className="h-4 w-4" /></a>
               <a href={`mailto:${siteSettings.supportEmail || 'support@helzerx.cloud'}`} aria-label="Email support" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-[#246ed0]"><Mail className="h-4 w-4" /></a>
+              </>
+              )}
             </div>
-            <p className="mt-4 text-xs leading-5 text-blue-100">Reach our team any time through the support desk.</p>
+            <p className="mt-4 text-xs leading-5 text-blue-100">{isCompanyHome ? 'Explore the brand that fits your next idea.' : 'Reach our team any time through the support desk.'}</p>
           </div>
         </div>
 
         <div className="mx-6 flex flex-col items-center justify-between gap-4 border-t border-white/20 py-5 text-xs font-medium text-blue-100 sm:mx-10 sm:flex-row lg:mx-14">
           <button type="button" onClick={() => navigateTo('home')} className="font-semibold text-white/95 transition hover:text-white">
-            {siteSettings.brandName || 'ArveX Hosting'}
+            {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'ArveX Hosting')}
           </button>
           <div className="flex items-center gap-4">
             <span>© All rights reserved</span>
