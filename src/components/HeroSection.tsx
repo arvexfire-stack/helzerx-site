@@ -7,7 +7,7 @@ const AnimatedLetters: React.FC<{ text: string; className?: string; delayOffset?
         key={index}
         aria-hidden="true"
         className={`hero-letter-jump ${className}`}
-        style={{ animationDelay: `${delayOffset + index * 0.025}s` }}
+        style={{ animationDelay: `${delayOffset + index * 0.04}s` }}
       >
         {char === ' ' ? '\u00a0' : char}
       </span>
@@ -36,7 +36,7 @@ export const HeroSection: React.FC = () => {
           .hero-letter-jump {
             display: inline-block;
             opacity: 0;
-            animation: hero-letter-jump-in 430ms cubic-bezier(.22,.8,.25,1) both;
+            animation: hero-letter-jump-in 800ms cubic-bezier(.22,.8,.25,1) both;
           }
           @media (prefers-reduced-motion: reduce) {
             .hero-letter-jump { opacity: 1; animation: none; }
@@ -44,7 +44,7 @@ export const HeroSection: React.FC = () => {
         `}</style>
         <span className="eyebrow">Introducing the HelzerX ecosystem</span>
         <h1 className="mt-5 font-display text-[clamp(2.65rem,6.2vw,5.7rem)] font-extrabold leading-[.98] tracking-[-.075em] text-[#101827]">
-          <AnimatedLetters text="One vision." delayOffset={0} /><br /><AnimatedLetters text="Three powerful experiences." delayOffset={0.7} className="bg-gradient-to-r from-[#1768e8] via-[#438ff4] to-[#6c7cf7] bg-clip-text text-transparent" />
+          <AnimatedLetters text="One vision." delayOffset={0} /><br /><AnimatedLetters text="Three powerful experiences." delayOffset={1.0} className="bg-gradient-to-r from-[#1768e8] via-[#438ff4] to-[#6c7cf7] bg-clip-text text-transparent" />
         </h1>
         <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-[#738092] sm:text-base">
           Discover a connected world of digital creativity, cloud technology, and online shopping — built under one name: HelzerX Technologies.
