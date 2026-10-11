@@ -90,12 +90,17 @@
   border-radius: 0;
   background-color: #dff2ff;
   background-image:
-    radial-gradient(ellipse at 4% 5%, rgba(255,255,255,.96) 0%, rgba(255,255,255,0) 24%),
-    radial-gradient(ellipse at 96% 7%, rgba(255,255,255,.88) 0%, rgba(255,255,255,0) 23%),
-    radial-gradient(ellipse at 0% 32%, rgba(147,205,250,.55) 0%, rgba(147,205,250,0) 34%),
-    radial-gradient(ellipse at 100% 38%, rgba(130,190,246,.52) 0%, rgba(130,190,246,0) 35%),
-    radial-gradient(ellipse at 50% 16%, rgba(255,255,255,.9) 0%, rgba(255,255,255,0) 45%),
-    linear-gradient(180deg, #eaf9ff 0%, #d8efff 42%, #f8fcff 100%);
+    radial-gradient(ellipse 36% 18% at 3% 2%, rgba(255,255,255,.98) 0%, rgba(255,255,255,.72) 35%, rgba(255,255,255,0) 100%),
+    radial-gradient(ellipse 30% 17% at 98% 4%, rgba(255,255,255,.96) 0%, rgba(255,255,255,.62) 38%, rgba(255,255,255,0) 100%),
+    radial-gradient(ellipse 42% 23% at 0% 17%, rgba(155,213,255,.68) 0%, rgba(155,213,255,.32) 45%, rgba(155,213,255,0) 100%),
+    radial-gradient(ellipse 35% 22% at 100% 22%, rgba(129,193,250,.62) 0%, rgba(129,193,250,.24) 48%, rgba(129,193,250,0) 100%),
+    radial-gradient(ellipse 30% 15% at 15% 35%, rgba(255,255,255,.86) 0%, rgba(255,255,255,0) 100%),
+    radial-gradient(ellipse 35% 19% at 92% 42%, rgba(255,255,255,.8) 0%, rgba(255,255,255,0) 100%),
+    radial-gradient(ellipse 48% 25% at 50% 12%, rgba(255,255,255,.94) 0%, rgba(255,255,255,.44) 48%, rgba(255,255,255,0) 100%),
+    linear-gradient(180deg, #e5f6ff 0%, #cdeaff 30%, #e9f7ff 66%, #ffffff 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
   box-shadow: none;
 }
 .home-site-frame .reference-panel {
