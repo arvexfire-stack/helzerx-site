@@ -398,9 +398,9 @@
   position: relative;
   z-index: 3;
   display: block;
-  height: 128px;
+  height: 88px;
   width: 100%;
-  margin-top: 18px;
+  margin-top: 10px;
   margin-bottom: -4px;
   overflow: hidden;
   border-radius: 20px;
