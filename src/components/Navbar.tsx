@@ -44,6 +44,7 @@ export const Navbar: React.FC = () => {
 
   // Keep the shared shell light on every route; the homepage hero supplies the blue focal point.
   const isHome = false;
+  const isCompanyHome = currentPage === 'home';
 
   return (
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
@@ -52,7 +53,7 @@ export const Navbar: React.FC = () => {
         : 'bg-transparent px-3 pt-3 text-slate-800 sm:px-5 sm:pt-5'
     }`}>
       {/* Top Announcement Bar */}
-      {isAnnouncementVisible && siteSettings.announcementActive && (
+      {!isCompanyHome && isAnnouncementVisible && siteSettings.announcementActive && (
         <div className={`w-full border-b py-1.5 px-4 text-xs flex items-center justify-between ${
           isHome ? 'border-white/10 bg-[#06080e]/90 text-slate-300' : 'border-slate-200 bg-slate-50/90 text-slate-500'
         }`}>
@@ -108,11 +109,19 @@ export const Navbar: React.FC = () => {
             <span className={`text-lg sm:text-xl font-bold tracking-tight font-display ${
               isHome ? 'text-white' : 'text-slate-950'
             }`}>
-              {siteSettings.brandName || 'HelzerX Cloud'}
+              {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'HelzerX Cloud')}
             </span>
           </button>
 
           {/* Desktop Nav Items */}
+          {isCompanyHome ? (
+            <nav className="hidden lg:flex items-center gap-2 text-xs font-semibold text-slate-500">
+              <a href="#helzerx-products" className="rounded-full px-3 py-2 transition hover:bg-slate-100 hover:text-slate-900">Our brands</a>
+              <a href="#helzerx-products" className="rounded-full px-3 py-2 transition hover:bg-slate-100 hover:text-slate-900">Studio</a>
+              <a href="#helzerx-products" className="rounded-full px-3 py-2 transition hover:bg-slate-100 hover:text-slate-900">Cloud</a>
+              <a href="#helzerx-products" className="rounded-full px-3 py-2 transition hover:bg-slate-100 hover:text-slate-900">Shop</a>
+            </nav>
+          ) : (
           <nav className={`hidden lg:flex items-center gap-2 text-xs font-medium ${
             isHome ? 'text-slate-400' : 'text-slate-500 font-semibold'
           }`}>
@@ -258,6 +267,7 @@ export const Navbar: React.FC = () => {
               Support
             </button>
           </nav>
+          )}
         </div>
 
         {/* Right Zone: Currency Selector + Gabrun Pill Button [ ☷ Menu ] + [ Deploy ] */}
