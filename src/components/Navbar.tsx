@@ -397,6 +397,16 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
+      {/* Compact company navigation for mobile and tablet */}
+      {isCompanyHome && (
+        <nav aria-label="Company navigation" className="lg:hidden mx-auto mt-2 flex max-w-[1200px] items-center gap-1 overflow-x-auto rounded-full border border-white/70 bg-white/55 px-2 py-1.5 text-xs font-semibold text-slate-600 shadow-[0_6px_20px_rgba(35,90,150,0.06)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <a href="#helzerx-products" className="shrink-0 rounded-full bg-white/80 px-3.5 py-2 text-slate-900 shadow-sm">Our brands</a>
+          <a href="https://studio.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full px-3.5 py-2 transition hover:bg-white/80 hover:text-slate-950">Studio</a>
+          <a href="https://cloud.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full px-3.5 py-2 transition hover:bg-white/80 hover:text-slate-950">Cloud</a>
+          <a href="https://shop.helzerx.cyou" target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full px-3.5 py-2 transition hover:bg-white/80 hover:text-slate-950">Shop</a>
+        </nav>
+      )}
+
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
         <div id="mobile-navigation" className={`lg:hidden border-t px-4 py-6 space-y-4 rounded-3xl mt-2 mx-auto max-w-[1200px] ${
