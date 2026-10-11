@@ -100,13 +100,27 @@
 .home-site-frame::before {
   content: none !important;
 }
-/* Stronger cool-blue atmosphere behind the three brand cards (not on the cards themselves). */
+/* Seamless blue atmospheric glow behind the brand cards, blended into the page background. */
 .home-site-frame #helzerx-products {
-  background-image:
-    radial-gradient(ellipse at 16% 68%, rgba(56, 150, 255, .24) 0%, rgba(96, 185, 255, .12) 34%, transparent 66%),
-    radial-gradient(ellipse at 84% 70%, rgba(45, 140, 245, .22) 0%, rgba(112, 205, 255, .12) 36%, transparent 68%),
-    radial-gradient(ellipse at 50% 92%, rgba(54, 190, 245, .20) 0%, transparent 62%);
-  border-radius: 32px;
+  background: transparent;
+  border-radius: 0;
+  position: relative;
+  isolation: isolate;
+}
+.home-site-frame #helzerx-products::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -90px -24px -70px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 42%, rgba(72, 166, 255, .19) 0%, rgba(111, 199, 255, .10) 38%, transparent 70%),
+    radial-gradient(ellipse at 88% 45%, rgba(65, 153, 255, .17) 0%, rgba(125, 210, 255, .10) 40%, transparent 72%),
+    radial-gradient(ellipse at 50% 78%, rgba(70, 198, 244, .16) 0%, transparent 68%);
+  filter: blur(34px);
+}
+.home-site-frame #helzerx-products .brand-card {
+  background-color: rgba(255, 255, 255, .94);
 }
 .home-site-frame .reference-panel {
   border: 0;
