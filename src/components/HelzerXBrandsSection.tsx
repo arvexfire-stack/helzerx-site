@@ -32,6 +32,11 @@ export const HelzerXBrandsSection: React.FC = () => (
                 <span className={`brand-card-icon grid h-14 w-14 place-items-center rounded-[19px] shadow-sm transition duration-300 group-hover:rotate-[-5deg] group-hover:scale-110 ${style.icon}`}><Icon className="h-7 w-7" strokeWidth={1.8} /></span>
                 <span className="font-mono text-xs font-bold tracking-[.18em] text-slate-300">{number}</span>
               </div>
+              <div className={`brand-card-art brand-card-art-${accent}`} aria-hidden="true">
+                {accent === 'violet' && <><span className="art-window"><i /><i /><i /><b>&lt;/&gt;</b></span><span className="art-orbit art-orbit-one" /><span className="art-orbit art-orbit-two" /><span className="art-cursor" /></>}
+                {accent === 'blue' && <><span className="art-cloud"><Cloud strokeWidth={1.5} /></span><span className="art-cloud-dot dot-one" /><span className="art-cloud-dot dot-two" /><span className="art-cloud-dot dot-three" /><span className="art-data-bar bar-one" /><span className="art-data-bar bar-two" /><span className="art-data-bar bar-three" /><span className="art-data-bar bar-four" /><span className="art-data-bar bar-five" /></>}
+                {accent === 'orange' && <><span className="art-shop-bag"><ShoppingBag strokeWidth={1.5} /></span><span className="art-product product-one" /><span className="art-product product-two" /><span className="art-product product-three" /><span className="art-spark spark-one">✦</span><span className="art-spark spark-two">✧</span></>}
+              </div>
               <div className="mt-8">
                 <p className="text-[9px] font-extrabold tracking-[.16em] text-slate-400">{kicker}</p>
                 <h3 className="mt-3 font-display text-[1.65rem] font-extrabold tracking-[-.055em] text-[#111827] sm:text-[1.8rem]">{name}</h3>
