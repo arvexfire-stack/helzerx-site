@@ -37,7 +37,7 @@ export const HelzerXBrandsSection: React.FC = () => (
                 {accent === 'blue' && <><span className="art-cloud"><Cloud strokeWidth={1.5} /></span><span className="art-cloud-dot dot-one" /><span className="art-cloud-dot dot-two" /><span className="art-cloud-dot dot-three" /><span className="art-data-bar bar-one" /><span className="art-data-bar bar-two" /><span className="art-data-bar bar-three" /><span className="art-data-bar bar-four" /><span className="art-data-bar bar-five" /></>}
                 {accent === 'orange' && <><span className="art-shop-bag"><ShoppingBag strokeWidth={1.5} /></span><span className="art-product product-one" /><span className="art-product product-two" /><span className="art-product product-three" /><span className="art-spark spark-one">✦</span><span className="art-spark spark-two">✧</span></>}
               </div>
-              <div className="mt-5">
+              <div className="mt-8">
                 <p className="text-[9px] font-extrabold tracking-[.16em] text-slate-400">{kicker}</p>
                 <h3 className="mt-3 font-display text-[1.65rem] font-extrabold tracking-[-.055em] text-[#111827] sm:text-[1.8rem]">{name}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
