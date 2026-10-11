@@ -100,6 +100,14 @@
 .home-site-frame::before {
   content: none !important;
 }
+/* Stronger cool-blue atmosphere behind the three brand cards (not on the cards themselves). */
+.home-site-frame #helzerx-products {
+  background-image:
+    radial-gradient(ellipse at 16% 68%, rgba(56, 150, 255, .24) 0%, rgba(96, 185, 255, .12) 34%, transparent 66%),
+    radial-gradient(ellipse at 84% 70%, rgba(45, 140, 245, .22) 0%, rgba(112, 205, 255, .12) 36%, transparent 68%),
+    radial-gradient(ellipse at 50% 92%, rgba(54, 190, 245, .20) 0%, transparent 62%);
+  border-radius: 32px;
+}
 .home-site-frame .reference-panel {
   border: 0;
   border-radius: 0;
