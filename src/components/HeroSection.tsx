@@ -1,9 +1,7 @@
 import React from 'react';
 import { ArrowRight, Boxes, Cloud, Code2, ShoppingBag, Sparkles } from 'lucide-react';
-import { useApp } from '../context/AppContext';
 
 export const HeroSection: React.FC = () => {
-  const { siteSettings } = useApp();
   return (
     <section className="relative isolate overflow-hidden px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:px-12 lg:pt-[72px]">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -18,7 +16,7 @@ export const HeroSection: React.FC = () => {
           One vision.<br /><span className="bg-gradient-to-r from-[#1768e8] via-[#438ff4] to-[#6c7cf7] bg-clip-text text-transparent">Three powerful experiences.</span>
         </h1>
         <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-[#738092] sm:text-base">
-          {siteSettings.heroSubtitle || 'Discover a connected world of digital creativity, cloud technology, and online shopping — built under one name: HelzerX Technologies.'}
+          Discover a connected world of digital creativity, cloud technology, and online shopping — built under one name: HelzerX Technologies.
         </p>
         <a href="#helzerx-products" className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#155eef] px-6 text-xs font-bold text-white shadow-[0_10px_26px_rgba(37,99,235,.26)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#0d4fd4] hover:shadow-[0_15px_34px_rgba(37,99,235,.32)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200">
           Explore our brands <ArrowRight className="h-4 w-4" />
