@@ -1,15 +1,17 @@
 import React from 'react';
-import { ArrowUpRight, ArrowRight, Code2, Cloud, ShoppingBag, Sparkles, ShieldCheck, Zap, LockKeyhole, CircleHelp, Gauge, MessageCircle, Server, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Code2, Cloud, ShoppingBag, Sparkles, ShieldCheck, Zap, LockKeyhole, CircleHelp, Gauge, MessageCircle, Server, CheckCircle2, Gift } from 'lucide-react';
 
 const brands = [
   { name: 'HelzerX Studio', kicker: 'DESIGN · DEVELOPMENT · CREATIVITY', description: 'A home for digital experiences — from bold ideas and thoughtful design to modern websites and creative projects.', promise: 'Turn ideas into experiences', url: 'https://studio.helzerx.cyou', icon: Code2, accent: 'violet', number: '01', tags: ['Creative tools', 'Web experiences', 'Digital projects'] },
   { name: 'HelzerX Cloud', kicker: 'CLOUD · INFRASTRUCTURE · PERFORMANCE', description: 'Power your projects with dependable cloud technology, hosting solutions, and infrastructure built to grow with you.', promise: 'Build. Deploy. Scale.', url: 'https://cloud.helzerx.cyou', icon: Cloud, accent: 'blue', number: '02', tags: ['Cloud services', 'Hosting', 'Infrastructure'] },
   { name: 'HelzerX Shop', kicker: 'DISCOVER · EXPLORE · SHOP', description: 'Explore a thoughtfully curated shopping experience designed to make discovering products feel simple and enjoyable.', promise: 'Your next find is waiting', url: 'https://shop.helzerx.cyou', icon: ShoppingBag, accent: 'orange', number: '03', tags: ['Online store', 'Featured products', 'Easy discovery'] },
+  { name: 'Free Hosting', kicker: 'START FREE · BUILD · GROW', description: 'Explore free hosting opportunities for your first project, with current eligibility and availability confirmed on the Cloud platform.', promise: 'Start building with less friction', url: 'https://cloud.helzerx.cyou', icon: Gift, accent: 'emerald', number: '04', tags: ['Beginner friendly', 'Project launch', 'Cloud platform'] },
 ];
 const palette = {
   violet: { shell: 'from-violet-50 via-white to-indigo-100/90 border-violet-100 hover:border-violet-200', icon: 'bg-violet-100 text-violet-700', glow: 'bg-violet-300/30', line: 'bg-violet-500', pill: 'border-violet-100 bg-violet-50 text-violet-700', orb: 'border-violet-200' },
   blue: { shell: 'from-sky-50 via-white to-blue-100/90 border-sky-100 hover:border-blue-200', icon: 'bg-blue-100 text-blue-700', glow: 'bg-blue-300/30', line: 'bg-blue-500', pill: 'border-blue-100 bg-blue-50 text-blue-700', orb: 'border-blue-200' },
   orange: { shell: 'from-amber-50 via-white to-orange-100/90 border-orange-100 hover:border-orange-200', icon: 'bg-orange-100 text-orange-700', glow: 'bg-orange-300/30', line: 'bg-orange-500', pill: 'border-orange-100 bg-orange-50 text-orange-700', orb: 'border-orange-200' },
+  emerald: { shell: 'from-emerald-50 via-white to-teal-100/90 border-emerald-100 hover:border-emerald-200', icon: 'bg-emerald-100 text-emerald-700', glow: 'bg-emerald-300/30', line: 'bg-emerald-500', pill: 'border-emerald-100 bg-emerald-50 text-emerald-700', orb: 'border-emerald-200' },
 };
 
 export const HelzerXBrandsSection: React.FC = () => (
@@ -20,7 +22,7 @@ export const HelzerXBrandsSection: React.FC = () => (
         <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-[-.06em] text-[#111827] sm:text-5xl">Three brands.<br className="sm:hidden" /> Endless possibilities.</h2>
         <p className="mx-auto mt-4 max-w-[560px] text-sm leading-7 text-[#788697] sm:text-base">Choose the experience that fits what you want to do. Each brand has its own purpose, brought together by HelzerX Technologies.</p>
       </div>
-      <div className="brand-card-stage grid gap-5 md:grid-cols-3 md:gap-4 xl:gap-6">
+      <div className="brand-card-stage grid gap-5 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 md:gap-4 xl:gap-5">
         {brands.map(({ name, kicker, description, promise, url, icon: Icon, accent, number, tags }) => {
           const style = palette[accent as keyof typeof palette];
           return (
@@ -31,6 +33,7 @@ export const HelzerXBrandsSection: React.FC = () => (
                 {accent === 'violet' && <><span className="art-window"><i /><i /><i /><b>&lt;/&gt;</b></span><span className="art-orbit art-orbit-one" /><span className="art-orbit art-orbit-two" /><span className="art-cursor" /></>}
                 {accent === 'blue' && <><span className="art-cloud"><Cloud strokeWidth={1.5} /></span><span className="art-cloud-dot dot-one" /><span className="art-cloud-dot dot-two" /><span className="art-cloud-dot dot-three" /><span className="art-data-bar bar-one" /><span className="art-data-bar bar-two" /><span className="art-data-bar bar-three" /><span className="art-data-bar bar-four" /><span className="art-data-bar bar-five" /></>}
                 {accent === 'orange' && <><span className="art-shop-bag"><ShoppingBag strokeWidth={1.5} /></span><span className="art-product product-one" /><span className="art-product product-two" /><span className="art-product product-three" /><span className="art-spark spark-one">✦</span><span className="art-spark spark-two">✧</span></>}
+                {accent === 'emerald' && <><span className="art-free-gift"><Gift strokeWidth={1.4} /></span><span className="art-free-orbit free-orbit-one" /><span className="art-free-orbit free-orbit-two" /><span className="art-free-spark free-spark-one">✦</span><span className="art-free-spark free-spark-two">✧</span><span className="art-free-chip">FREE</span></>}
               </div>
               <div className="mt-[90px]">
                 <p className="text-[9px] font-extrabold tracking-[.16em] text-slate-400">{kicker}</p>
@@ -46,7 +49,7 @@ export const HelzerXBrandsSection: React.FC = () => (
           );
         })}
       </div>
-      <p className="mt-4 text-center text-[10px] leading-5 text-slate-400">Each card opens its dedicated HelzerX destination in a new tab.</p>
+      <p className="mt-4 text-center text-[10px] leading-5 text-slate-400">Each card opens its dedicated HelzerX destination in a new tab. Free Hosting availability and eligibility are confirmed on the Cloud platform.</p>
     </section>
     <section className="relative mx-auto max-w-[1210px] overflow-hidden rounded-[30px] border border-white bg-gradient-to-r from-[#eef7ff] via-white to-[#f2f0ff] px-6 py-9 shadow-[0_18px_55px_rgba(48,88,145,.07)] sm:px-10 sm:py-12 lg:px-14">
       <div className="pointer-events-none absolute -right-12 -top-20 h-64 w-64 rounded-full bg-blue-200/30 blur-3xl" />
