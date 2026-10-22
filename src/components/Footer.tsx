@@ -23,8 +23,8 @@ export const Footer: React.FC = () => {
       <div aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-violet-500/[0.055] blur-3xl" />
       <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-sky-400/[0.045] blur-3xl" />
 
-      <div className="relative mx-auto w-full max-w-[1500px]">
-        <div className="grid gap-11 border-b border-white/[0.13] pb-10 md:grid-cols-2 xl:grid-cols-[1.25fr_.72fr_.9fr_1.25fr] xl:gap-10 xl:pb-12">
+      <div className="relative mx-auto w-full max-w-[1640px]">
+        <div className="grid grid-cols-1 gap-9 border-b border-white/[0.13] pb-9 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10 xl:grid-cols-[minmax(250px,1.25fr)_minmax(145px,.72fr)_minmax(205px,.9fr)_minmax(300px,1.25fr)] xl:gap-9 xl:pb-10">
           <section className="min-w-0">
             <button type="button" onClick={() => navigateTo('home')} className="group flex min-h-12 items-center gap-3 text-left">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-gradient-to-br from-[#26282c] to-[#070707] shadow-[inset_0_1px_0_rgba(255,255,255,.12),0_8px_22px_rgba(0,0,0,.45)]">
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
           </section>
         </div>
 
-        <div className="flex flex-col gap-4 py-6 text-xs text-[#a6abb5] md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 pt-5 text-xs text-[#a6abb5] sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span>© {new Date().getFullYear()} {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'HelzerX')}. All rights reserved.</span>
             <button onClick={() => navigateTo('legal')} className="transition hover:text-white">Privacy &amp; Terms</button>
