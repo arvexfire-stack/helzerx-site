@@ -227,30 +227,16 @@
 }
 .home-site-frame > footer {
   margin-top: 0;
-  padding: 32px 0 14px;
   border: 0;
-  border-radius: 0;
-  background-color: #030303 !important;
 }
-/* Keep the animated black/silver RGB background visible on the full-width homepage footer. */
 .home-site-frame > footer.hx-rgb-footer {
-  background-color: #010101 !important;
+  background-color: #07080b !important;
   background-image:
-    radial-gradient(ellipse at 12% 20%, rgba(110, 110, 110, .22) 0%, transparent 36%),
-    radial-gradient(ellipse at 82% 75%, rgba(175, 175, 175, .15) 0%, transparent 38%),
-    linear-gradient(135deg, #000000 0%, #050505 25%, #101010 47%, #040404 68%, #000000 100%) !important;
-  background-size: 180% 180%;
-  animation: hx-footer-metal-drift 18s ease-in-out infinite alternate;
-}
-.home-site-frame > footer > div {
-  max-width: none;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
-}
-.home-site-frame > footer > div > div:last-child {
-  margin-left: 0;
-  margin-right: 0;
+    radial-gradient(ellipse at 50% -10%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 30%, rgba(200, 205, 220, 0.03) 0%, transparent 50%),
+    linear-gradient(180deg, #0d0e14 0%, #07080b 50%, #040507 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 @media (max-width: 767px) {
@@ -322,7 +308,7 @@
     font-size: 8px;
     white-space: nowrap;
   }
-  .home-site-frame > footer { padding: 25px 0 10px; border-radius: 0; background-color: #030303 !important; }
+  .home-site-frame > footer { border-radius: 0; }
 }
 
 /* Realistic layered 3D glass destination cards */
@@ -1114,15 +1100,16 @@ body:has(.helzerx-auth-stage) {
 @media(prefers-reduced-motion:reduce){.art-free-gift,.art-free-spark,.art-free-chip{animation:none!important}}
 
 
-/* Full-screen animated black, silver and RGB ambient footer background — no top accent line. */
+/* Black & Silver 3D Luxury Footer */
 .hx-rgb-footer {
-  background-color: #010101;
+  background-color: #07080b;
   background-image:
-    radial-gradient(ellipse at 12% 20%, rgba(110, 110, 110, .22) 0%, transparent 36%),
-    radial-gradient(ellipse at 82% 75%, rgba(175, 175, 175, .15) 0%, transparent 38%),
-    linear-gradient(135deg, #000000 0%, #050505 25%, #101010 47%, #040404 68%, #000000 100%);
-  background-size: 180% 180%;
-  animation: hx-footer-metal-drift 18s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 50% -10%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 30%, rgba(200, 205, 220, 0.03) 0%, transparent 50%),
+    linear-gradient(180deg, #0d0e14 0%, #07080b 50%, #040507 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
 }
 .hx-rgb-footer::before {
   content: "";
@@ -1130,30 +1117,8 @@ body:has(.helzerx-auth-stage) {
   z-index: 0;
   inset: 0;
   pointer-events: none;
-  opacity: .19;
-  background:
-    radial-gradient(ellipse at 5% 18%, rgba(255, 0, 70, .38) 0%, transparent 30%),
-    radial-gradient(ellipse at 28% 90%, rgba(0, 210, 255, .34) 0%, transparent 34%),
-    radial-gradient(ellipse at 60% 8%, rgba(160, 40, 255, .32) 0%, transparent 32%),
-    radial-gradient(ellipse at 94% 56%, rgba(0, 255, 150, .28) 0%, transparent 30%);
-  background-size: 180% 180%;
-  animation: hx-footer-rgb-ambient 16s ease-in-out infinite alternate, hx-footer-rgb-hue 24s linear infinite;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
 }
 .hx-rgb-footer > div.relative {
   z-index: 1;
-}
-@keyframes hx-footer-metal-drift {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
-}
-@keyframes hx-footer-rgb-ambient {
-  0% { background-position: 0% 50%; opacity: .12; }
-  100% { background-position: 100% 50%; opacity: .25; }
-}
-@keyframes hx-footer-rgb-hue {
-  from { filter: hue-rotate(0deg); }
-  to { filter: hue-rotate(360deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hx-rgb-footer, .hx-rgb-footer::before { animation: none !important; }
 }
