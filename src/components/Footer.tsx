@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
   const socialClass = 'group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12] bg-gradient-to-b from-white/[0.10] to-white/[0.025] text-[#c5c8ce] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_5px_14px_rgba(0,0,0,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:border-white/30 hover:text-white';
 
   return (
-    <footer className="relative isolate overflow-hidden bg-black px-3 pb-5 pt-10 text-sm text-[#a5a8ae] sm:px-6 sm:pt-14 lg:px-8">
+    <footer className="hx-rgb-footer relative isolate overflow-hidden bg-black px-3 pb-5 pt-10 text-sm text-[#a5a8ae] sm:px-6 sm:pt-14 lg:px-8">
       {/* Brushed-metal ambient lighting */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-black" />
       <div aria-hidden="true" className="pointer-events-none absolute -top-32 left-1/2 h-80 w-[min(1100px,120%)] -translate-x-1/2 rounded-full bg-transparent" />
@@ -27,7 +27,6 @@ export const Footer: React.FC = () => {
       <div className="relative mx-auto max-w-[1420px]">
         <div className="relative overflow-hidden rounded-[26px] border border-white/[0.16] bg-[linear-gradient(135deg,#050505_0%,#111111_28%,#252525_50%,#101010_68%,#000000_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.12)] sm:rounded-[32px]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(0,0,0,0.88)_0%,rgba(24,24,24,0.72)_32%,rgba(192,192,192,0.10)_50%,rgba(18,18,18,0.78)_68%,rgba(0,0,0,0.92)_100%)]" />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" />
 
           <div className="relative grid gap-10 px-6 py-9 sm:px-9 sm:py-11 lg:grid-cols-[1.35fr_0.7fr_0.8fr_1fr] lg:gap-12 lg:px-12 lg:py-14">
             <div className="max-w-sm">
