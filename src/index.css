@@ -1103,3 +1103,35 @@ body:has(.helzerx-auth-stage) {
 @keyframes hx-free-chip-float{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-4px) rotate(5deg)}}
 @media(max-width:639px){.brand-card-art-emerald .art-free-gift{width:68px;height:68px;border-radius:21px}.brand-card-art-emerald .art-free-gift svg{width:30px;height:30px}.art-free-orbit{width:135px;height:57px}}
 @media(prefers-reduced-motion:reduce){.art-free-gift,.art-free-spark,.art-free-chip{animation:none!important}}
+
+
+/* Full-width animated RGB accent across the entire footer */
+.hx-rgb-footer::before {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    #ff1744 0%,
+    #ff9100 14%,
+    #ffee58 27%,
+    #00e676 41%,
+    #00e5ff 55%,
+    #2979ff 69%,
+    #d500f9 83%,
+    #ff1744 100%);
+  background-size: 200% 100%;
+  animation: hx-footer-rgb-flow 7s linear infinite;
+  box-shadow: 0 0 8px rgba(0, 229, 255, .28), 0 0 16px rgba(213, 0, 249, .16);
+}
+@keyframes hx-footer-rgb-flow {
+  from { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  to { background-position: 200% 50%; filter: hue-rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hx-rgb-footer::before { animation: none; }
+}
