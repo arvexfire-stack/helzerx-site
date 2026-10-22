@@ -234,11 +234,11 @@
 }
 /* Keep the animated black/silver RGB background visible on the full-width homepage footer. */
 .home-site-frame > footer.hx-rgb-footer {
-  background-color: #030303 !important;
+  background-color: #010101 !important;
   background-image:
     radial-gradient(ellipse at 12% 20%, rgba(110, 110, 110, .22) 0%, transparent 36%),
     radial-gradient(ellipse at 82% 75%, rgba(175, 175, 175, .15) 0%, transparent 38%),
-    linear-gradient(135deg, #020202 0%, #111111 26%, #252525 47%, #090909 68%, #000000 100%) !important;
+    linear-gradient(135deg, #000000 0%, #050505 25%, #101010 47%, #040404 68%, #000000 100%) !important;
   background-size: 180% 180%;
   animation: hx-footer-metal-drift 18s ease-in-out infinite alternate;
 }
@@ -1116,11 +1116,11 @@ body:has(.helzerx-auth-stage) {
 
 /* Full-screen animated black, silver and RGB ambient footer background — no top accent line. */
 .hx-rgb-footer {
-  background-color: #030303;
+  background-color: #010101;
   background-image:
     radial-gradient(ellipse at 12% 20%, rgba(110, 110, 110, .22) 0%, transparent 36%),
     radial-gradient(ellipse at 82% 75%, rgba(175, 175, 175, .15) 0%, transparent 38%),
-    linear-gradient(135deg, #020202 0%, #111111 26%, #252525 47%, #090909 68%, #000000 100%);
+    linear-gradient(135deg, #000000 0%, #050505 25%, #101010 47%, #040404 68%, #000000 100%);
   background-size: 180% 180%;
   animation: hx-footer-metal-drift 18s ease-in-out infinite alternate;
 }
