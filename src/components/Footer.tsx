@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { MessageSquare, Twitter, Github, Mail, Shield, ArrowUp, Globe2, Code2, ShoppingBag, LockKeyhole, CreditCard, Smartphone, Landmark } from 'lucide-react';
+import { Github, Mail, Shield, ArrowUp, Globe2, Code2, ShoppingBag, LockKeyhole, CreditCard, Smartphone, Landmark } from 'lucide-react';
 
 const paymentMethods = [
   { name: 'Visa', src: 'https://cdn.simpleicons.org/visa/1A1F71', width: 'w-12' },
@@ -20,14 +20,14 @@ export const Footer: React.FC = () => {
   return (
     <footer className="relative isolate overflow-hidden bg-[#050505] px-3 pb-5 pt-10 text-sm text-[#a5a8ae] sm:px-6 sm:pt-14 lg:px-8">
       {/* Brushed-metal ambient lighting */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-transparent" />
       <div aria-hidden="true" className="pointer-events-none absolute -top-32 left-1/2 h-80 w-[min(1100px,120%)] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(203,213,225,0.10)_0%,rgba(148,163,184,0.035)_36%,transparent_70%)] blur-2xl" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(148,163,184,0.055),transparent_70%)] blur-2xl" />
 
       <div className="relative mx-auto max-w-[1420px]">
         <div className="relative overflow-hidden rounded-[26px] border border-white/[0.16] bg-[linear-gradient(145deg,#242629_0%,#17181a_18%,#0e0f10_54%,#191a1c_100%)] shadow-[0_32px_90px_rgba(0,0,0,0.68),inset_0_1px_0_rgba(255,255,255,0.16),inset_0_-1px_0_rgba(255,255,255,0.035)] sm:rounded-[32px]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-70 [background-image:linear-gradient(118deg,rgba(255,255,255,0.065)_0%,transparent_18%,transparent_70%,rgba(255,255,255,0.025)_100%),repeating-linear-gradient(115deg,rgba(255,255,255,0.012)_0px,rgba(255,255,255,0.012)_1px,transparent_1px,transparent_5px)]" />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
           <div className="relative grid gap-10 px-6 py-9 sm:px-9 sm:py-11 lg:grid-cols-[1.35fr_0.7fr_0.8fr_1fr] lg:gap-12 lg:px-12 lg:py-14">
             <div className="max-w-sm">
@@ -101,18 +101,15 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="mb-5 font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white">Stay connected</h4>
               <div className="flex flex-wrap items-center gap-2">
-                {isCompanyHome ? (
+                <a href={siteSettings.discordUrl || 'https://discord.com'} target="_blank" rel="noopener noreferrer" aria-label="Discord community" title="Discord" className={socialClass}><img src="https://cdn.simpleicons.org/discord/FFFFFF" alt="" className="h-[18px] w-[18px] object-contain" /></a>
+                <a href={siteSettings.twitterUrl || 'https://x.com'} target="_blank" rel="noopener noreferrer" aria-label="X" title="X" className={socialClass}><img src="https://cdn.simpleicons.org/x/FFFFFF" alt="" className="h-[17px] w-[17px] object-contain" /></a>
+                <a href={siteSettings.githubUrl || 'https://github.com'} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" className={socialClass}><Github className="h-[17px] w-[17px]" /></a>
+                <a href={`mailto:${siteSettings.supportEmail || 'support@helzerx.cyou'}`} aria-label="Email support" title="Email support" className={socialClass}><Mail className="h-[17px] w-[17px]" /></a>
+                {isCompanyHome && (
                   <>
-                    <a href="https://studio.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Studio" title="HelzerX Studio" className={socialClass}><Code2 className="h-4 w-4" /></a>
-                    <a href="https://cloud.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Cloud" title="HelzerX Cloud" className={socialClass}><Globe2 className="h-4 w-4" /></a>
-                    <a href="https://shop.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Shop" title="HelzerX Shop" className={socialClass}><ShoppingBag className="h-4 w-4" /></a>
-                  </>
-                ) : (
-                  <>
-                    <a href={siteSettings.discordUrl || 'https://discord.com'} target="_blank" rel="noopener noreferrer" aria-label="Discord community" title="Discord" className={socialClass}><img src="https://cdn.simpleicons.org/discord/FFFFFF" alt="" className="h-4 w-4 object-contain" /></a>
-                    <a href={siteSettings.twitterUrl || 'https://x.com'} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" title="X / Twitter" className={socialClass}><img src="https://cdn.simpleicons.org/x/FFFFFF" alt="" className="h-4 w-4 object-contain" /></a>
-                    <a href={siteSettings.githubUrl || 'https://github.com'} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" className={socialClass}><Github className="h-4 w-4" /></a>
-                    <a href={`mailto:${siteSettings.supportEmail || 'support@helzerx.cyou'}`} aria-label="Email support" title="Email support" className={socialClass}><Mail className="h-4 w-4" /></a>
+                    <a href="https://studio.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Studio" title="HelzerX Studio" className={socialClass}><Code2 className="h-[17px] w-[17px]" /></a>
+                    <a href="https://cloud.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Cloud" title="HelzerX Cloud" className={socialClass}><Globe2 className="h-[17px] w-[17px]" /></a>
+                    <a href="https://shop.helzerx.cyou" target="_blank" rel="noopener noreferrer" aria-label="HelzerX Shop" title="HelzerX Shop" className={socialClass}><ShoppingBag className="h-[17px] w-[17px]" /></a>
                   </>
                 )}
               </div>
@@ -134,7 +131,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="flex flex-wrap items-center gap-2.5" aria-label="Payment methods">
                   {paymentMethods.map((payment) => (
-                    <div key={payment.name} title={payment.name} className="flex h-11 min-w-[78px] items-center justify-center rounded-xl border border-white/20 bg-gradient-to-b from-[#f8f9fa] via-[#e8eaed] to-[#cfd2d6] px-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),inset_0_-2px_3px_rgba(0,0,0,0.10),0_5px_12px_rgba(0,0,0,0.28)] transition-transform duration-200 hover:-translate-y-0.5">
+                    <div key={payment.name} title={payment.name} className="flex h-11 min-w-[78px] items-center justify-center rounded-xl border border-white/20 bg-gradient-to-b from-[#ffffff] via-[#f1f2f4] to-[#d9dce0] px-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.98),inset_0_-2px_3px_rgba(0,0,0,0.10),0_5px_12px_rgba(0,0,0,0.28)] transition-transform duration-200 hover:-translate-y-0.5">
                       <img src={payment.src} alt={payment.name} loading="lazy" decoding="async" className={payment.width + ' h-6 object-contain'} />
                     </div>
                   ))}
@@ -153,7 +150,7 @@ export const Footer: React.FC = () => {
                       { name: 'Q Plus', icon: <Smartphone className="h-3 w-3" /> },
                       { name: 'Sampath Vishwa', icon: <Landmark className="h-3 w-3" /> },
                     ].map((method) => (
-                      <span key={method.name} className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.13] bg-black/25 px-2.5 py-1.5 text-[10px] font-medium text-[#bfc3ca] shadow-[inset_0_1px_0_rgba(255,255,255,0.045)]">
+                      <span key={method.name} className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.13] bg-black/25 px-2.5 py-1.5 text-[11px] font-medium text-[#d5d8dd] shadow-[inset_0_1px_0_rgba(255,255,255,0.045)]">
                         {method.icon}{method.name}
                       </span>
                     ))}
