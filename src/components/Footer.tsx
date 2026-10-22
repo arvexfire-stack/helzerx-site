@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="relative isolate overflow-hidden bg-[#050505] px-3 pb-5 pt-10 text-sm text-[#a5a8ae] sm:px-6 sm:pt-14 lg:px-8">
       {/* Brushed-metal ambient lighting */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#e5e7eb]/70 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
       <div aria-hidden="true" className="pointer-events-none absolute -top-32 left-1/2 h-80 w-[min(1100px,120%)] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(203,213,225,0.10)_0%,rgba(148,163,184,0.035)_36%,transparent_70%)] blur-2xl" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(148,163,184,0.055),transparent_70%)] blur-2xl" />
 
@@ -32,11 +32,11 @@ export const Footer: React.FC = () => {
           <div className="relative grid gap-10 px-6 py-9 sm:px-9 sm:py-11 lg:grid-cols-[1.35fr_0.7fr_0.8fr_1fr] lg:gap-12 lg:px-12 lg:py-14">
             <div className="max-w-sm">
               <button type="button" onClick={() => navigateTo('home')} className="group flex min-h-11 items-center gap-3 text-left">
-                <span className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-gradient-to-br from-[#414348] via-[#1c1d20] to-[#090909] shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_8px_18px_rgba(0,0,0,0.4)]">
+                <span className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-gradient-to-br from-[#303236] via-[#17181a] to-[#080808] shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_8px_18px_rgba(0,0,0,0.4)]">
                   <img
                     src="https://www.image2url.com/r2/default/images/1791729894971-43a18b87-a5f7-427e-ac62-b6fee2ccd8f1.png"
                     alt="HelzerX logo"
-                    className="h-8 w-8 rounded-lg object-contain transition-transform group-hover:scale-105"
+                    className="h-8 w-8 rounded-lg object-contain brightness-0 invert transition-transform group-hover:scale-105"
                     decoding="async"
                   />
                 </span>
@@ -109,8 +109,8 @@ export const Footer: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    <a href={siteSettings.discordUrl || 'https://discord.com'} target="_blank" rel="noopener noreferrer" aria-label="Discord community" title="Discord" className={socialClass}><MessageSquare className="h-4 w-4" /></a>
-                    <a href={siteSettings.twitterUrl || 'https://x.com'} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" title="X / Twitter" className={socialClass}><Twitter className="h-4 w-4" /></a>
+                    <a href={siteSettings.discordUrl || 'https://discord.com'} target="_blank" rel="noopener noreferrer" aria-label="Discord community" title="Discord" className={socialClass}><img src="https://cdn.simpleicons.org/discord/FFFFFF" alt="" className="h-4 w-4 object-contain" /></a>
+                    <a href={siteSettings.twitterUrl || 'https://x.com'} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" title="X / Twitter" className={socialClass}><img src="https://cdn.simpleicons.org/x/FFFFFF" alt="" className="h-4 w-4 object-contain" /></a>
                     <a href={siteSettings.githubUrl || 'https://github.com'} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" className={socialClass}><Github className="h-4 w-4" /></a>
                     <a href={`mailto:${siteSettings.supportEmail || 'support@helzerx.cyou'}`} aria-label="Email support" title="Email support" className={socialClass}><Mail className="h-4 w-4" /></a>
                   </>
@@ -178,7 +178,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div aria-hidden="true" className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+        <div aria-hidden="true" className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
       </div>
     </footer>
   );
