@@ -1,11 +1,13 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { MessageSquare, Twitter, Github, Mail, Shield, ArrowUp, Globe2, Code2, ShoppingBag, LockKeyhole, Sparkles } from 'lucide-react';
+import { MessageSquare, Twitter, Github, Mail, Shield, ArrowUp, Globe2, Code2, ShoppingBag, LockKeyhole, CreditCard, Smartphone, Landmark } from 'lucide-react';
 
 const paymentMethods = [
   { name: 'Visa', src: 'https://cdn.simpleicons.org/visa/1A1F71', width: 'w-12' },
   { name: 'Mastercard', src: 'https://cdn.simpleicons.org/mastercard/EB001B', width: 'w-10' },
   { name: 'American Express', src: 'https://cdn.simpleicons.org/americanexpress/2E77BC', width: 'w-9' },
+  { name: 'Discover', src: 'https://cdn.simpleicons.org/discover/FF6000', width: 'w-12' },
+  { name: 'Diners Club', src: 'https://cdn.simpleicons.org/dinersclub/0079BE', width: 'w-10' },
 ];
 
 export const Footer: React.FC = () => {
@@ -140,7 +142,24 @@ export const Footer: React.FC = () => {
                     <img src="https://www.payhere.lk/downloads/images/payhere_short_banner.png" alt="PayHere" loading="lazy" decoding="async" className="max-h-7 max-w-[84px] object-contain" />
                   </a>
                 </div>
-                <p className="mt-3 max-w-xl text-[10px] leading-4 text-[#777c85]">Payment methods shown depend on the payment options enabled for your checkout.</p>
+                <div className="mt-4">
+                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#969ba4]">Local payment options via PayHere</p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { name: 'HelaPay', icon: <CreditCard className="h-3 w-3" /> },
+                      { name: 'Frimi', icon: <Smartphone className="h-3 w-3" /> },
+                      { name: 'Genie', icon: <Smartphone className="h-3 w-3" /> },
+                      { name: 'iPay', icon: <Smartphone className="h-3 w-3" /> },
+                      { name: 'Q Plus', icon: <Smartphone className="h-3 w-3" /> },
+                      { name: 'Sampath Vishwa', icon: <Landmark className="h-3 w-3" /> },
+                    ].map((method) => (
+                      <span key={method.name} className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.13] bg-black/25 px-2.5 py-1.5 text-[10px] font-medium text-[#bfc3ca] shadow-[inset_0_1px_0_rgba(255,255,255,0.045)]">
+                        {method.icon}{method.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <p className="mt-3 max-w-xl text-[10px] leading-4 text-[#777c85]">Available methods depend on the payment options enabled in your PayHere merchant account and checkout.</p>
               </div>
 
               <div className="flex flex-col gap-4 lg:items-end">
