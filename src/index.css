@@ -230,8 +230,17 @@
   padding: 32px 0 14px;
   border: 0;
   border-radius: 0;
-  background: #000000 !important;
-  background-color: #000000 !important;
+  background-color: #030303 !important;
+}
+/* Keep the animated black/silver RGB background visible on the full-width homepage footer. */
+.home-site-frame > footer.hx-rgb-footer {
+  background-color: #030303 !important;
+  background-image:
+    radial-gradient(ellipse at 12% 20%, rgba(110, 110, 110, .22) 0%, transparent 36%),
+    radial-gradient(ellipse at 82% 75%, rgba(175, 175, 175, .15) 0%, transparent 38%),
+    linear-gradient(135deg, #020202 0%, #111111 26%, #252525 47%, #090909 68%, #000000 100%) !important;
+  background-size: 180% 180%;
+  animation: hx-footer-metal-drift 18s ease-in-out infinite alternate;
 }
 .home-site-frame > footer > div {
   max-width: none;
@@ -313,7 +322,7 @@
     font-size: 8px;
     white-space: nowrap;
   }
-  .home-site-frame > footer { padding: 25px 0 10px; border-radius: 0; background: #000000 !important; background-color: #000000 !important; }
+  .home-site-frame > footer { padding: 25px 0 10px; border-radius: 0; background-color: #030303 !important; }
 }
 
 /* Realistic layered 3D glass destination cards */
