@@ -19,13 +19,13 @@ export const Footer: React.FC = () => {
 
 
   return (
-    <footer className="hx-rgb-footer relative isolate overflow-hidden px-5 pb-5 pt-12 text-sm text-[#b7bac2] sm:px-8 sm:pt-14 lg:px-12">
+    <footer className="hx-rgb-footer relative isolate w-full overflow-hidden px-4 pb-4 pt-9 text-sm text-[#b7bac2] min-[480px]:px-5 sm:px-7 sm:pb-5 sm:pt-11 lg:px-10 2xl:px-12">
       <div aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-violet-500/[0.055] blur-3xl" />
       <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-sky-400/[0.045] blur-3xl" />
 
-      <div className="relative mx-auto w-full max-w-[1640px]">
-        <div className="grid grid-cols-1 gap-9 border-b border-white/[0.13] pb-9 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10 xl:grid-cols-[minmax(250px,1.25fr)_minmax(145px,.72fr)_minmax(205px,.9fr)_minmax(300px,1.25fr)] xl:gap-9 xl:pb-10">
-          <section className="min-w-0">
+      <div className="relative mx-auto w-full min-w-0 max-w-[1500px]">
+        <div className="grid min-w-0 grid-cols-1 gap-8 border-b border-white/[0.13] pb-7 min-[480px]:grid-cols-2 min-[480px]:gap-x-6 min-[480px]:gap-y-8 sm:gap-x-8 sm:gap-y-9 xl:grid-cols-2 2xl:grid-cols-[minmax(230px,1.2fr)_minmax(145px,.72fr)_minmax(190px,.9fr)_minmax(280px,1.2fr)] 2xl:gap-8 2xl:pb-9">
+          <section className="min-w-0 min-[480px]:col-span-2 2xl:col-span-1">
             <button type="button" onClick={() => navigateTo('home')} className="group flex min-h-12 items-center gap-3 text-left">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-gradient-to-br from-[#26282c] to-[#070707] shadow-[inset_0_1px_0_rgba(255,255,255,.12),0_8px_22px_rgba(0,0,0,.45)]">
                 <img src="https://www.image2url.com/r2/default/images/1791729894971-43a18b87-a5f7-427e-ac62-b6fee2ccd8f1.png" alt="HelzerX logo" className="h-9 w-9 rounded-lg object-contain brightness-0 invert transition-transform group-hover:scale-105" decoding="async" />
@@ -76,27 +76,27 @@ export const Footer: React.FC = () => {
 
           <section className="min-w-0">
             <h4 className="mb-5 font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white">Payment Methods</h4>
-            <div className="flex flex-wrap gap-2" aria-label="Payment methods">
-              {paymentMethods.map((payment) => <div key={payment.name} title={payment.name} className="flex h-10 min-w-[72px] items-center justify-center rounded-lg border border-white/[0.17] bg-[#080808] px-3 shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"><img src={payment.src} alt={payment.name} loading="lazy" decoding="async" className={payment.width + ' h-5 object-contain'} /></div>)}
-              <a href="https://www.payhere.lk" target="_blank" rel="noopener noreferrer" title="PayHere" aria-label="PayHere payment gateway" className="flex h-10 min-w-[88px] items-center justify-center rounded-lg border border-white/[0.17] bg-[#080808] px-3"><img src="https://www.payhere.lk/downloads/images/payhere_short_banner.png" alt="PayHere" loading="lazy" decoding="async" className="max-h-6 max-w-[76px] object-contain" /></a>
+            <div className="flex min-w-0 flex-wrap gap-2" aria-label="Payment methods">
+              {paymentMethods.map((payment) => <div key={payment.name} title={payment.name} className="flex h-10 min-w-0 flex-1 items-center justify-center rounded-lg border border-white/[0.17] bg-[#080808] px-2 min-[480px]:min-w-[72px] min-[480px]:flex-none sm:px-3 shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"><img src={payment.src} alt={payment.name} loading="lazy" decoding="async" className={payment.width + ' h-5 object-contain'} /></div>)}
+              <a href="https://www.payhere.lk" target="_blank" rel="noopener noreferrer" title="PayHere" aria-label="PayHere payment gateway" className="flex h-10 min-w-0 flex-1 items-center justify-center rounded-lg border border-white/[0.17] bg-[#080808] px-2 min-[480px]:min-w-[88px] min-[480px]:flex-none sm:px-3"><img src="https://www.payhere.lk/downloads/images/payhere_short_banner.png" alt="PayHere" loading="lazy" decoding="async" className="max-h-6 max-w-[76px] object-contain" /></a>
             </div>
             <div className="mt-6">
               <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-[#d6d8de]">Local Payments</p>
               <div className="flex flex-wrap gap-2">
-                {[{name:'HelaPay',icon:<CreditCard className="h-3.5 w-3.5" />},{name:'Frimi',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'Genie',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'iPay',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'Q Plus',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'Sampath Vishwa',icon:<Landmark className="h-3.5 w-3.5" />}].map((method) => <span key={method.name} className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.13] bg-white/[0.025] px-2.5 py-2 text-[11px] font-medium text-[#d2d5dc]">{method.icon}{method.name}</span>)}
+                {[{name:'HelaPay',icon:<CreditCard className="h-3.5 w-3.5" />},{name:'Frimi',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'Genie',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'iPay',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'Q Plus',icon:<Smartphone className="h-3.5 w-3.5" />},{name:'Sampath Vishwa',icon:<Landmark className="h-3.5 w-3.5" />}].map((method) => <span key={method.name} className="inline-flex max-w-full items-center gap-1.5 rounded-lg border border-white/[0.13] bg-white/[0.025] px-2 py-2 text-[10px] font-medium text-[#d2d5dc] min-[480px]:px-2.5 min-[480px]:text-[11px]">{method.icon}{method.name}</span>)}
               </div>
             </div>
             <div className="mt-6 flex items-center gap-2 text-xs font-medium text-[#aeb4bf]"><span className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.15] bg-white/[0.035]"><LockKeyhole className="h-3.5 w-3.5" /></span>Secure checkout options</div>
           </section>
         </div>
 
-        <div className="flex flex-col gap-4 pt-5 text-xs text-[#a6abb5] sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <div className="flex min-w-0 flex-col gap-4 pt-5 text-xs text-[#a6abb5] sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-5">
             <span>© {new Date().getFullYear()} {isCompanyHome ? 'HelzerX Technologies' : (siteSettings.brandName || 'HelzerX')}. All rights reserved.</span>
             <button onClick={() => navigateTo('legal')} className="transition hover:text-white">Privacy &amp; Terms</button>
             <button onClick={() => navigateTo('support')} className="transition hover:text-white">Help Center</button>
           </div>
-          <div className="inline-flex items-center gap-2 self-start rounded-full border border-white/[0.13] bg-white/[0.025] px-3 py-2 text-[11px] font-medium text-[#c9cdd5] md:self-auto"><CheckCircle2 className="h-3.5 w-3.5 text-[#c5c9d2]" />Secure &amp; Trusted</div>
+          <div className="inline-flex items-center gap-2 self-start rounded-full border border-white/[0.13] bg-white/[0.025] px-3 py-2 text-[11px] font-medium text-[#c9cdd5] sm:self-auto"><CheckCircle2 className="h-3.5 w-3.5 text-[#c5c9d2]" />Secure &amp; Trusted</div>
         </div>
         <div className="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-transparent" />
       </div>
