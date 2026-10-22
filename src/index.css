@@ -1105,33 +1105,46 @@ body:has(.helzerx-auth-stage) {
 @media(prefers-reduced-motion:reduce){.art-free-gift,.art-free-spark,.art-free-chip{animation:none!important}}
 
 
-/* Full-width animated RGB accent across the entire footer */
+/* Full-screen animated black, silver and RGB ambient footer background — no top accent line. */
+.hx-rgb-footer {
+  background-color: #030303;
+  background-image:
+    radial-gradient(ellipse at 12% 20%, rgba(110, 110, 110, .22) 0%, transparent 36%),
+    radial-gradient(ellipse at 82% 75%, rgba(175, 175, 175, .15) 0%, transparent 38%),
+    linear-gradient(135deg, #020202 0%, #111111 26%, #252525 47%, #090909 68%, #000000 100%);
+  background-size: 180% 180%;
+  animation: hx-footer-metal-drift 18s ease-in-out infinite alternate;
+}
 .hx-rgb-footer::before {
   content: "";
   position: absolute;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
+  z-index: 0;
+  inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg,
-    #ff1744 0%,
-    #ff9100 14%,
-    #ffee58 27%,
-    #00e676 41%,
-    #00e5ff 55%,
-    #2979ff 69%,
-    #d500f9 83%,
-    #ff1744 100%);
-  background-size: 200% 100%;
-  animation: hx-footer-rgb-flow 7s linear infinite;
-  box-shadow: 0 0 8px rgba(0, 229, 255, .28), 0 0 16px rgba(213, 0, 249, .16);
+  opacity: .19;
+  background:
+    radial-gradient(ellipse at 5% 18%, rgba(255, 0, 70, .38) 0%, transparent 30%),
+    radial-gradient(ellipse at 28% 90%, rgba(0, 210, 255, .34) 0%, transparent 34%),
+    radial-gradient(ellipse at 60% 8%, rgba(160, 40, 255, .32) 0%, transparent 32%),
+    radial-gradient(ellipse at 94% 56%, rgba(0, 255, 150, .28) 0%, transparent 30%);
+  background-size: 180% 180%;
+  animation: hx-footer-rgb-ambient 16s ease-in-out infinite alternate, hx-footer-rgb-hue 24s linear infinite;
 }
-@keyframes hx-footer-rgb-flow {
-  from { background-position: 0% 50%; filter: hue-rotate(0deg); }
-  to { background-position: 200% 50%; filter: hue-rotate(360deg); }
+.hx-rgb-footer > div.relative {
+  z-index: 1;
+}
+@keyframes hx-footer-metal-drift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+@keyframes hx-footer-rgb-ambient {
+  0% { background-position: 0% 50%; opacity: .12; }
+  100% { background-position: 100% 50%; opacity: .25; }
+}
+@keyframes hx-footer-rgb-hue {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hx-rgb-footer::before { animation: none; }
+  .hx-rgb-footer, .hx-rgb-footer::before { animation: none !important; }
 }
